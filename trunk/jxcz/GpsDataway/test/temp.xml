@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="GBK"?>
+<ResultSet>
+	<row id="0">
+		<col name="CS">1</col>
+		<col name="CLBM">0335200020000</col>
+		<col name="JDSJ">2007-12-13 14:10</col>
+		<col name="FZBM"></col>
+		<col name="PCSJ">2007-12-13 14:09</col>
+		<col name="PCRY">lrh</col>
+		<col name="CLYJ"></col>
+		<col name="JDRY">816</col>
+		<col name="XGCLBM">0335200020000</col>
+		<col name="CLSJ">2007-12-13 14:10</col>
+		<col name="GDH">32</col>
+	</row>
+</ResultSet>

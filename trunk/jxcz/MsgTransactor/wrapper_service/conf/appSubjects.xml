@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+          <!--外部应用信息 -->
+	<apps>
+		<app subject="demo" ip="192.168.0.11">
+		          <!-- 当前应用下的逻辑号 -->
+			<logicalAddr value="123" />
+			<logicalAddr value="456" />
+			<logicalAddr value="789" />
+		</app>
+	</apps>
+	<!-- 外部应用需要回复给主机的主题，服务器用来接收客户机回复的消息 -->
+	<serverSubject subject="serverReplySubject" />
+</root>
