@@ -1,0 +1,5 @@
+db_drivers=com.microsoft.jdbc.sqlserver.SQLServerDriver
+db_connURL=jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=Middle_UMS
+db_poolName=MiddleUMS
+db_user=sa
+db_password=12345678

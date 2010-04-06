@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://xfire.codehaus.org/config/1.0">
+  <service>
+    <serviceClass>com.nci.ums.v3.service.impl.UMS3_MsgSendImpl</serviceClass>
+    <wsdlURL>http://127.0.0.1:19829/axis2/services/UMS3_MsgSend?wsdl</wsdlURL>
+    <serviceFactory>org.codehaus.xfire.jaxb2.JaxbServiceFactory</serviceFactory>
+  </service>
+</beans>
+

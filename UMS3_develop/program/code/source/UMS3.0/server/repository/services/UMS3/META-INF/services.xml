@@ -1,0 +1,36 @@
+<serviceGroup>
+<service name="UMS3_MsgSend" 
+class="com.nci.ums.periphery.core.UMS3Server_Axis2LifeCycle">
+	<description>
+		This service is used for applications to send messages
+	</description>
+	<messageReceivers>
+		<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only" class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
+		<messageReceiver  mep="http://www.w3.org/2004/08/wsdl/in-out"  class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	</messageReceivers>	
+	<parameter name="ServiceClass" locked="false">com.nci.ums.v3.service.impl.UMSSendService</parameter>
+</service>
+
+
+<service name="UMS3_Manage">
+	<description>
+		This service is used for platform administrator to start or stop channels
+	</description>
+	<messageReceivers>
+		<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only" class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
+		<messageReceiver  mep="http://www.w3.org/2004/08/wsdl/in-out"  class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	</messageReceivers>	
+	<parameter name="ServiceClass" locked="false">com.nci.ums.v3.service.impl.InterCommandCenter</parameter>
+</service>
+
+<service name="UMS3_MsgReceive">
+	<description>
+		This service is used for outside application receiving messages
+	</description>
+	<messageReceivers>
+		<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only" class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
+		<messageReceiver  mep="http://www.w3.org/2004/08/wsdl/in-out"  class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	</messageReceivers>	
+	<parameter name="ServiceClass" locked="false">com.nci.ums.v3.service.impl.UMSReceiveService</parameter>
+</service>
+</serviceGroup>

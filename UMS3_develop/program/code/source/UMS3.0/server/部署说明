@@ -1,0 +1,8 @@
+1.建立java project。
+2.以UMS2.0_src/src, UMS3_Console_src/src, UMS_MsgBody_src/src三个文件夹作为源文件夹。
+3.lib下所有的jar文件添加到classpath。
+4.将编译输出目录设置为工作区内：axis2-1.3\WEB-INF\services\UMS3。eclipse可以直接设定，前提是要将axis2-1.3包含在项目workspace中，netbeans可以通过修改project.properties解决。
+5.在tomcat中的conf/catalina/localhost/下新增ums3.xml：
+  <?xml version="1.0" encoding="UTF-8"?>
+  <Context docBase=%AXIS2_PATH% path="/ums3"/>
+6.将数据库驱动OJDBC14.jar放置在tomcat所在jre的lib/ext文件夹

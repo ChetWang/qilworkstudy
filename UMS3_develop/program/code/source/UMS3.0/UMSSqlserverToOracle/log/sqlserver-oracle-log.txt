@@ -1,0 +1,58 @@
+[2009-01-06 10:37:03,859: DEBUG xxxxxx] com.nci.util.KnoLogger.log(KnoLogger.java:69)  
+[2009-01-06 10:37:03,875: ERROR yyyyyy] com.nci.util.KnoLogger.log(KnoLogger.java:69)  
+java.lang.Exception: www
+	at com.nci.util.KnoLogger.main(KnoLogger.java:83)
+[2009-01-06 11:02:18,671: ERROR Can't create a new connection for jdbc:microsoft:sqlserver://10.44.14.208;SelectMethod=Cursor;DatabaseName=DB_CustomSMS] com.nci.util.KnoLogger.log(KnoLogger.java:69)  
+java.sql.SQLException: [Microsoft][SQLServer 2000 Driver for JDBC]Error establishing socket.
+	at com.microsoft.jdbc.base.BaseExceptions.createException(Unknown Source)
+	at com.microsoft.jdbc.base.BaseExceptions.getException(Unknown Source)
+	at com.microsoft.jdbc.base.BaseExceptions.getException(Unknown Source)
+	at com.microsoft.jdbc.sqlserver.tds.TDSConnection.<init>(Unknown Source)
+	at com.microsoft.jdbc.sqlserver.SQLServerImplConnection.open(Unknown Source)
+	at com.microsoft.jdbc.base.BaseConnection.getNewImplConnection(Unknown Source)
+	at com.microsoft.jdbc.base.BaseConnection.open(Unknown Source)
+	at com.microsoft.jdbc.base.BaseDriver.connect(Unknown Source)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at com.nci.util.DBConnectionManager$DBConnectionPool.newConnection(DBConnectionManager.java:408)
+	at com.nci.util.DBConnectionManager$DBConnectionPool.getConnection(DBConnectionManager.java:345)
+	at com.nci.util.DBConnectionManager.getConnection(DBConnectionManager.java:86)
+	at com.nci.Main.getSQLServerMsgs(Main.java:87)
+	at com.nci.Main.main(Main.java:218)
+[2009-01-06 11:02:18,671: ERROR ] com.nci.util.KnoLogger.log(KnoLogger.java:69)  
+java.lang.NullPointerException
+	at com.nci.Main.getSQLServerMsgs(Main.java:88)
+	at com.nci.Main.main(Main.java:218)
+[2009-01-06 11:10:30,218: ERROR java.sql.SQLException: [Microsoft][SQLServer 2000 Driver for JDBC]Error establishing socket.] com.nci.util.KnoLogger.log(KnoLogger.java:69)  
+org.apache.commons.dbcp.DbcpException: java.sql.SQLException: [Microsoft][SQLServer 2000 Driver for JDBC]Error establishing socket.
+	at org.apache.commons.dbcp.DriverManagerConnectionFactory.createConnection(DriverManagerConnectionFactory.java:101)
+	at org.apache.commons.dbcp.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:184)
+	at org.apache.commons.pool.impl.GenericObjectPool.borrowObject(Unknown Source)
+	at org.apache.commons.dbcp.PoolingDriver.connect(PoolingDriver.java:146)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:193)
+	at com.nci.Main.getSQLServerMsgs(Main.java:90)
+	at com.nci.Main.main(Main.java:252)
+Caused by: java.sql.SQLException: [Microsoft][SQLServer 2000 Driver for JDBC]Error establishing socket.
+	at com.microsoft.jdbc.base.BaseExceptions.createException(Unknown Source)
+	at com.microsoft.jdbc.base.BaseExceptions.getException(Unknown Source)
+	at com.microsoft.jdbc.base.BaseExceptions.getException(Unknown Source)
+	at com.microsoft.jdbc.sqlserver.tds.TDSConnection.<init>(Unknown Source)
+	at com.microsoft.jdbc.sqlserver.SQLServerImplConnection.open(Unknown Source)
+	at com.microsoft.jdbc.base.BaseConnection.getNewImplConnection(Unknown Source)
+	at com.microsoft.jdbc.base.BaseConnection.open(Unknown Source)
+	at com.microsoft.jdbc.base.BaseDriver.connect(Unknown Source)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at org.apache.commons.dbcp.DriverManagerConnectionFactory.createConnection(DriverManagerConnectionFactory.java:95)
+	... 7 more
+华为信息机数据库转发服务启动！
+2009-01-06 12:20:49,671:INFO --> 华为信息机数据库转发服务启动！  [com.nci.util.KnoLogger.log(KnoLogger.java:73)]
+ 2009-01-06 12:21:30,265:INFO --> 华为信息机数据库转发服务启动！  [com.nci.util.KnoLogger.log(KnoLogger.java:73)]
+ 2009-01-06 12:22:02,265:INFO --> 华为信息机数据库转发服务启动！  [com.nci.util.KnoLogger.log(KnoLogger.java:73)]
+ 2009-01-06 12:22:24,093:INFO --> %[m]  com.nci.util.KnoLogger.log(KnoLogger.java:73)
+ 2009-01-06 12:22:38,625:INFO --> [华为信息机数据库转发服务启动！]  com.nci.util.KnoLogger.log(KnoLogger.java:73)
+ 2009-01-06 12:23:27,218:INFO --> [华为信息机数据库转发服务启动！]  com.nci.util.KnoLogger.log(KnoLogger.java:73)
+ 2009-01-06 12:23:39,937:INFO --> [华为信息机数据库转发服务启动！]  com.nci.util.KnoLogger.log(KnoLogger.java:73)
+ 2009-01-06 12:24:15,906:INFO --> [华为信息机数据库转发服务启动！]  com.nci.Main.main(Main.java:250)
+ 

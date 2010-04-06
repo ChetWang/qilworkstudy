@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MsgFmt>
+	<Item name="content">Please visit:</Item>
+	<Item name="url">www.sohu.com</Item>
+	<Item name="content"> for more details.</Item>
+	<Item name="url">wangql@sohu.com</Item>
+	<Item name="content">.This is the email</Item>
+	<Item name="attachment">.No attach~</Item>
+</MsgFmt>

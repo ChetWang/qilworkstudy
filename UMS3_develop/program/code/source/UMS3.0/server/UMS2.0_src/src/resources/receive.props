@@ -1,0 +1,3 @@
+#if the receive service is provided by socket
+socket_port=19828
+time_out=30
