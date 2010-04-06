@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="classes" path="src"/>
+	<classpathentry kind="lib" path="lib/database/commons-collections.jar"/>
+	<classpathentry kind="lib" path="lib/database/commons-dbcp.jar"/>
+	<classpathentry kind="lib" path="lib/database/commons-pool.jar"/>
+	<classpathentry kind="lib" path="lib/database/msbase.jar"/>
+	<classpathentry kind="lib" path="lib/database/mssqlserver.jar"/>
+	<classpathentry kind="lib" path="lib/database/msutil.jar"/>
+	<classpathentry kind="lib" path="lib/xstream/xpp3_min-1.1.3.4.O.jar"/>
+	<classpathentry kind="lib" path="lib/xstream/xstream-1.2.2.jar"/>
+	<classpathentry kind="lib" path="lib/ums3MsgBody.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/Axis2-1.3"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

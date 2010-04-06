@@ -1,0 +1,7 @@
+level=INFO
+
+#调试模式下layout
+layout=%d{ISO8601}:[%p] --> %m  %l%n 
+
+#生产模式下layout
+#layout=%d{yyyy-MM-dd hh:mm:ss} --> %m%n 

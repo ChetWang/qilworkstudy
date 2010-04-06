@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="UMSSwingDemo" default="dist" basedir=".">
+	<description>UMSSwingDemo</description>
+	<property name="src.dir" location="src" />
+	<property name="build.dir" location="build/classes" />
+	<property name="dist.dir" location="dist" />
+	<property name="lib.dir" location="lib" />
+	<property name="conf.dir" location="conf" />
+	<property name="main_class" value="com.ums.demo.LoginFrame" />
+	<property name="maxMemory" value="64m" />
+	
+	<tstamp>
+		<format property="now" pattern="yyyyMMddHHmmss" />
+	</tstamp>
+	
+	<path id="project.class.path">
+		<!--
+		<pathelement path="${java.class.path}/" />
+		<pathelement path="${additional.path}" />
+		-->
+		<fileset dir="lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<path id="run.class.path">
+		<fileset dir="lib">
+			<include name="**/*.jar" />
+		</fileset>
+		<pathelement path="${build.dir}"/>
+	</path>
+
+
+
+	<target name="init" description="initialize the building directories">
+		<echo>initializing...</echo>
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<echo>initialize complete.</echo>
+	</target>
+
+	<target name="compile" depends="init" description="compil java files">
+		<echo>compiling...</echo>
+		<javac fork="true" deprecation="false"   memorymaximumsize="${maxMemory}"  nowarn="true" srcdir="${src.dir}" destdir="${build.dir}" debug="on">
+			<classpath refid="project.class.path" />
+			
+		</javac>
+		<echo>compile complete.</echo>
+	</target>
+
+	<target name="run" depends="compile">
+		<echo>run main class</echo>
+		<java classname="${main_class}" maxmemory="${maxMemory}" >
+			<classpath refid="run.class.path" />
+		</java>
+	</target>
+
+
+	<target name="dist" depends="compile" description="distribute">
+		<echo>distributing...</echo>
+		<pathconvert description="create manifest classpath" pathsep=" " property="jar.classpath">
+			<path refid="project.class.path" />
+			<chainedmapper>
+				<flattenmapper />
+				<globmapper from="*" to="lib/" />
+			</chainedmapper>
+		</pathconvert>
+		<mkdir dir="${dist.dir}/lib" />
+		<copy todir="${dist.dir}/lib" description="copy third party lib jar">
+			<fileset dir="${lib.dir}">
+				<exclude name="**/*unit*.jar" />
+				<exclude name="**/*netbe*.jar" />
+				<include name="**/*.jar" />
+			</fileset>
+		</copy>
+		<copy todir="${dist.dir}/conf" description="copy configure files">
+			<fileset dir="${conf.dir}">
+			</fileset>
+		</copy>
+		<jar jarfile="${dist.dir}/ums_sql_ora-${now}.jar" description="dist" basedir="${build.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="${main_class}" />
+				<attribute name="Class-Path" value="${jar.classpath}" />
+			</manifest>
+		</jar>
+		<echo>dist complete.</echo>
+	</target>
+
+	<target name="clean" description="clean all build classes and files">
+		<echo>cleaning...</echo>
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+		<echo>clean complete.</echo>
+	</target>
+
+</project>

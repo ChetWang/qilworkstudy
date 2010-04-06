@@ -1,0 +1,18 @@
+REM unnamed_probe
+PROBE
+RULE com/ibm* * * * EXCLUDE
+RULE com/sun* * * * EXCLUDE
+RULE COM/ibm* * * * EXCLUDE
+RULE java* * * * EXCLUDE
+RULE org* * * * EXCLUDE
+RULE sun* * * * EXCLUDE
+RULE * JMXProbe_probe * * EXCLUDE
+RULE * JMXProbe_probe$Probe_0 * * EXCLUDE
+RULE * JMXProbe_probe * * EXCLUDE
+RULE * JMXProbe_probe$Probe_0 * * EXCLUDE
+RULE * CbeProbe_probe$Probe_0 * * EXCLUDE
+RULE * CbeProbe_probe * * EXCLUDE
+RULE org/eclipse/tptp/trace/arm* * * * EXCLUDE
+RULE org/eclipse/tptp/monitoring/instrumentation* * * * EXCLUDE
+
+REF ONCATCH CbeProbe_probe$Probe_0 _catch (Ljava/lang/Throwable;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V exceptionObject,className,methodName,classSourceFile

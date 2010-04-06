@@ -1,0 +1,13 @@
+drivers=oracle.jdbc.driver.OracleDriver
+#drivers=com.mysql.jdbc.Driver 
+#driver必须要放在第一行，便于方言判断
+#url=jdbc:oracle:thin:@192.168.133.10:1521:ORA
+#url=jdbc:oracle:thin:@192.168.0.57:1521:ncird
+url=jdbc:oracle:thin:@127.0.0.1:1521:qil
+#url=jdbc:mysql://192.168.0.57:3306/ums4
+pool_name=ums
+user=ums3
+password=ums3
+maxActive=10
+maxIdle=15
+maxWait=10000

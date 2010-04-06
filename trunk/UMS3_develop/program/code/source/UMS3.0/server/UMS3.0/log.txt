@@ -1,0 +1,640 @@
+[ERROR] 2007-10-23 11:38:50,656 method:com.nci.ums.channel.channelmanager.SendOut.<init>(SendOut.java:33)
+load code errorresources\code.props (系统找不到指定的路径。)
+[INFO ] 2007-10-23 11:42:22,765 method:com.nci.ums.channel.channelmanager.SendOut.<init>(SendOut.java:33)
+sendOut对象产生！
+[INFO ] 2007-10-23 11:42:23,531 method:com.nci.ums.channel.channelmanager.ChannelManager.<init>(ChannelManager.java:51)
+渠道管理对象产生
+[INFO ] 2007-10-23 11:42:23,546 method:com.nci.ums.channel.channelmanager.ScanInvalid.<init>(ScanInvalid.java:38)
+扫描失效数据线程对象产生
+[INFO ] 2007-10-23 11:42:23,546 method:com.nci.ums.periphery.application.AppServer.<init>(AppServer.java:35)
+应用程序外拨渠道对象产生！
+[INFO ] 2007-10-23 11:42:23,546 method:com.nci.ums.periphery.application.MonitorServer.<init>(MonitorServer.java:36)
+应用程序外拨渠道对象产生！
+[INFO ] 2007-10-23 11:43:46,421 method:com.nci.ums.channel.channelmanager.SendOut.<init>(SendOut.java:33)
+sendOut对象产生！
+[INFO ] 2007-10-23 11:43:46,640 method:com.nci.ums.channel.channelmanager.ChannelManager.<init>(ChannelManager.java:51)
+渠道管理对象产生
+[INFO ] 2007-10-23 11:43:46,656 method:com.nci.ums.channel.channelmanager.ScanInvalid.<init>(ScanInvalid.java:38)
+扫描失效数据线程对象产生
+[INFO ] 2007-10-23 11:43:46,656 method:com.nci.ums.periphery.application.AppServer.<init>(AppServer.java:35)
+应用程序外拨渠道对象产生！
+[INFO ] 2007-10-23 11:43:46,656 method:com.nci.ums.periphery.application.MonitorServer.<init>(MonitorServer.java:36)
+应用程序外拨渠道对象产生！
+[INFO ] 2007-10-23 11:45:44,125 method:com.nci.ums.channel.channelmanager.SendOut.<init>(SendOut.java:33)
+sendOut对象产生！
+[INFO ] 2007-10-23 11:45:44,375 method:com.nci.ums.channel.channelmanager.ChannelManager.<init>(ChannelManager.java:51)
+渠道管理对象产生
+[INFO ] 2007-10-23 11:45:44,375 method:com.nci.ums.channel.channelmanager.ScanInvalid.<init>(ScanInvalid.java:38)
+扫描失效数据线程对象产生
+[INFO ] 2007-10-23 11:45:44,390 method:com.nci.ums.periphery.application.AppServer.<init>(AppServer.java:35)
+应用程序外拨渠道对象产生！
+[INFO ] 2007-10-23 11:45:44,390 method:com.nci.ums.periphery.application.MonitorServer.<init>(MonitorServer.java:36)
+应用程序外拨渠道对象产生！
+[ERROR] 2007-10-23 11:46:05,734 method:com.nci.ums.periphery.core.UMSServer_V3.start(UMSServer_V3.java:69)
+不能打开数据库或者System表未初始化java.lang.NullPointerException
+[INFO ] 2007-10-23 11:48:16,437 method:com.nci.ums.channel.channelmanager.SendOut.<init>(SendOut.java:33)
+sendOut对象产生！
+[INFO ] 2007-10-23 11:48:16,671 method:com.nci.ums.channel.channelmanager.ChannelManager.<init>(ChannelManager.java:51)
+渠道管理对象产生
+[INFO ] 2007-10-23 11:48:16,671 method:com.nci.ums.channel.channelmanager.ScanInvalid.<init>(ScanInvalid.java:38)
+扫描失效数据线程对象产生
+[INFO ] 2007-10-23 11:48:16,687 method:com.nci.ums.periphery.application.AppServer.<init>(AppServer.java:35)
+应用程序外拨渠道对象产生！
+[INFO ] 2007-10-23 11:48:16,687 method:com.nci.ums.periphery.application.MonitorServer.<init>(MonitorServer.java:36)
+应用程序外拨渠道对象产生！
+[INFO ] 2007-10-23 11:48:17,468 method:com.nci.ums.channel.channelmanager.ChannelManager.start(ChannelManager.java:60)
+渠道管理线程启动
+[DEBUG] 2007-10-23 11:48:17,468 method:com.nci.ums.periphery.application.MonitorServer.run(MonitorServer.java:262)
+UMS报告待发情况
+[INFO ] 2007-10-23 11:48:17,468 method:com.nci.ums.periphery.application.MonitorServer.scanTable(MonitorServer.java:295)
+待发数据的扫描！
+[DEBUG] 2007-10-23 11:48:17,468 method:com.nci.ums.periphery.application.MonitorServer.scanTable(MonitorServer.java:299)
+sql=select * from out_ready order by serialNO desc
+[DEBUG] 2007-10-23 11:48:17,468 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 11:48:17,468 method:com.nci.ums.channel.channelmanager.ScanInvalid.start(ScanInvalid.java:48)
+扫描失效数据线程启动
+[DEBUG] 2007-10-23 11:48:17,484 method:com.nci.ums.channel.channelmanager.ScanInvalid.scanTable(ScanInvalid.java:98)
+sql=select * from out_ready where doCount>3 and ( InvalidDate < 20071023 or (InvalidDate = 20071023 and InvalidTime < 114817))
+[DEBUG] 2007-10-23 11:48:17,562 method:com.nci.ums.channel.channelmanager.ChannelManager.scanTable(ChannelManager.java:172)
+sql=select * from media where type=1 and statusFlag=0  order by media_ID
+[DEBUG] 2007-10-23 11:48:17,640 method:com.nci.ums.periphery.application.MonitorServer.run(MonitorServer.java:268)
+UMS报告待发情况结束
+[DEBUG] 2007-10-23 11:48:17,750 method:com.nci.ums.util.AppFactory.refresh(AppFactory.java:78)
+size:1
+[INFO ] 2007-10-23 11:48:17,765 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 11:48:17,765 method:com.nci.ums.channel.channelmanager.ScanInvalid.run(ScanInvalid.java:73)
+扫描失效数据线程将睡眠1小时
+[DEBUG] 2007-10-23 11:48:17,765 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 11:48:17,781 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 11:48:17,781 method:com.nci.ums.channel.channelmanager.ChannelManager.scanTable(ChannelManager.java:178)
+sql2=select * from media where type=0 and statusFlag=0 order by media_ID
+[DEBUG] 2007-10-23 11:48:17,781 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 11:48:17,781 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 11:48:17,781 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 11:53:17,781 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 11:53:17,781 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[DEBUG] 2007-10-23 11:53:17,781 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 11:53:17,781 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 11:53:17,781 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 11:53:17,781 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 11:53:17,796 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 11:53:17,796 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 11:53:17,796 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 11:58:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 11:58:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 11:58:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 11:58:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 11:58:17,796 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 11:58:17,796 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 11:58:17,796 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 11:58:17,796 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 11:58:17,890 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 12:03:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 12:03:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 12:03:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 12:03:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 12:03:17,906 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 12:03:17,906 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 12:03:17,906 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 12:03:17,906 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 12:03:17,906 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 12:08:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 12:08:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 12:08:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 12:08:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 12:08:17,906 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 12:08:17,906 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 12:08:17,906 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 12:08:17,921 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 12:08:17,921 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 12:13:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 12:13:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 12:13:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 12:13:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 12:13:17,921 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 12:13:17,921 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 12:13:17,921 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 12:13:17,921 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 12:13:17,921 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 12:18:17,765 method:com.nci.ums.channel.channelmanager.ScanInvalid.scanTable(ScanInvalid.java:98)
+sql=select * from out_ready where doCount>3 and ( InvalidDate < 20071023 or (InvalidDate = 20071023 and InvalidTime < 121817))
+[DEBUG] 2007-10-23 12:18:17,781 method:com.nci.ums.util.AppFactory.refresh(AppFactory.java:78)
+size:1
+[DEBUG] 2007-10-23 12:18:17,781 method:com.nci.ums.channel.channelmanager.ScanInvalid.run(ScanInvalid.java:73)
+扫描失效数据线程将睡眠1小时
+[DEBUG] 2007-10-23 12:18:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 12:18:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 12:18:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 12:18:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 12:18:17,921 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 12:18:17,921 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 12:18:17,937 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 12:18:17,937 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 12:18:17,937 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 12:23:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 12:23:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 12:23:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 12:23:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 12:23:17,937 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 12:23:17,937 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 12:23:17,937 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 12:23:17,937 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 12:23:17,953 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 12:28:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 12:28:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 12:28:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 12:28:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 12:28:17,953 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 12:28:17,953 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 12:28:17,953 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 12:28:17,953 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 12:28:17,968 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 12:33:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 12:33:17,796 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 12:33:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 12:33:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 12:33:17,968 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 12:33:17,968 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 12:33:17,968 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 12:33:17,968 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 12:33:17,984 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 12:38:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 12:38:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 12:38:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 12:38:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 12:38:17,984 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 12:38:17,984 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 12:38:17,984 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 12:38:17,984 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 12:38:17,984 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 12:43:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 12:43:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 12:43:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 12:43:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 12:43:17,984 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 12:43:17,984 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 12:43:18,000 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 12:43:18,000 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 12:43:18,000 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[INFO ] 2007-10-23 12:48:17,640 method:com.nci.ums.periphery.application.MonitorServer.sleepTime(MonitorServer.java:375)
+线程睡眠3600秒!
+[DEBUG] 2007-10-23 12:48:17,640 method:com.nci.ums.periphery.application.MonitorServer.run(MonitorServer.java:262)
+UMS报告待发情况
+[INFO ] 2007-10-23 12:48:17,640 method:com.nci.ums.periphery.application.MonitorServer.scanTable(MonitorServer.java:295)
+待发数据的扫描！
+[DEBUG] 2007-10-23 12:48:17,640 method:com.nci.ums.periphery.application.MonitorServer.scanTable(MonitorServer.java:299)
+sql=select * from out_ready order by serialNO desc
+[DEBUG] 2007-10-23 12:48:17,671 method:com.nci.ums.periphery.application.MonitorServer.run(MonitorServer.java:268)
+UMS报告待发情况结束
+[DEBUG] 2007-10-23 12:48:17,781 method:com.nci.ums.channel.channelmanager.ScanInvalid.scanTable(ScanInvalid.java:98)
+sql=select * from out_ready where doCount>3 and ( InvalidDate < 20071023 or (InvalidDate = 20071023 and InvalidTime < 124817))
+[DEBUG] 2007-10-23 12:48:17,812 method:com.nci.ums.util.AppFactory.refresh(AppFactory.java:78)
+size:1
+[DEBUG] 2007-10-23 12:48:17,812 method:com.nci.ums.channel.channelmanager.ScanInvalid.run(ScanInvalid.java:73)
+扫描失效数据线程将睡眠1小时
+[DEBUG] 2007-10-23 12:48:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 12:48:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 12:48:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 12:48:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 12:48:18,000 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 12:48:18,000 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 12:48:18,000 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 12:48:18,000 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 12:48:18,015 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 12:53:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 12:53:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 12:53:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 12:53:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 12:53:18,015 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 12:53:18,015 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 12:53:18,015 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 12:53:18,015 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 12:53:18,015 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 12:58:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 12:58:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 12:58:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 12:58:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 12:58:18,015 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 12:58:18,015 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 12:58:18,031 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 12:58:18,031 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 12:58:18,031 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 13:03:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 13:03:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 13:03:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 13:03:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 13:03:18,031 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 13:03:18,031 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 13:03:18,031 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 13:03:18,031 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 13:03:18,046 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 13:08:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 13:08:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 13:08:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 13:08:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 13:08:18,046 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 13:08:18,046 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 13:08:18,046 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 13:08:18,046 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 13:08:18,046 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 13:13:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 13:13:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 13:13:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 13:13:17,812 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 13:13:18,046 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 13:13:18,046 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 13:13:18,062 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 13:13:18,062 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 13:13:18,062 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[INFO ] 2007-10-23 13:44:40,015 method:com.nci.ums.channel.channelmanager.SendOut.<init>(SendOut.java:33)
+sendOut对象产生！
+[INFO ] 2007-10-23 13:44:40,484 method:com.nci.ums.channel.channelmanager.ChannelManager.<init>(ChannelManager.java:51)
+渠道管理对象产生
+[INFO ] 2007-10-23 13:44:40,500 method:com.nci.ums.channel.channelmanager.ScanInvalid.<init>(ScanInvalid.java:38)
+扫描失效数据线程对象产生
+[INFO ] 2007-10-23 13:44:40,562 method:com.nci.ums.periphery.application.AppServer.<init>(AppServer.java:35)
+应用程序外拨渠道对象产生！
+[INFO ] 2007-10-23 13:44:40,562 method:com.nci.ums.periphery.application.MonitorServer.<init>(MonitorServer.java:36)
+应用程序外拨渠道对象产生！
+[DEBUG] 2007-10-23 13:44:41,062 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 13:44:41,062 method:com.nci.ums.periphery.core.UMSServer.run(UMSServer.java:38)
+UMSServer started at 10000
+[INFO ] 2007-10-23 13:44:41,062 method:com.nci.ums.channel.channelmanager.ChannelManager.start(ChannelManager.java:60)
+渠道管理线程启动
+[INFO ] 2007-10-23 13:44:41,078 method:com.nci.ums.channel.channelmanager.ScanInvalid.start(ScanInvalid.java:48)
+扫描失效数据线程启动
+[DEBUG] 2007-10-23 13:44:41,078 method:com.nci.ums.periphery.application.MonitorServer.run(MonitorServer.java:262)
+UMS报告待发情况
+[INFO ] 2007-10-23 13:44:41,078 method:com.nci.ums.periphery.application.MonitorServer.scanTable(MonitorServer.java:295)
+待发数据的扫描！
+[DEBUG] 2007-10-23 13:44:41,078 method:com.nci.ums.periphery.application.MonitorServer.scanTable(MonitorServer.java:299)
+sql=select * from out_ready order by serialNO desc
+[DEBUG] 2007-10-23 13:44:41,109 method:com.nci.ums.channel.channelmanager.ScanInvalid.scanTable(ScanInvalid.java:98)
+sql=select * from out_ready where doCount>3 and ( InvalidDate < 20071023 or (InvalidDate = 20071023 and InvalidTime < 134441))
+[INFO ] 2007-10-23 13:44:41,156 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 13:44:41,156 method:com.nci.ums.channel.channelmanager.ChannelManager.scanTable(ChannelManager.java:172)
+sql=select * from media where type=1 and statusFlag=0  order by media_ID
+[DEBUG] 2007-10-23 13:44:41,156 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 13:44:41,156 method:com.nci.ums.channel.channelmanager.ChannelManager.scanTable(ChannelManager.java:178)
+sql2=select * from media where type=0 and statusFlag=0 order by media_ID
+[DEBUG] 2007-10-23 13:44:41,171 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 13:44:41,171 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 13:44:41,171 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[DEBUG] 2007-10-23 13:44:41,234 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 13:44:41,265 method:com.nci.ums.periphery.application.MonitorServer.run(MonitorServer.java:268)
+UMS报告待发情况结束
+[DEBUG] 2007-10-23 13:44:41,296 method:com.nci.ums.util.AppFactory.refresh(AppFactory.java:78)
+size:2
+[DEBUG] 2007-10-23 13:44:41,296 method:com.nci.ums.channel.channelmanager.ScanInvalid.run(ScanInvalid.java:73)
+扫描失效数据线程将睡眠1小时
+[INFO ] 2007-10-23 13:46:28,062 method:com.nci.ums.channel.channelmanager.SendOut.<init>(SendOut.java:33)
+sendOut对象产生！
+[INFO ] 2007-10-23 13:46:28,296 method:com.nci.ums.channel.channelmanager.ChannelManager.<init>(ChannelManager.java:51)
+渠道管理对象产生
+[INFO ] 2007-10-23 13:46:28,296 method:com.nci.ums.channel.channelmanager.ScanInvalid.<init>(ScanInvalid.java:38)
+扫描失效数据线程对象产生
+[INFO ] 2007-10-23 13:46:28,296 method:com.nci.ums.periphery.application.AppServer.<init>(AppServer.java:35)
+应用程序外拨渠道对象产生！
+[INFO ] 2007-10-23 13:46:28,312 method:com.nci.ums.periphery.application.MonitorServer.<init>(MonitorServer.java:36)
+应用程序外拨渠道对象产生！
+[INFO ] 2007-10-23 13:46:28,718 method:com.nci.ums.channel.channelmanager.ChannelManager.start(ChannelManager.java:60)
+渠道管理线程启动
+[DEBUG] 2007-10-23 13:46:28,718 method:com.nci.ums.periphery.application.MonitorServer.run(MonitorServer.java:262)
+UMS报告待发情况
+[INFO ] 2007-10-23 13:46:28,718 method:com.nci.ums.channel.channelmanager.ScanInvalid.start(ScanInvalid.java:48)
+扫描失效数据线程启动
+[INFO ] 2007-10-23 13:46:28,718 method:com.nci.ums.periphery.application.MonitorServer.scanTable(MonitorServer.java:295)
+待发数据的扫描！
+[DEBUG] 2007-10-23 13:46:28,718 method:com.nci.ums.periphery.application.MonitorServer.scanTable(MonitorServer.java:299)
+sql=select * from out_ready order by serialNO desc
+[DEBUG] 2007-10-23 13:46:28,718 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 13:46:28,734 method:com.nci.ums.periphery.core.UMSServer.run(UMSServer.java:38)
+UMSServer started at 10000
+[DEBUG] 2007-10-23 13:46:28,750 method:com.nci.ums.channel.channelmanager.ScanInvalid.scanTable(ScanInvalid.java:98)
+sql=select * from out_ready where doCount>3 and ( InvalidDate < 20071023 or (InvalidDate = 20071023 and InvalidTime < 134628))
+[DEBUG] 2007-10-23 13:46:28,765 method:com.nci.ums.channel.channelmanager.ChannelManager.scanTable(ChannelManager.java:172)
+sql=select * from media where type=1 and statusFlag=0  order by media_ID
+[INFO ] 2007-10-23 13:46:28,812 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 13:46:28,812 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[INFO ] 2007-10-23 13:46:28,843 method:com.nci.ums.channel.channelmanager.ChannelManager.parseChannelInfo(ChannelManager.java:341)
+NCIV3移动短消息渠道将在0启动，在0停止工作！
+[INFO ] 2007-10-23 13:46:28,843 method:com.nci.ums.channel.channelmanager.ChannelManager.parseChannelInfo(ChannelManager.java:341)
+NCI Email外发渠道将在0启动，在0停止工作！
+[DEBUG] 2007-10-23 13:46:28,859 method:com.nci.ums.channel.channelmanager.ChannelManager.scanTable(ChannelManager.java:178)
+sql2=select * from media where type=0 and statusFlag=0 order by media_ID
+[DEBUG] 2007-10-23 13:46:28,875 method:com.nci.ums.channel.channelmanager.ChannelManager.checkChannel(ChannelManager.java:221)
+mediaInfo:  mediaId =15 meidaName=NCIV3移动短消息 ip =null port =0 status =0 className =com.nci.ums.channel.outchannel.NCIOutChannel_V3 channel =null endWorkTime =0 startWorkTime =0 loginName =240000 loginPassword =null repeatTimes =200 sleepTime =300 timeOut =0 type =1
+[DEBUG] 2007-10-23 13:46:28,875 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:102)
+startWorkTime=0 endWorkTIme=0 currentTime=49588
+[DEBUG] 2007-10-23 13:46:28,890 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 13:46:28,890 method:com.nci.ums.periphery.application.MonitorServer.run(MonitorServer.java:268)
+UMS报告待发情况结束
+[DEBUG] 2007-10-23 13:46:28,890 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:124)
+currentTime=134628 beginTime=0 endTime=0 time=86400
+[DEBUG] 2007-10-23 13:46:28,890 method:com.nci.ums.channel.channelmanager.ChannelManager.checkChannel(ChannelManager.java:221)
+mediaInfo:  mediaId =76 meidaName=NCI Email外发 ip =null port =0 status =0 className =com.nci.ums.channel.outchannel.EmailOutChannel_V3 channel =null endWorkTime =0 startWorkTime =0 loginName =240000 loginPassword =null repeatTimes =0 sleepTime =300 timeOut =0 type =1
+[DEBUG] 2007-10-23 13:46:28,890 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:102)
+startWorkTime=0 endWorkTIme=0 currentTime=49588
+[DEBUG] 2007-10-23 13:46:28,890 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:124)
+currentTime=134628 beginTime=0 endTime=0 time=86400
+[DEBUG] 2007-10-23 13:46:28,890 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 13:46:28,890 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 13:46:28,890 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[DEBUG] 2007-10-23 13:46:28,906 method:com.nci.ums.util.AppFactory.refresh(AppFactory.java:78)
+size:2
+[DEBUG] 2007-10-23 13:46:28,906 method:com.nci.ums.channel.channelmanager.ScanInvalid.run(ScanInvalid.java:73)
+扫描失效数据线程将睡眠1小时
+[INFO ] 2007-10-23 13:51:28,906 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 13:51:28,906 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[DEBUG] 2007-10-23 13:51:28,921 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 13:51:28,953 method:com.nci.ums.channel.channelmanager.ChannelManager.checkChannel(ChannelManager.java:221)
+mediaInfo:  mediaId =15 meidaName=NCIV3移动短消息 ip =null port =0 status =0 className =com.nci.ums.channel.outchannel.NCIOutChannel_V3 channel =null endWorkTime =0 startWorkTime =0 loginName =240000 loginPassword =null repeatTimes =200 sleepTime =300 timeOut =0 type =1
+[DEBUG] 2007-10-23 13:51:28,953 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:102)
+startWorkTime=0 endWorkTIme=0 currentTime=49888
+[DEBUG] 2007-10-23 13:51:28,953 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:124)
+currentTime=135128 beginTime=0 endTime=0 time=86400
+[INFO ] 2007-10-23 13:51:28,953 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 13:51:28,953 method:com.nci.ums.channel.channelmanager.ChannelManager.checkChannel(ChannelManager.java:221)
+mediaInfo:  mediaId =76 meidaName=NCI Email外发 ip =null port =0 status =0 className =com.nci.ums.channel.outchannel.EmailOutChannel_V3 channel =null endWorkTime =0 startWorkTime =0 loginName =240000 loginPassword =null repeatTimes =0 sleepTime =300 timeOut =0 type =1
+[DEBUG] 2007-10-23 13:51:28,953 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 13:51:28,953 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:102)
+startWorkTime=0 endWorkTIme=0 currentTime=49888
+[DEBUG] 2007-10-23 13:51:28,953 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:124)
+currentTime=135128 beginTime=0 endTime=0 time=86400
+[DEBUG] 2007-10-23 13:51:28,953 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 13:51:28,953 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 13:51:28,953 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[DEBUG] 2007-10-23 13:51:28,968 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 13:56:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 13:56:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.checkChannel(ChannelManager.java:221)
+mediaInfo:  mediaId =15 meidaName=NCIV3移动短消息 ip =null port =0 status =0 className =com.nci.ums.channel.outchannel.NCIOutChannel_V3 channel =null endWorkTime =0 startWorkTime =0 loginName =240000 loginPassword =null repeatTimes =200 sleepTime =300 timeOut =0 type =1
+[DEBUG] 2007-10-23 13:56:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:102)
+startWorkTime=0 endWorkTIme=0 currentTime=50188
+[DEBUG] 2007-10-23 13:56:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:124)
+currentTime=135628 beginTime=0 endTime=0 time=86400
+[DEBUG] 2007-10-23 13:56:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.checkChannel(ChannelManager.java:221)
+mediaInfo:  mediaId =76 meidaName=NCI Email外发 ip =null port =0 status =0 className =com.nci.ums.channel.outchannel.EmailOutChannel_V3 channel =null endWorkTime =0 startWorkTime =0 loginName =240000 loginPassword =null repeatTimes =0 sleepTime =300 timeOut =0 type =1
+[INFO ] 2007-10-23 13:56:28,968 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 13:56:28,968 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[DEBUG] 2007-10-23 13:56:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:102)
+startWorkTime=0 endWorkTIme=0 currentTime=50188
+[DEBUG] 2007-10-23 13:56:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:124)
+currentTime=135628 beginTime=0 endTime=0 time=86400
+[DEBUG] 2007-10-23 13:56:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 13:56:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 13:56:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 13:56:28,968 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 13:56:28,968 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 13:56:28,984 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 14:01:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 14:01:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.checkChannel(ChannelManager.java:221)
+mediaInfo:  mediaId =15 meidaName=NCIV3移动短消息 ip =null port =0 status =0 className =com.nci.ums.channel.outchannel.NCIOutChannel_V3 channel =null endWorkTime =0 startWorkTime =0 loginName =240000 loginPassword =null repeatTimes =200 sleepTime =300 timeOut =0 type =1
+[DEBUG] 2007-10-23 14:01:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:102)
+startWorkTime=0 endWorkTIme=0 currentTime=50488
+[DEBUG] 2007-10-23 14:01:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:124)
+currentTime=140128 beginTime=0 endTime=0 time=86400
+[DEBUG] 2007-10-23 14:01:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.checkChannel(ChannelManager.java:221)
+mediaInfo:  mediaId =76 meidaName=NCI Email外发 ip =null port =0 status =0 className =com.nci.ums.channel.outchannel.EmailOutChannel_V3 channel =null endWorkTime =0 startWorkTime =0 loginName =240000 loginPassword =null repeatTimes =0 sleepTime =300 timeOut =0 type =1
+[DEBUG] 2007-10-23 14:01:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:102)
+startWorkTime=0 endWorkTIme=0 currentTime=50488
+[DEBUG] 2007-10-23 14:01:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:124)
+currentTime=140128 beginTime=0 endTime=0 time=86400
+[DEBUG] 2007-10-23 14:01:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 14:01:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 14:01:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 14:01:28,984 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 14:01:28,984 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 14:01:28,984 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 14:01:28,984 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 14:01:28,984 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束
+[DEBUG] 2007-10-23 14:06:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:156)
+结束睡眠！
+[DEBUG] 2007-10-23 14:06:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.checkChannel(ChannelManager.java:221)
+mediaInfo:  mediaId =15 meidaName=NCIV3移动短消息 ip =null port =0 status =0 className =com.nci.ums.channel.outchannel.NCIOutChannel_V3 channel =null endWorkTime =0 startWorkTime =0 loginName =240000 loginPassword =null repeatTimes =200 sleepTime =300 timeOut =0 type =1
+[DEBUG] 2007-10-23 14:06:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:102)
+startWorkTime=0 endWorkTIme=0 currentTime=50788
+[DEBUG] 2007-10-23 14:06:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:124)
+currentTime=140628 beginTime=0 endTime=0 time=86400
+[DEBUG] 2007-10-23 14:06:28,968 method:com.nci.ums.channel.channelmanager.ChannelManager.checkChannel(ChannelManager.java:221)
+mediaInfo:  mediaId =76 meidaName=NCI Email外发 ip =null port =0 status =0 className =com.nci.ums.channel.outchannel.EmailOutChannel_V3 channel =null endWorkTime =0 startWorkTime =0 loginName =240000 loginPassword =null repeatTimes =0 sleepTime =300 timeOut =0 type =1
+[DEBUG] 2007-10-23 14:06:28,984 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:102)
+startWorkTime=0 endWorkTIme=0 currentTime=50788
+[DEBUG] 2007-10-23 14:06:28,984 method:com.nci.ums.channel.channelmanager.ChannelManager.getSleepTime(ChannelManager.java:124)
+currentTime=140628 beginTime=0 endTime=0 time=86400
+[DEBUG] 2007-10-23 14:06:28,984 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:139)
+sleepTime=86400 tempTime=86400
+[ERROR] 2007-10-23 14:06:28,984 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:142)
+emailServer 重新启动!
+[INFO ] 2007-10-23 14:06:28,984 method:com.nci.ums.channel.channelmanager.ChannelManager.startChannel(ChannelManager.java:149)
+扫描渠道的线程将睡眠5分钟
+[INFO ] 2007-10-23 14:06:28,984 method:com.nci.ums.periphery.application.AppServer.sleepTime(AppServer.java:351)
+线程睡眠300秒!
+[DEBUG] 2007-10-23 14:06:28,984 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:53)
+UMS转发给应用程序的处理开始
+[INFO ] 2007-10-23 14:06:29,000 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:210)
+外发给应用程序数据的扫描！
+[DEBUG] 2007-10-23 14:06:29,000 method:com.nci.ums.periphery.application.AppServer.scanTable(AppServer.java:219)
+sql=select * from in_ready where statusFlag = 0 and rownum<15
+[DEBUG] 2007-10-23 14:06:29,000 method:com.nci.ums.periphery.application.AppServer.run(AppServer.java:60)
+UMS转发给应用程序的处理结束

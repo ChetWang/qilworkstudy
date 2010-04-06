@@ -1,0 +1,5 @@
+drivers=com.microsoft.jdbc.sqlserver.SQLServerDriver
+sqlserverpool.url=jdbc:microsoft:sqlserver://10.44.14.208;SelectMethod=Cursor;DatabaseName=DB_CustomSMS
+sqlserverpool.user=sa
+sqlserverpool.password=Infox1Eies2Sps3Was4!
+sqlserverpool.maxconn=5

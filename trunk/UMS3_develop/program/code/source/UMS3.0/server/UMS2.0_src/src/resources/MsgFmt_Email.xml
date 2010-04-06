@@ -1,0 +1,7 @@
+<MsgFmt_LCS>
+ 	<parameter name="subject"></parameter>
+ 	<parameter name="content"></parameter>
+ 	<parameter name="url"></parameter>
+ 	<parameter name="urlcontent"></parameter>
+ 	<parameter name="attachment"></parameter>
+</MsgFmt_LCS>

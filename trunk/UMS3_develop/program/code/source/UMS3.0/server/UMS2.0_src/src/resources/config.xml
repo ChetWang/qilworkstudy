@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<UMSConfig>
+	<OneIP ip = "127.0.0.1" />
+	<OneIP ip = "192.168.0.99" />
+	<OneIP ip = "10.136.14.27" />
+	<OneIP ip = "192.168.0.199" />
+	<MoreIP ip = "10.136.14.*"/>
+	<MoreIP ip = "10.136.1.*"/>
+	<ListIP from = "10.136.0.0" to = "10.147.255.255" />
+	<Debug level = "debug" />
+	<CM sp="1995"/>
+	<UN sp="1995"/>
+</UMSConfig>

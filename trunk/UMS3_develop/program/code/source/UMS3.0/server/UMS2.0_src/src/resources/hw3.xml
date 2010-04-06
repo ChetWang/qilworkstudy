@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<ismg>
+		<host>211.140.12.43</host>
+		<port>7890</port>
+		<heartbeat-interval>30</heartbeat-interval>
+		<reconnect-interval>30</reconnect-interval>
+		
+		<heartbeat-noresponseout>5</heartbeat-noresponseout>
+		<transaction-timeout>10</transaction-timeout>
+		<source-addr>571242</source-addr>
+		<version>2</version>
+		<shared-secret>0qrmk11n</shared-secret>
+		<debug>false</debug>
+	</ismg>
+</config>
