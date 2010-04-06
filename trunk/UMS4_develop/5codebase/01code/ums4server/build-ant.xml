@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 提示：要正确进行构建，需要设置两个环境变量：JAVA4_HOME——对应jdk1.4的环境，JAVA5U_HOME——对应jdk1.5及以上版本 -->
+<project name="UMS4Server" basedir="." default="dist">
+	<description>buddy,this is UMS4_Server</description>
+	<!--Windows下要将ant命令写成完整命令ant.bat，其它操作系统只要ant就行-->
+	<condition property="os.ant.executor.name" value="ant.bat" else="ant">
+		<os family="windows" />
+	</condition>
+	<property name="src.transmit.dir" location="src_transmit" />
+	<property name="src.msgbody.dir" location="src_shared/src_msgbody" />
+	<property name="src.jmxclient.dir" location="src_jmx_client" />
+	<property name="src.console.dir" location="src_UmsConsole" />
+	<property name="src.util.dir" location="src_shared/src_util" />
+	<property name="test.src.dir" location="test" />
+	<property name="build.dir" location="build" />
+	<property name="build.transmit.client.classes.dir" location="build/classes/transmitclient/" />
+	<property name="build.msgbody.classes.dir" location="build/classes/msgbody/" />
+	<property name="build.jmxclient.classes.dir" location="build/classes/jmxclient/" />
+	<property name="dist.dir" location="dist" />
+	<property name="dist.transmit.client.dir" location="dist/transmitclient/" />
+	<property name="dist.msgbody.dir" location="dist/msgbody/" />
+	<property name="dist.jmxclient.dir" location="dist/jmxclient/" />
+	<property name="lib.dir" location="lib" />
+	<property name="lib.axis2.dir" location="lib/axis2" />
+	<property name="conf.dir" location="conf" />
+	<property name="server_main_class" value="com.nci.ums.jmx.server.UMSJMXServer" />
+	<property name="console_main_class" value="com.nci.ums.jmx.desktop.DesktopConsole" />
+	<property name="maxMemory" value="128m" />
+	<property name="manufacturer.name" value="NCI Corp." />
+	<property name="contributor.name" value="Qil.Wong" />
+
+	<property name="concurrent.pack.name" value="backport-util-concurrent-2.1.jar" />
+	<property name="manifest.source.name" value="Source" />
+
+	<property name="source.level.1.4" value="1.4" />
+	<property name="source.level.1.5" value="1.5" />
+
+	<property environment="osenv" />
+	<property name="current.source.level" value="${source.level.1.5}" />
+
+
+	<tstamp>
+		<format property="now" pattern="yyyyMMddHHmmss" />
+	</tstamp>
+
+	<path id="project.class.path">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<path id="transmitclient.class.path">
+		<fileset dir="${lib.dir}">
+			<include name="${concurrent.pack.name}" />
+		</fileset>
+	</path>
+
+	<fileset dir="${lib.dir}" id="jmxclient.classpath.files">
+		<include name="jide*.jar" />
+		<include name="log4j*.jar" />
+		<include name="jfreechart*.jar" />
+		<include name="swing-layout**.jar" />
+		<include name="jdom*.jar" />
+		<include name="jcommon*.jar" />
+		<include name="backport-util-concurrent*.jar" />
+	</fileset>
+
+	<path id="jmxclient.class.path">
+		<fileset refid="jmxclient.classpath.files" />
+	</path>
+
+	<path id="msgbody.class.path">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<path id="shared.class.path">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<path id="concurrent.class.path">
+		<fileset dir="${lib.dir}">
+			<include name="${concurrent.pack.name}" />
+		</fileset>
+	</path>
+
+	<pathconvert description="create manifest's class path" pathsep=" " property="jar.classpath">
+		<path refid="project.class.path" />
+		<map from="${lib.dir}" to="lib/" />
+		<map from="${lib.axis2.dir}" to="lib/axis2/" />
+	</pathconvert>
+
+
+
+	<target name="copy non java files">
+		<copy todir="${build.classes.dir}" description="copy non-class files">
+			<fileset dir="${src.dir}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="init" description="initialize the building directories">
+		<echo>Start! Scripts managed by Qil.Wong</echo>
+		<echo>Initializing...</echo>
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.transmit.client.classes.dir}" />
+		<mkdir dir="${dist.transmit.client.dir}" />
+		<mkdir dir="${build.msgbody.classes.dir}" />
+		<mkdir dir="${dist.msgbody.dir}" />
+		<mkdir dir="${build.jmxclient.classes.dir}" />
+		<mkdir dir="${dist.jmxclient.dir}" />
+		<echo>Initializing complete.</echo>
+	</target>
+
+	<target name="compile-msgbody" depends="init" description="compile msgbody classes">
+		<echo>Compiling ums msgbody...</echo>
+		<javac source="1.4" fork="true" includeantruntime="false" executable="${osenv.JAVA4_HOME}/bin/javac" deprecation="false" memorymaximumsize="${maxMemory}" nowarn="true" destdir="${build.msgbody.classes.dir}" debug="on">
+			<src path="${src.msgbody.dir}" />
+			<classpath>
+
+			</classpath>
+		</javac>
+		<echo>Compiling complete.</echo>
+	</target>
+
+	<target name="compile-jmxclient" depends="init" description="compile jmxclient classes">
+		<echo>Compiling ums msgbody...</echo>
+		<javac source="1.5" fork="true" includeantruntime="false" executable="${osenv.JAVA5U_HOME}/bin/javac" deprecation="false" memorymaximumsize="${maxMemory}" nowarn="true" destdir="${build.jmxclient.classes.dir}" debug="on">
+
+			<src path="${src.util.dir}" />
+			<include name="com/nci/ums/media/MediaBean.java" />
+			<include name="com/nci/ums/util/XMLPrinter.java" />
+
+		</javac>
+		<javac source="1.5" fork="true" includeantruntime="false" executable="${osenv.JAVA5U_HOME}/bin/javac" deprecation="false" memorymaximumsize="${maxMemory}" nowarn="true" destdir="${build.jmxclient.classes.dir}" debug="on">
+			<src path="${src.jmxclient.dir}" />
+			<exclude name="com/nci/ums/jmx/desktop/panels/**Panel.java" />
+
+			<classpath path="${build.jmxclient.classes.dir}">
+				<path refid="jmxclient.class.path" />
+
+			</classpath>
+		</javac>
+		<copy todir="${build.jmxclient.classes.dir}" description="copy non-class files">
+			<fileset dir="${src.jmxclient.dir}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<echo>Compiling complete.</echo>
+	</target>
+
+	<target name="compile-transmit-client" depends="init" description="compile transmit client side java classes">
+		<echo>Compiling transmit client...</echo>
+		<javac source="1.4" fork="true" includeantruntime="false" executable="${osenv.JAVA4_HOME}/bin/javac" deprecation="false" memorymaximumsize="${maxMemory}" nowarn="true" destdir="${build.transmit.client.classes.dir}" debug="on">
+			<src path="${src.transmit.dir}" />
+			<include name="com/nci/ums/transmit/client/**" />
+			<include name="com/nci/ums/transmit/common/**" />
+			<include name="com/nci/ums/transmit/util/**" />
+			<classpath>
+				<path refid="transmitclient.class.path" />
+			</classpath>
+		</javac>
+		<echo>Compiling complete.</echo>
+	</target>
+
+	<target name="dist-transmit-client" depends="compile-transmit-client">
+		<echo>distributing transmit client</echo>
+		<jar jarfile="${dist.transmit.client.dir}/transmitclient.jar" description="distribute applet" basedir="${build.transmit.client.classes.dir}">
+			<manifest>
+				<attribute name="Create-Time" value="${now}" />
+				<attribute name="${manifest.source.name}" value="${source.level.1.4}" />
+				<attribute name="Created-By" value="${contributor.name}" />
+
+				<attribute name="Manufacturer" value="${manufacturer.name}" />
+			</manifest>
+		</jar>
+		<mkdir dir="${dist.transmit.client.dir}/thirdparty/" />
+		<copy todir="${dist.transmit.client.dir}/thirdparty/">
+
+			<fileset dir="${lib.dir}">
+				<include name="${concurrent.pack.name}" />
+			</fileset>
+		</copy>
+		<echo>distributing transmit client complete.</echo>
+	</target>
+
+	<target name="dist-msgbody" depends="compile-msgbody">
+		<echo>distributing msgbody</echo>
+		<jar jarfile="${dist.msgbody.dir}/umsmsgbody.jar" description="distribute UMS msgbody" basedir="${build.msgbody.classes.dir}">
+			<manifest>
+				<attribute name="${manifest.source.name}" value="${source.level.1.4}" />
+				<attribute name="Created-By" value="${contributor.name}" />
+				<attribute name="Manufacturer" value="${manufacturer.name}" />
+				<attribute name="Create-Time" value="${now}" />
+			</manifest>
+		</jar>
+		<mkdir dir="${dist.transmit.client.dir}/thirdparty/" />
+		<copy todir="${dist.transmit.client.dir}/thirdparty/">
+
+			<fileset dir="${lib.dir}">
+				<include name="${concurrent.pack.name}" />
+			</fileset>
+		</copy>
+		<echo>distributing transmit client complete.</echo>
+	</target>
+
+	<pathconvert description="create manifest's class path" pathsep=" " property="jmxclient.jar.classpath.value">
+		<path refid="jmxclient.class.path" />
+		<chainedmapper>
+			<flattenmapper />
+			<globmapper from="*" to="thirdparty/" />
+		</chainedmapper>
+	</pathconvert>
+
+	<target name="dist-jmxclient" depends="compile-jmxclient">
+		<echo>distributing jmxclient</echo>
+		<jar jarfile="${dist.jmxclient.dir}/jmxclient.jar" description="distribute UMS jmxclient" basedir="${build.jmxclient.classes.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="${console_main_class}" />
+				<attribute name="Class-Path" value="${jmxclient.jar.classpath.value}" />
+				<attribute name="${manifest.source.name}" value="${source.level.1.5}" />
+				<attribute name="Created-By" value="${contributor.name}" />
+				<attribute name="Manufacturer" value="${manufacturer.name}" />
+				<attribute name="Create-Time" value="${now}" />
+			</manifest>
+		</jar>
+		<mkdir dir="${dist.jmxclient.dir}/thirdparty/" />
+		<copy todir="${dist.jmxclient.dir}/thirdparty/">
+			<fileset refid="jmxclient.classpath.files" />
+
+		</copy>
+		<echo>distributing jmxclient complete.</echo>
+	</target>
+
+	<target name="dist">
+		<ant target="dist-jmxclient">
+		</ant>
+		<ant target="dist-msgbody">
+		</ant>
+		<ant target="dist-transmit-client">
+		</ant>
+	</target>
+
+	<target name="clean" description="clean ums">
+		<echo>Cleaning...</echo>
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+		<echo>Cleaning complete.</echo>
+	</target>
+
+</project>

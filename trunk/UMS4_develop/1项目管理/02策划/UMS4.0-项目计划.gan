@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="UMS4.0计划" company="NCIRD－UMS Team" webLink="暂时没有" view-date="2009-08-09" view-index="0" gantt-divider-location="608" resource-divider-location="323" version="2.0">
+    <description><![CDATA[研究中心UMS4.0升级计划]]></description>
+    <view zooming-state="default:5" id="gantt-chart"/>
+    <view id="resource-table">
+        <field id="0" name="名称" width="54" order="0"/>
+        <field id="1" name="默认角色" width="45" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <calendar id="1" name="default">
+                <default-week sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+                <overriden-day-types/>
+                <days/>
+            </calendar>
+        </day-types>
+    </calendars>
+    <tasks color="#8cb6ce">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="11" name="知识准备" color="#8cb6ce" meeting="false" start="2009-05-11" duration="3" complete="100" priority="1" expand="true">
+            <depend id="10" type="2" difference="0" hardness="Strong"/>
+            <depend id="17" type="2" difference="0" hardness="Strong"/>
+            <depend id="21" type="2" difference="0" hardness="Strong"/>
+            <task id="12" name="UMS原理" color="#8cb6ce" meeting="false" start="2009-05-11" duration="2" complete="100" priority="1" expand="true">
+                <depend id="13" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="13" name="JMS原理和MySQL" color="#8cb6ce" meeting="false" start="2009-05-13" duration="1" complete="100" priority="1" expand="true"/>
+        </task>
+        <task id="10" name="需求" color="#8cb6ce" meeting="false" start="2009-05-14" duration="14" complete="100" priority="1" expand="true">
+            <task id="21" name="需求收集整理" color="#8cb6ce" meeting="false" start="2009-05-14" duration="2" complete="100" priority="1" expand="true">
+                <depend id="25" type="2" difference="0" hardness="Strong"/>
+                <depend id="27" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="25" name="需求分析阶段" color="#8cb6ce" meeting="false" start="2009-05-18" duration="11" complete="100" priority="1" expand="true">
+                <depend id="28" type="2" difference="0" hardness="Strong"/>
+                <task id="27" name="需求分析" color="#8cb6ce" meeting="false" start="2009-05-18" duration="3" complete="100" priority="1" expand="true">
+                    <depend id="22" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="22" name="需求规格说明书编写" color="#8cb6ce" meeting="false" start="2009-05-21" duration="8" complete="100" priority="1" expand="true">
+                    <depend id="23" type="2" difference="0" hardness="Strong"/>
+                </task>
+            </task>
+            <task id="28" name="需求评审阶段" color="#8cb6ce" meeting="false" start="2009-06-02" duration="1" complete="100" priority="1" expand="true">
+                <depend id="40" type="2" difference="0" hardness="Strong"/>
+                <task id="23" name="需求评审" color="#8cb6ce" meeting="false" start="2009-06-02" duration="1" complete="100" priority="1" expand="true"/>
+            </task>
+        </task>
+        <task id="17" name="概要设计" color="#8cb6ce" meeting="false" start="2009-07-27" duration="15" complete="100" priority="1" expand="true">
+            <depend id="18" type="2" difference="0" hardness="Strong"/>
+            <task id="31" name="系统设计" color="#8cb6ce" meeting="false" start="2009-07-27" duration="10" complete="100" priority="1" expand="true">
+                <depend id="32" type="2" difference="0" hardness="Strong"/>
+                <task id="33" name="总体设计" color="#8cb6ce" meeting="false" start="2009-07-27" duration="4" complete="100" priority="1" expand="true">
+                    <depend id="35" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="35" name="数据库设计" color="#8cb6ce" meeting="false" start="2009-07-31" duration="2" complete="100" priority="1" expand="true">
+                    <depend id="34" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="34" name="功能设计" color="#8cb6ce" meeting="false" start="2009-08-04" duration="3" complete="100" priority="1" expand="true">
+                    <depend id="36" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="36" name="接口设计" color="#8cb6ce" meeting="false" start="2009-08-07" duration="1" complete="100" priority="1" expand="true">
+                    <depend id="39" type="2" difference="0" hardness="Strong"/>
+                </task>
+            </task>
+            <task id="32" name="设计评审" color="#8cb6ce" meeting="false" start="2009-08-10" duration="5" complete="100" priority="1" expand="true">
+                <task id="39" name="概要设计说明书编写" color="#8cb6ce" meeting="false" start="2009-08-10" duration="3" complete="100" priority="1" expand="true">
+                    <depend id="40" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="40" name="概要设计评审" color="#8cb6ce" meeting="false" start="2009-08-13" duration="1" complete="100" priority="1" expand="true">
+                    <depend id="41" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="41" name="设计评审问题修正" color="#8cb6ce" meeting="false" start="2009-08-14" duration="1" complete="100" priority="1" expand="true">
+                    <depend id="56" type="2" difference="0" hardness="Strong"/>
+                </task>
+            </task>
+        </task>
+        <task id="74" name="实现阶段" color="#8cb6ce" meeting="false" start="2009-08-17" duration="51" complete="100" priority="1" expand="true">
+            <task id="18" name="详细设计" color="#8cb6ce" meeting="false" start="2009-08-17" duration="51" complete="100" priority="1" expand="true">
+                <depend id="29" type="2" difference="0" hardness="Strong"/>
+                <task id="56" name="系统总体架构搭建" color="#8cb6ce" meeting="false" start="2009-08-17" duration="2" complete="100" priority="1" expand="true">
+                    <depend id="42" type="2" difference="0" hardness="Strong"/>
+                    <depend id="76" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="42" name="代码编写＆单元测试" color="#8cb6ce" meeting="false" start="2009-08-19" duration="27" complete="100" priority="1" expand="true">
+                    <depend id="57" type="2" difference="0" hardness="Strong"/>
+                    <depend id="58" type="2" difference="0" hardness="Strong"/>
+                    <task id="76" name="企业用户信息实现" color="#8cb6ce" meeting="false" start="2009-08-19" duration="5" complete="100" priority="1" expand="true">
+                        <depend id="77" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="77" name="数据转发平台" color="#8cb6ce" meeting="false" start="2009-08-26" duration="5" complete="100" priority="1" expand="true">
+                        <depend id="78" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="78" name="UMS管理平台" color="#8cb6ce" meeting="false" start="2009-09-02" duration="5" complete="100" priority="1" expand="true">
+                        <depend id="79" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="79" name="UMS策略定义" color="#8cb6ce" meeting="false" start="2009-09-09" duration="3" complete="100" priority="1" expand="true">
+                        <depend id="80" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="80" name="UMS短信发送通用模块" color="#8cb6ce" meeting="false" start="2009-09-14" duration="5" complete="100" priority="1" expand="true">
+                        <depend id="81" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="81" name="其它通用模块" color="#8cb6ce" meeting="false" start="2009-09-21" duration="3" complete="100" priority="1" expand="true">
+                        <depend id="82" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="82" name="UMS服务器其它功能" color="#8cb6ce" meeting="false" start="2009-09-24" duration="1" complete="100" priority="1" expand="true"/>
+                </task>
+                <task id="57" name="文档编写" color="#8cb6ce" meeting="false" start="2009-09-25" duration="4" complete="100" priority="1" expand="true">
+                    <task id="58" name="用户使用手册" color="#8cb6ce" meeting="false" start="2009-09-25" duration="2" complete="100" priority="1" expand="true">
+                        <depend id="59" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="59" name="部署手册" color="#8cb6ce" meeting="false" start="2009-09-29" duration="1" complete="100" priority="1" expand="true">
+                        <depend id="60" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="60" name="二次开发手册" color="#8cb6ce" meeting="false" start="2009-09-30" duration="1" complete="100" priority="1" expand="true"/>
+                </task>
+                <task id="84" name="UMS集成" color="#8cb6ce" meeting="false" start="2009-10-09" duration="1" complete="100" priority="1" expand="true">
+                    <depend id="75" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="85" name="冒烟测试" color="#8cb6ce" meeting="false" start="2009-10-26" duration="1" complete="100" priority="1" expand="true">
+                    <depend id="61" type="2" difference="0" hardness="Strong"/>
+                </task>
+            </task>
+        </task>
+        <task id="75" name="验收" color="#8cb6ce" meeting="false" start="2009-10-27" duration="30" complete="37" priority="1" expand="true">
+            <task id="29" name="测试" color="#8cb6ce" meeting="false" start="2009-10-27" duration="29" complete="39" priority="1" expand="true">
+                <task id="45" name="功能测试" color="#8cb6ce" meeting="false" start="2009-10-27" duration="25" complete="82" priority="1" expand="true">
+                    <depend id="67" type="2" difference="0" hardness="Strong"/>
+                    <depend id="68" type="2" difference="0" hardness="Strong"/>
+                    <task id="61" name="制定功能测试计划" color="#8cb6ce" meeting="false" start="2009-10-27" duration="1" complete="100" priority="1" expand="true">
+                        <depend id="62" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="62" name="编写功能测试用例" color="#8cb6ce" meeting="false" start="2009-10-28" duration="2" complete="100" priority="1" expand="true">
+                        <depend id="63" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="63" name="测试功能" color="#8cb6ce" meeting="false" start="2009-10-30" duration="17" complete="100" priority="1" expand="true">
+                        <depend id="64" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="64" name="Bug及不符合项修改" color="#8cb6ce" meeting="false" start="2009-11-24" duration="4" complete="80" priority="1" expand="true">
+                        <depend id="66" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="66" name="生成功能测试报告" color="#8cb6ce" meeting="false" start="2009-11-30" duration="1" complete="0" priority="1" expand="true"/>
+                </task>
+                <task id="67" name="性能测试" color="#8cb6ce" meeting="false" start="2009-12-01" duration="4" complete="0" priority="1" expand="true">
+                    <task id="68" name="制定性能测试计划" color="#8cb6ce" meeting="false" start="2009-12-01" duration="1" complete="0" priority="1" expand="true">
+                        <depend id="69" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="69" name="录制测试脚本和测试" color="#8cb6ce" meeting="false" start="2009-12-02" duration="1" complete="0" priority="1" expand="true">
+                        <depend id="71" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="71" name="性能优化与修改" color="#8cb6ce" meeting="false" start="2009-12-03" duration="1" complete="0" priority="1" expand="true">
+                        <depend id="70" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="70" name="生成性能测试报告" color="#8cb6ce" meeting="false" start="2009-12-04" duration="1" complete="0" priority="1" expand="true">
+                        <depend id="73" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                </task>
+            </task>
+            <task id="73" name="产品验收" color="#8cb6ce" meeting="false" start="2009-12-07" duration="1" complete="0" priority="1" expand="true"/>
+        </task>
+    </tasks>
+    <resources>
+        <resource id="3" name="汪棋良" function="Default:1" contacts="wangql@nci.com.cn" phone=""/>
+        <resource id="1" name="周彗明" function="SoftwareDevelopment:8" contacts="zhouhm@nci.com.cn" phone=""/>
+        <resource id="2" name="沈云刚" function="SoftwareDevelopment:8" contacts="" phone=""/>
+        <resource id="4" name="测试甲" function="SoftwareDevelopment:4" contacts="" phone=""/>
+    </resources>
+    <allocations>
+        <allocation task-id="12" resource-id="1" function="SoftwareDevelopment:8" responsible="false" load="100.0"/>
+        <allocation task-id="12" resource-id="3" function="Default:1" responsible="true" load="20.0"/>
+        <allocation task-id="12" resource-id="2" function="SoftwareDevelopment:8" responsible="false" load="50.0"/>
+        <allocation task-id="13" resource-id="1" function="SoftwareDevelopment:8" responsible="false" load="100.0"/>
+        <allocation task-id="21" resource-id="1" function="SoftwareDevelopment:8" responsible="false" load="50.0"/>
+        <allocation task-id="21" resource-id="3" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="27" resource-id="1" function="SoftwareDevelopment:8" responsible="false" load="100.0"/>
+        <allocation task-id="27" resource-id="3" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="22" resource-id="1" function="SoftwareDevelopment:8" responsible="false" load="80.0"/>
+        <allocation task-id="22" resource-id="3" function="SoftwareDevelopment:8" responsible="false" load="100.0"/>
+        <allocation task-id="23" resource-id="1" function="SoftwareDevelopment:8" responsible="false" load="100.0"/>
+        <allocation task-id="23" resource-id="3" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="33" resource-id="1" function="SoftwareDevelopment:8" responsible="false" load="100.0"/>
+        <allocation task-id="33" resource-id="3" function="SoftwareDevelopment:8" responsible="true" load="100.0"/>
+        <allocation task-id="35" resource-id="1" function="SoftwareDevelopment:8" responsible="false" load="100.0"/>
+        <allocation task-id="35" resource-id="3" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="34" resource-id="1" function="SoftwareDevelopment:8" responsible="false" load="50.0"/>
+        <allocation task-id="34" resource-id="3" function="SoftwareDevelopment:8" responsible="true" load="100.0"/>
+        <allocation task-id="36" resource-id="1" function="SoftwareDevelopment:8" responsible="false" load="50.0"/>
+        <allocation task-id="36" resource-id="3" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="39" resource-id="1" function="SoftwareDevelopment:8" responsible="false" load="50.0"/>
+        <allocation task-id="39" resource-id="3" function="SoftwareDevelopment:8" responsible="false" load="100.0"/>
+        <allocation task-id="40" resource-id="1" function="SoftwareDevelopment:8" responsible="false" load="100.0"/>
+        <allocation task-id="40" resource-id="3" function="SoftwareDevelopment:8" responsible="true" load="100.0"/>
+        <allocation task-id="41" resource-id="1" function="SoftwareDevelopment:8" responsible="false" load="50.0"/>
+        <allocation task-id="41" resource-id="3" function="SoftwareDevelopment:8" responsible="true" load="100.0"/>
+        <allocation task-id="56" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="42" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="42" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="30.0"/>
+        <allocation task-id="42" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="58" resource-id="1" function="SoftwareDevelopment:3" responsible="false" load="100.0"/>
+        <allocation task-id="58" resource-id="3" function="SoftwareDevelopment:8" responsible="true" load="100.0"/>
+        <allocation task-id="58" resource-id="2" function="SoftwareDevelopment:8" responsible="false" load="100.0"/>
+        <allocation task-id="59" resource-id="1" function="SoftwareDevelopment:8" responsible="false" load="100.0"/>
+        <allocation task-id="59" resource-id="3" function="SoftwareDevelopment:8" responsible="true" load="100.0"/>
+        <allocation task-id="59" resource-id="2" function="SoftwareDevelopment:8" responsible="false" load="100.0"/>
+        <allocation task-id="60" resource-id="1" function="SoftwareDevelopment:3" responsible="false" load="100.0"/>
+        <allocation task-id="60" resource-id="3" function="SoftwareDevelopment:8" responsible="true" load="100.0"/>
+        <allocation task-id="60" resource-id="2" function="SoftwareDevelopment:8" responsible="false" load="100.0"/>
+        <allocation task-id="61" resource-id="4" function="SoftwareDevelopment:4" responsible="true" load="100.0"/>
+        <allocation task-id="62" resource-id="4" function="SoftwareDevelopment:4" responsible="true" load="100.0"/>
+        <allocation task-id="63" resource-id="4" function="SoftwareDevelopment:4" responsible="true" load="100.0"/>
+        <allocation task-id="64" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="64" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="64" resource-id="2" function="SoftwareDevelopment:8" responsible="false" load="100.0"/>
+        <allocation task-id="66" resource-id="4" function="SoftwareDevelopment:4" responsible="true" load="100.0"/>
+        <allocation task-id="68" resource-id="4" function="SoftwareDevelopment:4" responsible="true" load="100.0"/>
+        <allocation task-id="69" resource-id="4" function="SoftwareDevelopment:4" responsible="true" load="100.0"/>
+        <allocation task-id="71" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="71" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="71" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="70" resource-id="4" function="SoftwareDevelopment:4" responsible="true" load="100.0"/>
+        <allocation task-id="73" resource-id="1" function="SoftwareDevelopment:8" responsible="false" load="100.0"/>
+        <allocation task-id="73" resource-id="3" function="Default:1" responsible="true" load="100.0"/>
+    </allocations>
+    <vacations/>
+    <taskdisplaycolumns>
+        <displaycolumn property-id="tpd3" order="0" width="138"/>
+        <displaycolumn property-id="tpd4" order="1" width="44"/>
+        <displaycolumn property-id="tpd5" order="2" width="43"/>
+        <displaycolumn property-id="tpd7" order="3" width="75"/>
+    </taskdisplaycolumns>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles roleset-name="SoftwareDevelopment"/>
+</project>

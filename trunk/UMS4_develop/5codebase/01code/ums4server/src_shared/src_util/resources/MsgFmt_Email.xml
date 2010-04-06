@@ -1,0 +1,12 @@
+<MsgFmt_Email>
+<!-- 消息主题 -->
+ 	<parameter name="subject"></parameter>
+ 	<!-- 消息正文 -->
+ 	<parameter name="content"></parameter>
+ 	<!-- 超链接指向的路径 -->
+ 	<parameter name="url"></parameter>
+ 	<!-- 超链接显示的名称 -->
+ 	<parameter name="urlcontent"></parameter>
+ 	<!-- 附件的base64编码 -->
+ 	<parameter name="attachment"></parameter>
+</MsgFmt_Email>

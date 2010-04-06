@@ -1,0 +1,11 @@
+drivers=com.ibm.db2.jcc.DB2Driver
+#drivers=oracle.jdbc.driver.OracleDriver
+#url=jdbc:oracle:thin:@localhost:1521:qil
+#url=jdbc:oracle:thin:@192.168.0.57:1521:ncird
+url=jdbc:db2://localhost:50000/UMS4
+pool_name=ums
+user=qil.wong
+password=1
+maxActive=20
+maxIdle=10
+maxWait=10000
