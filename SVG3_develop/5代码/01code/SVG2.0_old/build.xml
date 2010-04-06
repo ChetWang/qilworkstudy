@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SVG2.0_old" default="Run SVG Editor" basedir=".">
+	<description>SVG Platform</description>
+	<property name="src.dir" location="src" />
+	<property name="build.dir" location="build/classes" />
+	<property name="dist.dir" location="dist" />
+	<property name="lib.dir" location="lib" />
+	<property name="conf.dir" location="conf" />
+	<property name="svg_main_class" value="fr.itris.glips.svgeditor.EditorMain" />
+	<property name="applet_signer_alias" value="ncisvg" />
+	<property name="applet_signer_storepass" value="88888888" />
+	<property name="applet_signer_keystore" value="applet_signer/ncisvg.keystore" />
+	<property name="maxMemory" value="128m" />
+
+	<tstamp>
+		<format property="now" pattern="yyyyMMddHHmmss" />
+	</tstamp>
+
+	<path id="project.class.path">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+			<exclude name="**/*unit*.jar" />
+		</fileset>
+	</path>
+
+	<pathconvert description="create manifest's class path" pathsep=" " property="jar.classpath">
+		<path refid="project.class.path" />
+		<chainedmapper>
+			<flattenmapper />
+			<globmapper from="*" to="lib/" />
+		</chainedmapper>
+	</pathconvert>
+
+	<target name="Init" description="initialize the building directories">
+		<echo>initializing...</echo>
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<echo>initializing complete.</echo>
+	</target>
+
+	<target name="Compile" depends="Init" description="compile svg java classes">
+		<echo>Compiling...</echo>
+		<javac fork="true" deprecation="false" memorymaximumsize="${maxMemory}" nowarn="true" srcdir="${src.dir}" destdir="${build.dir}" debug="on">
+			<classpath refid="project.class.path" />
+		</javac>
+		<copy todir="${build.dir}" description="copy non-class files">
+			<fileset dir="${src.dir}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<echo>Compiling complete.</echo>
+	</target>
+
+	<target name="Dist-All" description="distribute svg platform">
+		<echo>distributing...</echo>
+		<ant target="Dist-Editor-Jar" />
+		<ant target="Dist-Applet-Jar" />
+		<echo>distributing complete.</echo>
+	</target>
+
+	<target name="Dist-Editor-Jar" depends="Compile">
+		<echo>distributing editor...</echo>
+		<mkdir dir="${dist.dir}/lib" />
+		<copy todir="${dist.dir}/lib" description="copy third party JARs">
+			<fileset dir="${lib.dir}">
+				<exclude name="**/*unit*.jar" />
+				<include name="**/*.jar" />
+			</fileset>
+		</copy>
+		<copy todir="${dist.dir}/conf" description="copy configuration files">
+			<fileset dir="${conf.dir}">
+			</fileset>
+		</copy>
+		<jar jarfile="${dist.dir}/editor-${now}.jar" description="distribute editor" basedir="${build.dir}" excludes="nci/graph/**/*.class">
+			<manifest>
+				<attribute name="Main-Class" value="${svg_main_class}" />
+				<attribute name="Class-Path" value="${jar.classpath}" />
+			</manifest>
+		</jar>
+		<echo>distributing editor finished.</echo>
+	</target>
+
+	<target name="Dist-Applet-Jar" depends="Compile">
+		<echo>distributing applet...</echo>
+		<jar jarfile="${dist.dir}/applet-${now}.jar" description="distribute applet" basedir="${build.dir}" includes="nci/graph/**/*.class">
+		</jar>
+		<echo>signing applet...</echo>
+		<signjar description="applet signing" alias="${applet_signer_alias}" storepass="${applet_signer_storepass}" keystore="${applet_signer_keystore}" jar="${dist.dir}/applet-${now}.jar" />
+		<echo>applet signing complete.</echo>
+		<echo>distributing applet complete.</echo>
+	</target>
+
+	<target name="Run SVG Editor" depends="Compile" description="Run the svg editor in Client-Server mode">
+		<echo>Start running...</echo>
+		<java classname="${svg_main_class}" fork="true" maxmemory="${maxMemory}">
+			<classpath path="${build.dir}">
+				<path refid="project.class.path" />
+			</classpath>
+		</java>
+	</target>
+
+
+	<target name="Clean" description="clean compile and distribute directories">
+		<echo>Cleaning...</echo>
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+		<echo>Cleaning complete.</echo>
+	</target>
+
+	<target name="Clean and Run Editor">
+		<ant target="Clean" />
+		<ant target="Run SVG Editor" />
+	</target>
+
+	<target name="Clean and Build">
+		<ant target="Clean" />
+		<ant target="Dist-All" />
+	</target>
+
+</project>

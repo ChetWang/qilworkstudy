@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 模式适配器中所有定义的抽象类的实现类定义 -->
+<classes>
+	<modeAdapter class="com.nci.svg.mode.EditorMode"  mode="0"/>
+	<modeAdapter class="com.nci.svg.mode.PartViewMode"  mode="1"/>
+	<modeAdapter class="com.nci.svg.mode.OnlyViewMode"  mode="2"/>
+</classes>

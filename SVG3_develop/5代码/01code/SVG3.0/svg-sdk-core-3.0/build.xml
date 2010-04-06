@@ -1,0 +1,54 @@
+<project name="svg-sdk-core-3.0" default="compile" basedir=".">
+	<description>SVG Platform V3.0 SDK Core</description>
+
+	<import file="../build.xml" />
+	<property name="current.source.level" value="${source.level.1.4}"/>
+	
+	<target name="compile" depends="init" description="compile svg java classes">
+		<echo>Compiling core...</echo>
+		<echo>${osenv.JAVA4_HOME}/bin/javac</echo>
+		<echo>os.name:${os.name}; os.arch:${os.arch}</echo>
+		<javac source="${source.level.1.4}" fork="true" includeantruntime="false" deprecation="false" nowarn="true" srcdir="${src.dir}" destdir="${build.classes.dir}" debug="on">
+			<classpath>
+				<path refid="project.class.path" />
+
+			</classpath>
+		</javac>
+		<ant target="copy non java files" />
+		<echo>Compiling core complete.</echo>
+	</target>
+	
+
+	<target name="compile test" depends="init, compile" description="compile svg test cases">
+		<echo>Compiling core...</echo>
+
+		<javac source="${source.level.1.4}" fork="true" includeantruntime="false" executable="${osenv.JAVA4_HOME}/bin/javac" deprecation="false" nowarn="true" srcdir="${test.src.dir}" destdir="${build.classes.dir}" debug="on">
+			<classpath>
+				<path refid="project.class.path" />
+				<path location="${build.classes.dir}" />
+			</classpath>
+		</javac>
+		<ant target="copy non java files" />
+		<echo>Compiling core complete.</echo>
+	</target>
+
+	<target name="dist" depends="compile">
+		<echo>distributing sdk core...</echo>		
+		<jar jarfile="${dist.dir}/svg-sdk-core-3.0-${now}.jar" description="distribute client sdk" basedir="${build.classes.dir}" excludes="**/*Test.class">
+			<manifest> 
+				<attribute name="${manifest.source.name}" value="${current.source.level}" />
+				<attribute name="Created-By" value="${user.name}" />
+				<attribute name="Manufacturer" value="${manufacturer.name}" />
+				<attribute name="Contributor" value="${contributor.name}" />
+				<attribute name="Jar-Version" value="${svg.platform.version}-b${now}" />
+			</manifest>
+		</jar>
+		<echo>distributing sdk core finished.</echo>
+	</target>
+
+	<target name="clean and dist">
+		<ant target="clean" />
+		<ant target="dist" />
+	</target>
+
+</project>

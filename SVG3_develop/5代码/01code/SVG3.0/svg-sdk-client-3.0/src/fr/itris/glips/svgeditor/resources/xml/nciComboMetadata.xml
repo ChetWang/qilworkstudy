@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MetaData是预先定义的元数据集合，用于在设备属性录入时JComboBox的值，及表示的对象 -->
+<MetaData>
+	<DataType name="电压等级">
+		<Element id="0" name="35kV" />
+		<Element id="1" name="100kV" />
+		<Element id="2" name="220kV" />
+		<Element id="3" name="330kV" />
+		<Element id="5" name="500kV" />
+		<Element id="6" name="直流500kV" />
+		<Element id="A" name="10kV" />
+		<Element id="B" name="6kV" />
+		<Element id="C" name="110V" />
+		<Element id="D" name="220V" />
+		<Element id="E" name="380V" />
+		<Element id="F" name="15.75kV" />
+	</DataType>
+	
+	<DataType name="输配变类型">
+		<Element id="B" name="变电设备" />
+		<Element id="S" name="输电设备" />
+		<Element id="P" name="配电设备" />
+		<Element id="J" name="其它设备" />
+	</DataType>
+	
+	<DataType name="地区">
+		<Element id="5010" name="杭州市电力局" />
+		<Element id="5020" name="嘉兴市电力局" />
+		<Element id="5030" name="绍兴市电力局" />
+		<Element id="5040" name="金华市电业局" />
+		<Element id="5050" name="宁波市电业局" />
+		<Element id="5060" name="台州市电业局" />
+		<Element id="5070" name="丽水市电业局" />
+		<Element id="5080" name="湖州市电力局" />
+		<Element id="5090" name="衢州市电业局" />
+		<Element id="5100" name="温州市电业局" />
+		<Element id="5110" name="舟山市电力局" />
+	</DataType>
+	
+	<DataType name="标准图分类">
+		<Element id="0" name="系统图" />
+		<Element id="1" name="一次接线图" />
+	</DataType>
+        
+        <!--这里将名称带上空格是为了避免与上面定义的冲突，这里的“电 压 等 级”是给层过滤使用的 -->
+        <DataType name="电 压 等 级">
+	</DataType>
+        <!--这里将名称带上空格是为了避免与上面定义的冲突，这里的“设 备 类 型”是给层过滤使用的 -->
+        <DataType name="设 备 类 型">
+	</DataType>
+</MetaData>
