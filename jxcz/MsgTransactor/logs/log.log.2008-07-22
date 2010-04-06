@@ -1,0 +1,300 @@
+[2008-07-22 10:19:12,171] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) 读取appSubjects.xml产生错误！ 
+[2008-07-22 10:19:12,187] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:80) java.io.FileNotFoundException: D:\nci\jxcz\MsgTransactor\cosnf\appSubjects.xml (The system cannot find the path specified) 
+[2008-07-22 10:19:37,875] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) 读取appSubjects.xml产生错误！ 
+[2008-07-22 10:19:37,875] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:80) java.io.FileNotFoundException: D:\nci\jxcz\MsgTransactor\cosnf\appSubjects.xml (The system cannot find the path specified) 
+[2008-07-22 10:24:04,109] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) 读取appSubjects.xml产生错误！ 
+[2008-07-22 10:24:04,109] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:80) java.io.FileNotFoundException: D:\nci\jxcz\MsgTransactor\cosnf\appSubjects.xml (The system cannot find the path specified) 
+[2008-07-22 10:24:04,109] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) java.io.FileInputStream.open(Native Method) 
+[2008-07-22 10:24:04,109] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) java.io.FileInputStream.<init>(FileInputStream.java:106) 
+[2008-07-22 10:24:04,109] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) java.io.FileInputStream.<init>(FileInputStream.java:66) 
+[2008-07-22 10:24:04,109] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:69) 
+[2008-07-22 10:24:04,109] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:156) 
+[2008-07-22 10:24:04,125] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) java.net.URL.openStream(URL.java:913) 
+[2008-07-22 10:24:04,125] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) org.apache.crimson.parser.InputEntity.init(InputEntity.java:209) 
+[2008-07-22 10:24:04,140] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) org.apache.crimson.parser.Parser2.parseInternal(Parser2.java:638) 
+[2008-07-22 10:24:04,140] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) org.apache.crimson.parser.Parser2.parse(Parser2.java:337) 
+[2008-07-22 10:24:04,140] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) org.apache.crimson.parser.XMLReaderImpl.parse(XMLReaderImpl.java:448) 
+[2008-07-22 10:24:04,140] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) org.apache.crimson.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:185) 
+[2008-07-22 10:24:04,140] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:151) 
+[2008-07-22 10:24:04,140] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:46) 
+[2008-07-22 10:24:04,140] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) nci.gps.messages.mq.GPSMsgPool.main(GPSMsgPool.java:104) 
+[2008-07-22 10:25:39,109] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) 读取appSubjects.xml产生错误！ 
+[2008-07-22 10:25:39,125] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:83) java.io.FileNotFoundException: D:\nci\jxcz\MsgTransactor\cosnf\appSubjects.xml (The system cannot find the path specified) 
+[2008-07-22 10:25:39,125] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) java.io.FileInputStream.open(Native Method) 
+[2008-07-22 10:25:39,125] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) java.io.FileInputStream.<init>(FileInputStream.java:106) 
+[2008-07-22 10:25:39,125] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) java.io.FileInputStream.<init>(FileInputStream.java:66) 
+[2008-07-22 10:25:39,125] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:69) 
+[2008-07-22 10:25:39,125] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:156) 
+[2008-07-22 10:25:39,125] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) java.net.URL.openStream(URL.java:913) 
+[2008-07-22 10:25:39,125] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) org.apache.crimson.parser.InputEntity.init(InputEntity.java:209) 
+[2008-07-22 10:25:39,125] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) org.apache.crimson.parser.Parser2.parseInternal(Parser2.java:638) 
+[2008-07-22 10:25:39,125] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) org.apache.crimson.parser.Parser2.parse(Parser2.java:337) 
+[2008-07-22 10:25:39,125] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) org.apache.crimson.parser.XMLReaderImpl.parse(XMLReaderImpl.java:448) 
+[2008-07-22 10:25:39,125] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) org.apache.crimson.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:185) 
+[2008-07-22 10:25:39,125] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:151) 
+[2008-07-22 10:25:39,125] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:46) 
+[2008-07-22 10:25:39,125] nci.gps.messages.mq.GPSMsgPool.<init>(GPSMsgPool.java:60) nci.gps.messages.mq.GPSMsgPool.main(GPSMsgPool.java:104) 
+[2008-07-22 12:22:36,312] nci.gps.TransactorServer.<init>(TransactorServer.java:62) socket连接出错！IP:10.137.253.8,port:9002 
+[2008-07-22 12:22:36,328] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:83) java.net.ConnectException: Connection timed out: connect 
+[2008-07-22 12:22:36,328] nci.gps.TransactorServer.<init>(TransactorServer.java:62) java.net.PlainSocketImpl.socketConnect(Native Method) 
+[2008-07-22 12:22:36,328] nci.gps.TransactorServer.<init>(TransactorServer.java:62) java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:305) 
+[2008-07-22 12:22:36,328] nci.gps.TransactorServer.<init>(TransactorServer.java:62) java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:171) 
+[2008-07-22 12:22:36,328] nci.gps.TransactorServer.<init>(TransactorServer.java:62) java.net.PlainSocketImpl.connect(PlainSocketImpl.java:158) 
+[2008-07-22 12:22:36,328] nci.gps.TransactorServer.<init>(TransactorServer.java:62) java.net.Socket.connect(Socket.java:452) 
+[2008-07-22 12:22:36,328] nci.gps.TransactorServer.<init>(TransactorServer.java:62) java.net.Socket.connect(Socket.java:402) 
+[2008-07-22 12:22:36,328] nci.gps.TransactorServer.<init>(TransactorServer.java:62) java.net.Socket.<init>(Socket.java:309) 
+[2008-07-22 12:22:36,328] nci.gps.TransactorServer.<init>(TransactorServer.java:62) java.net.Socket.<init>(Socket.java:124) 
+[2008-07-22 12:22:36,328] nci.gps.TransactorServer.<init>(TransactorServer.java:62) nci.gps.TransactorServer.<init>(TransactorServer.java:57) 
+[2008-07-22 12:22:36,328] nci.gps.TransactorServer.<init>(TransactorServer.java:62) nci.gps.TransactorServer.main(TransactorServer.java:79) 
+[2008-07-22 14:44:34,390] nci.gps.TransactorServer.iniSocket(TransactorServer.java:75) socket连接出错！IP:10.137.253.8,port:9002 
+[2008-07-22 14:44:34,406] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:83) java.net.ConnectException: Connection timed out: connect 
+[2008-07-22 14:44:34,406] nci.gps.TransactorServer.iniSocket(TransactorServer.java:75) java.net.PlainSocketImpl.socketConnect(Native Method) 
+[2008-07-22 14:44:34,406] nci.gps.TransactorServer.iniSocket(TransactorServer.java:75) java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:305) 
+[2008-07-22 14:44:34,406] nci.gps.TransactorServer.iniSocket(TransactorServer.java:75) java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:171) 
+[2008-07-22 14:44:34,421] nci.gps.TransactorServer.iniSocket(TransactorServer.java:75) java.net.PlainSocketImpl.connect(PlainSocketImpl.java:158) 
+[2008-07-22 14:44:34,421] nci.gps.TransactorServer.iniSocket(TransactorServer.java:75) java.net.Socket.connect(Socket.java:452) 
+[2008-07-22 14:44:34,421] nci.gps.TransactorServer.iniSocket(TransactorServer.java:75) java.net.Socket.connect(Socket.java:402) 
+[2008-07-22 14:44:34,421] nci.gps.TransactorServer.iniSocket(TransactorServer.java:75) java.net.Socket.<init>(Socket.java:309) 
+[2008-07-22 14:44:34,421] nci.gps.TransactorServer.iniSocket(TransactorServer.java:75) java.net.Socket.<init>(Socket.java:124) 
+[2008-07-22 14:44:34,421] nci.gps.TransactorServer.iniSocket(TransactorServer.java:75) nci.gps.TransactorServer.iniSocket(TransactorServer.java:67) 
+[2008-07-22 14:44:34,421] nci.gps.TransactorServer.iniSocket(TransactorServer.java:75) nci.gps.TransactorServer.<init>(TransactorServer.java:55) 
+[2008-07-22 14:44:34,421] nci.gps.TransactorServer.iniSocket(TransactorServer.java:75) nci.gps.TransactorServer.main(TransactorServer.java:238) 
+[2008-07-22 14:45:27,734] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) socket连接出错！IP:10.137.253.8,port:9002 
+[2008-07-22 14:45:27,734] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:83) java.net.ConnectException: Connection timed out: connect 
+[2008-07-22 14:45:27,750] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) java.net.PlainSocketImpl.socketConnect(Native Method) 
+[2008-07-22 14:45:27,750] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:305) 
+[2008-07-22 14:45:27,750] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:171) 
+[2008-07-22 14:45:27,750] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) java.net.PlainSocketImpl.connect(PlainSocketImpl.java:158) 
+[2008-07-22 14:45:27,750] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) java.net.Socket.connect(Socket.java:452) 
+[2008-07-22 14:45:27,750] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) java.net.Socket.connect(Socket.java:402) 
+[2008-07-22 14:45:27,750] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) java.net.Socket.<init>(Socket.java:309) 
+[2008-07-22 14:45:27,750] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) java.net.Socket.<init>(Socket.java:124) 
+[2008-07-22 14:45:27,750] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) nci.gps.TransactorServer.iniSocket(TransactorServer.java:67) 
+[2008-07-22 14:45:27,750] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) nci.gps.TransactorServer.<init>(TransactorServer.java:55) 
+[2008-07-22 14:45:27,750] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) nci.gps.TransactorServer.main(TransactorServer.java:239) 
+[2008-07-22 14:45:29,015] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:83) javax.jms.JMSException: Could not connect to broker URL: tcp://localhost:61616. Reason: java.net.ConnectException: Connection refused: connect 
+[2008-07-22 14:45:29,015] nci.gps.messages.mq.ServerMsgProducerTool.run(ServerMsgProducerTool.java:119) org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:33) 
+[2008-07-22 14:45:29,015] nci.gps.messages.mq.ServerMsgProducerTool.run(ServerMsgProducerTool.java:119) org.apache.activemq.ActiveMQConnectionFactory.createActiveMQConnection(ActiveMQConnectionFactory.java:280) 
+[2008-07-22 14:45:29,015] nci.gps.messages.mq.ServerMsgProducerTool.run(ServerMsgProducerTool.java:119) org.apache.activemq.ActiveMQConnectionFactory.createActiveMQConnection(ActiveMQConnectionFactory.java:214) 
+[2008-07-22 14:45:29,015] nci.gps.messages.mq.ServerMsgProducerTool.run(ServerMsgProducerTool.java:119) org.apache.activemq.ActiveMQConnectionFactory.createConnection(ActiveMQConnectionFactory.java:161) 
+[2008-07-22 14:45:29,015] nci.gps.messages.mq.ServerMsgProducerTool.run(ServerMsgProducerTool.java:119) nci.gps.messages.mq.ServerMsgProducerTool.run(ServerMsgProducerTool.java:82) 
+[2008-07-22 14:45:29,031] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:83) javax.jms.JMSException: Could not connect to broker URL: tcp://localhost:61616. Reason: java.net.ConnectException: Connection refused: connect 
+[2008-07-22 14:45:29,031] nci.gps.messages.mq.ServerMsgConsumerTool.run(ServerMsgConsumerTool.java:109) org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:33) 
+[2008-07-22 14:45:29,031] nci.gps.messages.mq.ServerMsgConsumerTool.run(ServerMsgConsumerTool.java:109) org.apache.activemq.ActiveMQConnectionFactory.createActiveMQConnection(ActiveMQConnectionFactory.java:280) 
+[2008-07-22 14:45:29,031] nci.gps.messages.mq.ServerMsgConsumerTool.run(ServerMsgConsumerTool.java:109) org.apache.activemq.ActiveMQConnectionFactory.createActiveMQConnection(ActiveMQConnectionFactory.java:214) 
+[2008-07-22 14:45:29,031] nci.gps.messages.mq.ServerMsgConsumerTool.run(ServerMsgConsumerTool.java:109) org.apache.activemq.ActiveMQConnectionFactory.createConnection(ActiveMQConnectionFactory.java:161) 
+[2008-07-22 14:45:29,031] nci.gps.messages.mq.ServerMsgConsumerTool.run(ServerMsgConsumerTool.java:109) nci.gps.messages.mq.ServerMsgConsumerTool.run(ServerMsgConsumerTool.java:73) 
+[2008-07-22 14:46:51,453] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) socket连接出错！IP:10.137.253.8,port:9002 
+[2008-07-22 14:46:51,453] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:83) java.net.ConnectException: Connection timed out: connect 
+[2008-07-22 14:46:51,453] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) java.net.PlainSocketImpl.socketConnect(Native Method) 
+[2008-07-22 14:46:51,468] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:305) 
+[2008-07-22 14:46:51,468] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:171) 
+[2008-07-22 14:46:51,468] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) java.net.PlainSocketImpl.connect(PlainSocketImpl.java:158) 
+[2008-07-22 14:46:51,468] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) java.net.Socket.connect(Socket.java:452) 
+[2008-07-22 14:46:51,468] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) java.net.Socket.connect(Socket.java:402) 
+[2008-07-22 14:46:51,468] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) java.net.Socket.<init>(Socket.java:309) 
+[2008-07-22 14:46:51,484] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) java.net.Socket.<init>(Socket.java:124) 
+[2008-07-22 14:46:51,484] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) nci.gps.TransactorServer.iniSocket(TransactorServer.java:67) 
+[2008-07-22 14:46:51,484] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) nci.gps.TransactorServer.<init>(TransactorServer.java:55) 
+[2008-07-22 14:46:51,484] nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) nci.gps.TransactorServer.main(TransactorServer.java:239) 
+[2008-07-22 14:51:48,046] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) socket连接出错！IP:10.137.253.8,port:9002 
+[2008-07-22 14:51:48,046] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:83) java.net.ConnectException: Connection timed out: connect 
+[2008-07-22 14:51:48,046] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) java.net.PlainSocketImpl.socketConnect(Native Method) 
+[2008-07-22 14:51:48,046] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:305) 
+[2008-07-22 14:51:48,046] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:171) 
+[2008-07-22 14:51:48,046] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) java.net.PlainSocketImpl.connect(PlainSocketImpl.java:158) 
+[2008-07-22 14:51:48,046] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) java.net.Socket.connect(Socket.java:452) 
+[2008-07-22 14:51:48,046] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) java.net.Socket.connect(Socket.java:402) 
+[2008-07-22 14:51:48,046] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) java.net.Socket.<init>(Socket.java:309) 
+[2008-07-22 14:51:48,046] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) java.net.Socket.<init>(Socket.java:124) 
+[2008-07-22 14:51:48,046] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) nci.gps.TransactorServer.iniSocket(TransactorServer.java:72) 
+[2008-07-22 14:51:48,046] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) nci.gps.TransactorServer.<init>(TransactorServer.java:55) 
+[2008-07-22 14:51:48,046] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) nci.gps.TransactorServer.main(TransactorServer.java:249) 
+[2008-07-22 14:52:09,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) socket连接出错！IP:10.137.253.8,port:9002 
+[2008-07-22 14:52:09,015] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:83) java.net.ConnectException: Connection timed out: connect 
+[2008-07-22 14:52:09,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) java.net.PlainSocketImpl.socketConnect(Native Method) 
+[2008-07-22 14:52:09,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:305) 
+[2008-07-22 14:52:09,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:171) 
+[2008-07-22 14:52:09,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) java.net.PlainSocketImpl.connect(PlainSocketImpl.java:158) 
+[2008-07-22 14:52:09,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) java.net.Socket.connect(Socket.java:452) 
+[2008-07-22 14:52:09,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) java.net.Socket.connect(Socket.java:402) 
+[2008-07-22 14:52:09,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) java.net.Socket.<init>(Socket.java:309) 
+[2008-07-22 14:52:09,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) java.net.Socket.<init>(Socket.java:124) 
+[2008-07-22 14:52:09,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) nci.gps.TransactorServer.iniSocket(TransactorServer.java:72) 
+[2008-07-22 14:52:09,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) nci.gps.TransactorServer.reconnectToFrontServer(TransactorServer.java:118) 
+[2008-07-22 14:52:09,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) nci.gps.TransactorServer.checkSocket(TransactorServer.java:110) 
+[2008-07-22 14:52:09,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) nci.gps.TransactorServer.access$0(TransactorServer.java:108) 
+[2008-07-22 14:52:09,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:80) nci.gps.TransactorServer$SocketIn.run(TransactorServer.java:148) 
+[2008-07-22 14:52:09,015] nci.gps.TransactorServer.reconnectToFrontServer(TransactorServer.java:119) 准备在10秒后重连 
+[2008-07-22 14:52:17,828] nci.gps.TransactorServer.iniSocket(TransactorServer.java:71) 正在连接前置机，IP:10.137.253.8,port:9002 
+[2008-07-22 14:56:57,109] nci.gps.TransactorServer.iniSocket(TransactorServer.java:71) 正在连接前置机，IP:10.137.253.8,port:9002 
+[2008-07-22 14:57:18,109] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) socket连接出错！IP:10.137.253.8,port:9002 
+[2008-07-22 14:57:18,109] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:82) java.net.ConnectException: Connection timed out: connect 
+[2008-07-22 14:57:18,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.socketConnect(Native Method) 
+[2008-07-22 14:57:18,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:305) 
+[2008-07-22 14:57:18,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:171) 
+[2008-07-22 14:57:18,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connect(PlainSocketImpl.java:158) 
+[2008-07-22 14:57:18,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:452) 
+[2008-07-22 14:57:18,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:402) 
+[2008-07-22 14:57:18,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:309) 
+[2008-07-22 14:57:18,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:124) 
+[2008-07-22 14:57:18,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) 
+[2008-07-22 14:57:18,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.<init>(TransactorServer.java:55) 
+[2008-07-22 14:57:18,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.main(TransactorServer.java:251) 
+[2008-07-22 14:57:18,156] nci.gps.TransactorServer.iniSocket(TransactorServer.java:71) 正在连接前置机，IP:10.137.253.8,port:9002 
+[2008-07-22 14:57:39,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) socket连接出错！IP:10.137.253.8,port:9002 
+[2008-07-22 14:57:39,125] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:82) java.net.ConnectException: Connection timed out: connect 
+[2008-07-22 14:57:39,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.socketConnect(Native Method) 
+[2008-07-22 14:57:39,140] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:305) 
+[2008-07-22 14:57:39,140] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:171) 
+[2008-07-22 14:57:39,140] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connect(PlainSocketImpl.java:158) 
+[2008-07-22 14:57:39,140] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:452) 
+[2008-07-22 14:57:39,140] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:402) 
+[2008-07-22 14:57:39,140] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:309) 
+[2008-07-22 14:57:39,140] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:124) 
+[2008-07-22 14:57:39,140] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) 
+[2008-07-22 14:57:39,140] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.reconnectToFrontServer(TransactorServer.java:120) 
+[2008-07-22 14:57:39,140] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.checkSocket(TransactorServer.java:112) 
+[2008-07-22 14:57:39,140] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.access$0(TransactorServer.java:110) 
+[2008-07-22 14:57:39,140] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer$SocketIn.run(TransactorServer.java:150) 
+[2008-07-22 14:57:39,140] nci.gps.TransactorServer.reconnectToFrontServer(TransactorServer.java:121) 准备在10秒后重连 
+[2008-07-22 14:57:49,156] nci.gps.TransactorServer.iniSocket(TransactorServer.java:71) 正在连接前置机，IP:10.137.253.8,port:9002 
+[2008-07-22 14:58:10,109] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) socket连接出错！IP:10.137.253.8,port:9002 
+[2008-07-22 14:58:10,109] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:82) java.net.ConnectException: Connection timed out: connect 
+[2008-07-22 14:58:10,109] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.socketConnect(Native Method) 
+[2008-07-22 14:58:10,109] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:305) 
+[2008-07-22 14:58:10,109] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:171) 
+[2008-07-22 14:58:10,109] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connect(PlainSocketImpl.java:158) 
+[2008-07-22 14:58:10,109] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:452) 
+[2008-07-22 14:58:10,109] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:402) 
+[2008-07-22 14:58:10,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:309) 
+[2008-07-22 14:58:10,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:124) 
+[2008-07-22 14:58:10,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) 
+[2008-07-22 14:58:10,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.reconnectToFrontServer(TransactorServer.java:120) 
+[2008-07-22 14:58:10,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.checkSocket(TransactorServer.java:112) 
+[2008-07-22 14:58:10,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.access$0(TransactorServer.java:110) 
+[2008-07-22 14:58:10,125] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer$SocketIn.run(TransactorServer.java:150) 
+[2008-07-22 14:58:10,125] nci.gps.TransactorServer.reconnectToFrontServer(TransactorServer.java:121) 准备在10秒后重连 
+[2008-07-22 15:09:37,875] nci.gps.TransactorServer.iniSocket(TransactorServer.java:71) 正在连接前置机，IP:10.137.253.8,port:9002 
+[2008-07-22 15:09:58,843] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) socket连接出错！IP:10.137.253.8,port:9002 
+[2008-07-22 15:09:58,843] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:82) java.net.ConnectException: Connection timed out: connect 
+[2008-07-22 15:09:58,843] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.socketConnect(Native Method) 
+[2008-07-22 15:09:58,859] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:305) 
+[2008-07-22 15:09:58,859] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:171) 
+[2008-07-22 15:09:58,859] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connect(PlainSocketImpl.java:158) 
+[2008-07-22 15:09:58,859] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:452) 
+[2008-07-22 15:09:58,859] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:402) 
+[2008-07-22 15:09:58,859] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:309) 
+[2008-07-22 15:09:58,859] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:124) 
+[2008-07-22 15:09:58,859] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) 
+[2008-07-22 15:09:58,859] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.<init>(TransactorServer.java:55) 
+[2008-07-22 15:09:58,859] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.main(TransactorServer.java:255) 
+[2008-07-22 15:09:58,875] nci.gps.TransactorServer.iniSocket(TransactorServer.java:71) 正在连接前置机，IP:10.137.253.8,port:9002 
+[2008-07-22 15:09:58,875] nci.gps.messages.mq.ServerMsgProducerTool.run(ServerMsgProducerTool.java:84) 正在为null建立JMS连接... 
+[2008-07-22 15:09:59,265] nci.gps.messages.mq.ServerMsgProducerTool.run(ServerMsgProducerTool.java:89) 为null建立JMS连接成功！ 
+[2008-07-22 15:10:24,187] nci.gps.TransactorServer.iniSocket(TransactorServer.java:71) 正在连接前置机，IP:10.137.253.8,port:9002 
+[2008-07-22 15:10:45,203] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) socket连接出错！IP:10.137.253.8,port:9002 
+[2008-07-22 15:10:45,203] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:82) java.net.ConnectException: Connection timed out: connect 
+[2008-07-22 15:10:45,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.socketConnect(Native Method) 
+[2008-07-22 15:10:45,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:305) 
+[2008-07-22 15:10:45,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:171) 
+[2008-07-22 15:10:45,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connect(PlainSocketImpl.java:158) 
+[2008-07-22 15:10:45,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:452) 
+[2008-07-22 15:10:45,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:402) 
+[2008-07-22 15:10:45,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:309) 
+[2008-07-22 15:10:45,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:124) 
+[2008-07-22 15:10:45,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) 
+[2008-07-22 15:10:45,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.<init>(TransactorServer.java:55) 
+[2008-07-22 15:10:45,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.main(TransactorServer.java:255) 
+[2008-07-22 15:10:45,234] nci.gps.TransactorServer.iniSocket(TransactorServer.java:71) 正在连接前置机，IP:10.137.253.8,port:9002 
+[2008-07-22 15:10:45,234] nci.gps.messages.mq.ServerMsgProducerTool.run(ServerMsgProducerTool.java:85) 正在为demo建立JMS连接... 
+[2008-07-22 15:10:45,750] nci.gps.messages.mq.ServerMsgProducerTool.run(ServerMsgProducerTool.java:90) 为demo建立JMS连接成功！ 
+[2008-07-22 15:11:06,234] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) socket连接出错！IP:10.137.253.8,port:9002 
+[2008-07-22 15:11:06,234] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:82) java.net.ConnectException: Connection timed out: connect 
+[2008-07-22 15:11:06,234] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.socketConnect(Native Method) 
+[2008-07-22 15:11:06,234] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:305) 
+[2008-07-22 15:11:06,234] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:171) 
+[2008-07-22 15:11:06,234] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connect(PlainSocketImpl.java:158) 
+[2008-07-22 15:11:06,234] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:452) 
+[2008-07-22 15:11:06,234] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:402) 
+[2008-07-22 15:11:06,234] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:309) 
+[2008-07-22 15:11:06,234] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:124) 
+[2008-07-22 15:11:06,234] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) 
+[2008-07-22 15:11:06,250] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.reconnectToFrontServer(TransactorServer.java:124) 
+[2008-07-22 15:11:06,250] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.checkSocket(TransactorServer.java:116) 
+[2008-07-22 15:11:06,250] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.access$0(TransactorServer.java:114) 
+[2008-07-22 15:11:06,250] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer$SocketIn.run(TransactorServer.java:154) 
+[2008-07-22 15:11:06,250] nci.gps.TransactorServer.reconnectToFrontServer(TransactorServer.java:125) 准备在10秒后重连 
+[2008-07-22 15:11:16,250] nci.gps.TransactorServer.iniSocket(TransactorServer.java:71) 正在连接前置机，IP:10.137.253.8,port:9002 
+[2008-07-22 15:11:37,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) socket连接出错！IP:10.137.253.8,port:9002 
+[2008-07-22 15:11:37,218] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:82) java.net.ConnectException: Connection timed out: connect 
+[2008-07-22 15:11:37,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.socketConnect(Native Method) 
+[2008-07-22 15:11:37,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:305) 
+[2008-07-22 15:11:37,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:171) 
+[2008-07-22 15:11:37,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connect(PlainSocketImpl.java:158) 
+[2008-07-22 15:11:37,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:452) 
+[2008-07-22 15:11:37,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:402) 
+[2008-07-22 15:11:37,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:309) 
+[2008-07-22 15:11:37,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:124) 
+[2008-07-22 15:11:37,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) 
+[2008-07-22 15:11:37,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.reconnectToFrontServer(TransactorServer.java:124) 
+[2008-07-22 15:11:37,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.checkSocket(TransactorServer.java:116) 
+[2008-07-22 15:11:37,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.access$0(TransactorServer.java:114) 
+[2008-07-22 15:11:37,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer$SocketIn.run(TransactorServer.java:154) 
+[2008-07-22 15:11:37,218] nci.gps.TransactorServer.reconnectToFrontServer(TransactorServer.java:125) 准备在10秒后重连 
+[2008-07-22 15:11:47,234] nci.gps.TransactorServer.iniSocket(TransactorServer.java:71) 正在连接前置机，IP:10.137.253.8,port:9002 
+[2008-07-22 15:12:08,187] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) socket连接出错！IP:10.137.253.8,port:9002 
+[2008-07-22 15:12:08,187] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:82) java.net.ConnectException: Connection timed out: connect 
+[2008-07-22 15:12:08,203] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.socketConnect(Native Method) 
+[2008-07-22 15:12:08,203] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:305) 
+[2008-07-22 15:12:08,203] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:171) 
+[2008-07-22 15:12:08,203] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connect(PlainSocketImpl.java:158) 
+[2008-07-22 15:12:08,203] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:452) 
+[2008-07-22 15:12:08,203] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:402) 
+[2008-07-22 15:12:08,203] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:309) 
+[2008-07-22 15:12:08,203] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:124) 
+[2008-07-22 15:12:08,203] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) 
+[2008-07-22 15:12:08,203] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.reconnectToFrontServer(TransactorServer.java:124) 
+[2008-07-22 15:12:08,203] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.checkSocket(TransactorServer.java:116) 
+[2008-07-22 15:12:08,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.access$0(TransactorServer.java:114) 
+[2008-07-22 15:12:08,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer$SocketIn.run(TransactorServer.java:154) 
+[2008-07-22 15:12:08,218] nci.gps.TransactorServer.reconnectToFrontServer(TransactorServer.java:125) 准备在10秒后重连 
+[2008-07-22 15:12:18,218] nci.gps.TransactorServer.iniSocket(TransactorServer.java:71) 正在连接前置机，IP:10.137.253.8,port:9002 
+[2008-07-22 15:14:22,203] nci.gps.TransactorServer.main(TransactorServer.java:258) 服务器正在启动! 
+[2008-07-22 15:14:22,609] nci.gps.TransactorServer.iniSocket(TransactorServer.java:71) 正在连接前置机，IP:10.137.253.8,port:9002 
+[2008-07-22 15:16:06,578] nci.gps.TransactorServer.main(TransactorServer.java:258) 服务器正在启动! 
+[2008-07-22 15:16:07,000] nci.gps.TransactorServer.iniSocket(TransactorServer.java:71) 正在连接前置机，IP:10.137.253.8,port:9002 
+[2008-07-22 15:16:28,000] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) socket连接出错！IP:10.137.253.8,port:9002 
+[2008-07-22 15:16:28,015] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:82) java.net.ConnectException: Connection timed out: connect 
+[2008-07-22 15:16:28,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.socketConnect(Native Method) 
+[2008-07-22 15:16:28,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:305) 
+[2008-07-22 15:16:28,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:171) 
+[2008-07-22 15:16:28,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connect(PlainSocketImpl.java:158) 
+[2008-07-22 15:16:28,015] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:452) 
+[2008-07-22 15:16:28,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:402) 
+[2008-07-22 15:16:28,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:309) 
+[2008-07-22 15:16:28,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:124) 
+[2008-07-22 15:16:28,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) 
+[2008-07-22 15:16:28,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.<init>(TransactorServer.java:55) 
+[2008-07-22 15:16:28,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.main(TransactorServer.java:259) 
+[2008-07-22 15:16:28,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:84) 准备在10秒后重连 
+[2008-07-22 15:16:28,046] nci.gps.TransactorServer.iniSocket(TransactorServer.java:71) 正在连接前置机，IP:10.137.253.8,port:9002 
+[2008-07-22 15:16:28,062] nci.gps.messages.mq.ServerMsgProducerTool.run(ServerMsgProducerTool.java:85) 正在为demo建立JMS连接... 
+[2008-07-22 15:16:28,406] nci.gps.messages.mq.ServerMsgProducerTool.run(ServerMsgProducerTool.java:90) 为demo建立JMS连接成功！ 
+[2008-07-22 15:16:49,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) socket连接出错！IP:10.137.253.8,port:9002 
+[2008-07-22 15:16:49,031] nci.gps.util.MsgLogger.logExceptionTrace(MsgLogger.java:82) java.net.ConnectException: Connection timed out: connect 
+[2008-07-22 15:16:49,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.socketConnect(Native Method) 
+[2008-07-22 15:16:49,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:305) 
+[2008-07-22 15:16:49,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:171) 
+[2008-07-22 15:16:49,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.PlainSocketImpl.connect(PlainSocketImpl.java:158) 
+[2008-07-22 15:16:49,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:452) 
+[2008-07-22 15:16:49,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.connect(Socket.java:402) 
+[2008-07-22 15:16:49,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:309) 
+[2008-07-22 15:16:49,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) java.net.Socket.<init>(Socket.java:124) 
+[2008-07-22 15:16:49,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.iniSocket(TransactorServer.java:74) 
+[2008-07-22 15:16:49,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.reconnectToFrontServer(TransactorServer.java:128) 
+[2008-07-22 15:16:49,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.checkSocket(TransactorServer.java:120) 
+[2008-07-22 15:16:49,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer.access$0(TransactorServer.java:118) 
+[2008-07-22 15:16:49,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:82) nci.gps.TransactorServer$SocketIn.run(TransactorServer.java:158) 
+[2008-07-22 15:16:49,031] nci.gps.TransactorServer.iniSocket(TransactorServer.java:84) 准备在10秒后重连 
+[2008-07-22 15:16:49,031] nci.gps.TransactorServer.reconnectToFrontServer(TransactorServer.java:129) 准备在10秒后重连 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<conf>
+	<!-- 省公司前置机开放的IP和端口 -->	
+	<server frontServerIP="10.137.253.8" frontServerPort="9103" />
+          <!-- 连接至前置机的嘉兴服务器设置，密码格式为BCD码，超时时间单位为秒 -->
+	<client loginName="" loginPassword="A" timeOut="30" />	
+</conf>
