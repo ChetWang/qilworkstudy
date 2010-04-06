@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSS>
+<!-- 电力psms下图元的css -->
+<![CDATA[
+.fill{stroke:#000000;fill:#000000}
+.fillnone{stroke:#000000;fill:none}
+]]>
+</CSS>

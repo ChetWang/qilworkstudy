@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="classes" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.4.2"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/svg-sdk-core-3.0"/>
+	<classpathentry kind="lib" path="lib/jug-lgpl-2.0.0.jar"/>
+	<classpathentry kind="lib" path="/svg-sdk-core-3.0/lib/log4j-1.2.14.jar"/>
+	<classpathentry kind="output" path="classes"/>
+</classpath>

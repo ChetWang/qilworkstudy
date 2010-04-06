@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+<modules>
+	<module class="fr.itris.glips.svgeditor.io.module.IOModule" />
+	<module class="fr.itris.glips.svgeditor.MemoryMonitorModule" />
+	<module
+		class="fr.itris.glips.svgeditor.actions.clipboard.ClipboardModule" />
+	<module class="fr.itris.glips.svgeditor.undoredo.UndoRedoModule" />
+	<module class="fr.itris.glips.svgeditor.options.OptionsModule" />
+	<module class="fr.itris.glips.svgeditor.shape.RectangleShape" />
+	<module class="fr.itris.glips.svgeditor.shape.EllipseShape" />
+	<module class="fr.itris.glips.svgeditor.shape.path.PathShape" />
+	<module class="fr.itris.glips.svgeditor.shape.ImageShape" />
+	<module class="fr.itris.glips.svgeditor.shape.GroupShape" />
+	<module class="fr.itris.glips.svgeditor.shape.text.TextShape" />
+	<module class="fr.itris.glips.svgeditor.selection.SelectionModule" />
+	<module class="fr.itris.glips.svgeditor.actions.dom.AlignModule" />
+	<module
+		class="fr.itris.glips.svgeditor.actions.dom.CenterOnCanvasModule" />
+	<module
+		class="fr.itris.glips.svgeditor.actions.dom.DistributeModule" />
+	<module class="fr.itris.glips.svgeditor.actions.dom.FlipModule" />
+	<module class="fr.itris.glips.svgeditor.actions.dom.RotateModule" />
+	<!-- 
+	-->
+	<module
+		class="fr.itris.glips.svgeditor.actions.dom.SameDimensionsModule" />
+	<module class="fr.itris.glips.svgeditor.actions.dom.OrderModule" />
+	<module
+		class="fr.itris.glips.svgeditor.actions.dom.PathOperationsModule" />
+	<module
+		class="fr.itris.glips.svgeditor.actions.dom.CanvasSizeModule" />
+	<module class="fr.itris.glips.svgeditor.AboutModule" />
+	<module class="fr.itris.glips.svgeditor.DOMViewerModule" />
+	<module
+		class="fr.itris.glips.svgeditor.display.canvas.zoom.ZoomModule" />
+	<module
+		class="fr.itris.glips.svgeditor.display.canvas.rulers.RulersModule" />
+	<module
+		class="fr.itris.glips.svgeditor.display.canvas.grid.GridModule" />
+	<module class="fr.itris.glips.svgeditor.properties.SVGProperties" />
+	<!--
+		<module
+		class="fr.itris.glips.svgeditor.visualresources.SVGVisualResources" />
+		<module class="fr.itris.glips.rtdaeditor.shape.RtdaViewShape" />
+		<module class="fr.itris.glips.rtdaeditor.shape.RtdaWidgetShape" />
+		<module
+		class="fr.itris.glips.rtdaeditor.colorchooser.RtdaColorChooserModule"
+		/> <module
+		class="fr.itris.glips.rtdaeditor.dbeditor.DataBaseEditorModule" />
+		<module class="fr.itris.glips.rtdaeditor.jwidget.JWidgetManager" />
+		<module
+		class="fr.itris.glips.rtdaeditor.anim.components.RtdaAnimationsAndActionsModule"
+		/>
+	-->
+	<module class="com.nci.svg.module.NCICustomGraphModule" />
+	<module class="com.nci.svg.module.NCIGraphUnitModule" />
+	<module class="com.nci.svg.module.NCIScreenCastModule" />
+	<module class="com.nci.svg.module.EquipmentPropertyModule" />
+	<module class="com.nci.svg.shape.NCISymbolShape" />
+	<module
+		class="com.nci.svg.display.background.EditorBackgroundModule" />
+	<module class="com.nci.svg.shape.GraphUnitPointShape" />
+	<module class="com.nci.svg.module.DrawLineModule" />
+	<module class="com.nci.svg.module.DrawLineModifyModule" />
+	<module class="com.nci.svg.module.MongLineDrawingModule" />
+	<module class="com.nci.svg.module.NCIViewEditModule" />
+	<module class="com.nci.svg.module.NCISvgSearchModule" />
+	<module class="com.nci.svg.module.NCIHelpModule" />
+	<module class="com.nci.svg.module.ResetSymbolModule" />
+	<module class="com.nci.svg.module.NCILayerModule" />
+	<!--<module class="com.nci.svg.other.TestModule" />-->
+	<module class="com.nci.svg.module.NestOperModule" />
+</modules>

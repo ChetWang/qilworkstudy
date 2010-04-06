@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 请求台区列表返回字符串格式 -->
+<Companys>
+	<!-- 供电局 -->
+	<Company id="5028" name="嘉兴">
+		<!-- 营业所 -->
+		<Departments id="5028-P-E400" name="测试营业所">
+			<!-- 台区 -->
+			<Areas>
+				<area code="5028-P-E400-0124" name="妙智桥台区" />
+			</Areas>
+		</Departments>
+	</Company>
+</Companys>

@@ -1,0 +1,48 @@
+<project name="svg-sdk-client-3.0" default="compile" basedir=".">
+	<description>SVG Platform V3.0 SDK Client</description>
+
+	<import file="../build.xml" />
+
+	<property name="current.source.level" value="${source.level.1.5}"/>
+
+
+	<target name="compile" depends="init" description="compile svg java classes">
+		<echo>Precompile, compiling relative project...</echo>
+		<exec dir="../svg-sdk-core-3.0/" executable="${os.ant.executor.name}">
+			<arg value="compile" />
+		</exec>
+		<echo>Precompile complete.</echo>
+		<echo>Compiling sdk client...</echo>
+		<javac source="${current.source.level}" fork="true" includeantruntime="false" executable="${osenv.JAVA5U_HOME}/bin/javac" deprecation="false" nowarn="true" srcdir="${src.dir}" destdir="${build.classes.dir}" debug="on">
+			<classpath path="../svg-sdk-core-3.0/build/classes">
+				<path refid="project.class.path" />
+			</classpath>
+		</javac>
+		<ant target="copy non java files" />
+		<echo>Compiling complete.</echo>
+	</target>
+
+	<target name="dist" depends="compile">
+		<echo>distributing client sdk...</echo>
+		<jar jarfile="${dist.dir}/svg-sdk-client-3.0-${now}.jar" description="distribute client sdk" basedir="${build.classes.dir}" excludes="**/*Test.class">
+			<manifest>				
+				<attribute name="${manifest.source.name}" value="${current.source.level}" />
+				<attribute name="Created-By" value="${user.name}" />
+				<attribute name="Manufacturer" value="${manufacturer.name}" />
+				<attribute name="Contributor" value="${contributor.name}" />
+				<attribute name="Jar-Version" value="${svg.platform.version}-b${now}" />
+			</manifest>
+		</jar>
+		<echo>distributing client sdk finished.</echo>
+	</target>
+
+	<target name="javadoc" depends="compile">
+		<javadoc sourcepath="${src.dir}" destdir="${doc.dir}" useexternalfile="true">
+			<classpath>
+				<path refid="project.class.path" />
+				<path location="../svg-sdk-core-3.0/build/classes" />
+			</classpath>
+		</javadoc>
+	</target>
+
+</project>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="svg-impl-client-3.0" default="dist" basedir=".">
+	<description>SVG Platform Client V3.0 Impl</description>
+
+	<import file="../build.xml" />
+
+	<property name="current.source.level" value="${source.level.1.5}" />
+
+	<target name="compile" depends="init" description="compile svg java classes">
+		<ant target="precompile" />
+		<echo>Compiling impl client...</echo>
+		<javac source="1.5" fork="true" includeantruntime="false" executable="${osenv.JAVA5U_HOME}/bin/javac" deprecation="false" memorymaximumsize="${maxMemory}" nowarn="true" srcdir="${src.dir}" destdir="${build.classes.dir}" debug="on">
+			<classpath>
+				<path refid="project.class.path" />
+				<path location="../svg-sdk-client-3.0/build/classes" />
+				<path location="../svg-sdk-core-3.0/build/classes" />
+			</classpath>
+		</javac>
+		<ant target="copy non java files" />
+		<echo>Compiling complete.</echo>
+	</target>
+
+	<target name="dist" description="distribute svg platform">
+		<description>distribute both svg editor and applet</description>
+		<echo>distributing...</echo>
+		<ant target="dist-editor" />
+		<ant target="dist-applet" />
+		<echo>distributing complete.</echo>
+	</target>
+
+	<target name="dist-editor" depends="compile">
+		<description>distribute svg editor, but not include applet</description>
+		<echo>distributing editor...</echo>
+		<mkdir dir="${dist.dir}/lib" />
+		<copy todir="${dist.dir}/lib" description="copy third party JARs">
+			<fileset dir="${lib.dir}">
+				<exclude name="**/*unit*.jar" />
+				<include name="**/*.jar" />
+			</fileset>
+		</copy>
+		<copy todir="${dist.dir}/conf" description="copy configuration files">
+			<fileset dir="${conf.dir}">
+			</fileset>
+		</copy>
+		<jar jarfile="${dist.dir}/editor-${now}.jar" description="distribute editor" basedir="${build.classes.dir}" excludes="nci/graph/**/*.class">
+			<manifest>
+				<attribute name="Main-Class" value="${svg_main_class}" />
+				<attribute name="Class-Path" value="${jar.classpath}" />
+				<attribute name="${manifest.source.name}" value="${current.source.level}" />
+				<attribute name="Created-By" value="${user.name}" />
+				<attribute name="Manufacturer" value="${manufacturer.name}" />
+				<attribute name="Contributor" value="${contributor.name}" />
+				<attribute name="Jar-Version" value="${svg.platform.version}-b${now}" />
+			</manifest>
+		</jar>
+		<echo>distributing editor finished.</echo>
+	</target>
+
+	<target name="dist-applet" depends="compile">
+		<echo>distributing applet...</echo>
+		<jar jarfile="${dist.dir}/applet-${now}.jar" description="distribute applet" basedir="${build.classes.dir}" includes="nci/graph/**/*.class">
+			<manifest>
+				<attribute name="${manifest.source.name}" value="${current.source.level}" />
+				<attribute name="Created-By" value="${user.name}" />
+				<attribute name="Manufacturer" value="${manufacturer.name}" />
+				<attribute name="Contributor" value="${contributor.name}" />
+				<attribute name="Jar-Version" value="${version}-b${now}" />
+			</manifest>
+		</jar>
+		<echo>signing applet...</echo>
+		<signjar description="applet signing" alias="${applet_signer_alias}" storepass="${applet_signer_storepass}" keystore="${applet_signer_keystore}" jar="${dist.dir}/applet-${now}.jar" />
+		<echo>applet signing complete.</echo>
+		<echo>distributing applet complete.</echo>
+	</target>
+
+	<target name="run" depends="compile" description="Run the svg editor in Client-Server mode">
+		<echo>Start running...</echo>
+		<java classname="${svg_main_class}" fork="true" maxmemory="${maxMemory}">
+			<classpath path="${build.classes.dir}">
+				<path refid="project.class.path" />
+				<path location="../svg-sdk-client-3.0/build/classes" />
+				<path location="../svg-sdk-core-3.0/build/classes" />
+			</classpath>
+		</java>
+	</target>
+
+	<target name="javadoc" depends="compile">
+		<javadoc sourcepath="${src.dir}" destdir="${doc.dir}" useexternalfile="true">
+			<classpath>
+				<path refid="project.class.path" />
+				<path location="../svg-sdk-client-3.0/build/classes" />
+				<path location="../svg-sdk-core-3.0/build/classes" />
+			</classpath>
+		</javadoc>
+	</target>
+
+	<target name="precompile">
+		<description>compile relative projects first</description>
+		<echo>Precompile, compiling relative project...</echo>
+		<exec dir="../svg-sdk-client-3.0/" executable="${os.ant.executor.name}">
+			<arg value="compile" />
+		</exec>
+	</target>
+
+</project>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="GB18030"?>
+<metadata>
+
+	<!-- 支线连接的杆塔需要存储的支线id -->
+	<branch lineID=""/>
+	<!--  ........ -->
+	<branch lineID=""/>
+	
+	
+	<!-- 终端杆定义，lineID是指所属线路的ID -->
+	<terminal-pole lineID=""/>
+	<!--  ........ -->
+	<terminal-pole lineID=""/>
+	
+	<!-- 转角杆定义，lineID是指所属线路的ID  -->
+	<corner-pole lineID="" />
+	<!--  ........ -->
+	<corner-pole lineID="" />
+	
+	<!-- 拉线定义， poleID是指拉线所对应的杆塔 -->
+	<pull-line poleID="" />
+	
+	<!-- 杆塔记录同回的线路 -->
+	<tonghui-line lineID="" />
+	
+	<properties name="峡东337线" lineType="base-line/pull-line" />
+	
+</metadata>
