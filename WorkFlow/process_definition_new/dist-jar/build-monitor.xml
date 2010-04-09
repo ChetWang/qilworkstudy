@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="build-moitorlib" basedir="." default="sign-monitorlib">
+	<import file="build.xml" />
+
+	<property name="target.monitorliblevel" value="1.5" />
+	<property name="source.monitorlib.level" value="1.5" />
+
+	<!-- **************************************************************** -->
+
+	<target name="dist-monitorlib" depends="init,compile-definition">
+		<echo>distributing workflow monitorlib start...</echo>
+		<jar jarfile="${dist.dir}/wf-monitorlib.jar" basedir="${build.definition.dir}" compress="yes">
+			<include name="/com/nci/domino/help/Functions*" />
+			<include name="/com/nci/domino/help/WfMath*" />
+			<include name="/com/nci/domino/edit/ToolMode*" />
+			<include name="/com/nci/domino/shape/basic/*.*" />
+			<include name="/com/nci/domino/PaintBoardBasic*" />
+			<include name="/com/nci/domino/GlobalConstants*" />
+			<!-- 
+			<include name="/resources/*.*" />
+			<include name="/resources/images/*activity*.*" />
+			<exclude name="/resources/images/*16*.*" /> -->
+			<manifest>
+				<attribute name="WorkflowVersion" value="${build.version}" />
+				<attribute name="Created-By" value="${user.name}" />
+				<attribute name="Target-JavaLevel" value="${source.monitorlib.level}" />
+			</manifest>
+		</jar>
+		<echo>distributing editor finished.</echo>
+	</target>
+
+
+	<target name="sign-monitorlib" depends="dist-monitorlib">
+		<echo>Start sign monitorlib...</echo>
+		<signjar alias="${applet_signer_alias}" storepass="${applet_signer_storepass}" keystore="${applet_signer_keystore}" jar="${dist.dir}/wf-smartform.jar" />
+		<echo>Sign complete</echo>
+	</target>
+
+	<target name="sign-start" depends="dist-start">
+		<echo>Start sign startlib...</echo>
+		<signjar alias="${applet_signer_alias}" storepass="${applet_signer_storepass}" keystore="${applet_signer_keystore}" jar="${dist.dir}/wf-start.jar" />
+		<echo>Sign complete</echo>
+	</target>
+</project>

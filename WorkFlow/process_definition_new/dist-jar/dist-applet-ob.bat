@@ -1,0 +1,1 @@
+ant/bin/ant -f build-smartform.xml sign-ob sign-smartform

@@ -1,0 +1,1 @@
+ant/bin/ant -f build-monitor.xml sign-monitorlib sign-start dist-commonbeans
