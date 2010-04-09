@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!-- 插件机制 -->
+<plugins-all>
+	<!-- WfDialog对象子类的插件 -->
+	<wfdialog-plugins>
+		<plugins containerClass="com.nci.domino.components.dialog.process.WfNewProcessDialog">
+			<pluginClass
+				className="com.nci.domino.components.dialog.process.WfProcessArgumentsPanel"
+				title="参数" />
+			<pluginClass
+				className="com.nci.domino.components.WfMessagePanel"
+				title="消息" />
+			<pluginClass
+				className="com.nci.domino.components.dialog.activity.WfWorkItemPanel"
+				title="工作单" />
+			<pluginClass className="com.nci.domino.smartform.SmfProcessPanel"
+				title="表单" />
+		</plugins>
+		<plugins
+			containerClass="com.nci.domino.components.dialog.activity.WfNewActivityHumanDialog">
+			<pluginClass
+				className="com.nci.domino.components.event.WfEventPanel"
+				title="事件" />
+			<pluginClass
+				className="com.nci.domino.components.WfMessagePanel"
+				title="消息" />
+			<pluginClass
+				className="com.nci.domino.components.dialog.activity.WfWorkItemPanel"
+				title="工作单" />
+			<pluginClass className="com.nci.domino.smartform.SmfActivityPanel"
+				title="表单" />
+		</plugins>
+		<plugins
+			containerClass="com.nci.domino.components.dialog.activity.WfNewActivityAutoDialog">
+			<pluginClass
+				className="com.nci.domino.components.WfMessagePanel"
+				title="消息" />
+			
+		</plugins>
+	</wfdialog-plugins>
+</plugins-all>

@@ -1,0 +1,14 @@
+<!-- 流程、活动的消息属性定义 -->
+<message>
+	<scenes>
+		<scene id="1" value="新工作单到达" />
+		<scene id="2" value="工作单被退回" />
+		<scene id="3" value="工作单已执行" />
+	</scenes>
+	<sendTypes>
+		<type id="4" value="系统" />
+		<type id="5" value="OCS" />
+		<type id="6" value="短信" />
+		<type id="7" value="邮件" />
+	</sendTypes>
+</message>

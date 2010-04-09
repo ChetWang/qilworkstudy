@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!-- width和height表示垂直泳道的高度和宽度，如果是水平泳道，则高度和宽度互换 -->
+	<!-- defaultValue是泳道首次创建时的默认显示值 -->
+	<!-- inputDialog是泳道对象属性输入输出对话框，bean是和当前对话框及泳道对应的属性对象 -->
+<wfpipe width="120" height="50">
+	<vertical defaultValue="职能"
+		inputDialog="com.nci.domino.shape.pipe.WfPipeFunctionDialog" bean="com.nci.domino.beans.plugin.pipe.WofoPipeFunctionBean" />
+	<horizontal defaultValue="阶段"
+		inputDialog="com.nci.domino.shape.pipe.WfPipeStageDialog" bean="com.nci.domino.beans.plugin.pipe.WofoPipeStageBean" />
+</wfpipe>

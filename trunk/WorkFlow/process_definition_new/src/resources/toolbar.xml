@@ -1,0 +1,107 @@
+<toolbar>
+	<!--
+		name和resources/resources.properteis的值对应，并显示；
+		如果没直接写明tooltip，则以name值作tooltip
+	-->
+	<!-- 校验 -->
+	<button actionCommand="check" />
+
+	<splits actionCommand="save" tooltip="保存" enabled="true">
+		<split actionCommand="export_edit" text="另存为本地文件" tooltip=""
+			icon="save_local.gif" />
+		<split actionCommand="save_current" text="保存当前流程到服务器" tooltip=""
+			icon="save_server.gif" />
+		<split actionCommand="save_all" text="保存所有流程到服务器" tooltip=""
+			icon="save_server.gif" accelerator="s" />
+	</splits>
+
+	<button actionCommand="import_edit" text="" tooltip="打开本地文件..."
+		icon="import_edit24.gif" />
+
+
+	<separator />
+
+	<button actionCommand="print" enabled="false" />
+	<button actionCommand="image_export" enabled="false"
+		icon="image_export24.gif" />
+	<separator />
+
+	<!-- 撤销 -->
+	<button actionCommand="undo" text="" tooltip="" enabled="false" />
+	<!-- 恢复-->
+	<button actionCommand="redo" text="" tooltip="" enabled="false" />
+	<separator />
+
+	<button actionCommand="cut" icon="cut24.gif" />
+	<button actionCommand="copy" icon="copy24.gif" />
+	<button actionCommand="paste" icon="paste24.gif" />
+	<button actionCommand="delete" icon="delete24.gif" />
+	<separator />
+
+
+	<splits actionCommand="align" tooltip="对齐" enabled="false">
+		<split actionCommand="align_top" text="" tooltip="" enabled="false" />
+		<split actionCommand="align_bottom" text="" tooltip="" enabled="false" />
+		<split actionCommand="align_left" text="" tooltip="" enabled="false" />
+		<split actionCommand="align_right" text="" tooltip="" enabled="false" />
+		<split actionCommand="align_vertical" text="" tooltip=""
+			enabled="false" />
+		<split actionCommand="align_horizontal" text="" tooltip=""
+			enabled="false" />
+	</splits>
+	<separator />
+	<button actionCommand="restore_ui" enabled="false" />
+	<!-- 
+	<button actionCommand="fit_screen" enabled="false" /> -->
+	<separator />
+
+	<!-- 新建流程项 ,这个split是和绘图的buttongroup在一个联合体中的，所以用id和groupid来关联-->
+	<splits actionCommand="add_pipe" text="" tooltip="新增职能带区"
+		groupid="draw" icon="pipe.gif"
+		actionClass="com.nci.domino.shape.pipe.WfToolbarPipeActionListener">
+		<split actionCommand="vertical_pipe" text="垂直职能带区" tooltip=""
+			icon="pipe_vertical.gif" actionClass="com.nci.domino.shape.pipe.WfToolbarPipeActionListener" />
+		<split actionCommand="horizontal_pipe" text="水平职能带区" tooltip=""
+			icon="pipe_horizontal.gif" actionClass="com.nci.domino.shape.pipe.WfToolbarPipeActionListener" />
+		<separator />
+		<split actionCommand="vertical_pipe" text="垂直阶段符" tooltip=""
+			icon="step_vertical.gif" actionClass="com.nci.domino.shape.pipe.WfToolbarPipeActionListener" />
+		<split actionCommand="horizontal_pipe" text="水平阶段符" tooltip=""
+			icon="step_horizontal.gif" actionClass="com.nci.domino.shape.pipe.WfToolbarPipeActionListener" />
+	</splits>
+	<splits actionCommand="new_workflow_item" tooltip="" groupid="draw">
+		<split actionCommand="workflow_activity_begin" text="" tooltip=""
+			icon="workflow_activity_begin16.gif" />
+		<split actionCommand="workflow_activity_end" text="" tooltip=""
+			icon="workflow_activity_end16.gif" />
+		<split actionCommand="workflow_activity_auto" text="" tooltip=""
+			icon="workflow_activity_auto16.gif" />
+		<split actionCommand="workflow_activity_notify" text="" tooltip=""
+			icon="workflow_activity_notify16.gif" enabled="false" />
+		<split actionCommand="workflow_activity_split" text="" tooltip=""
+			icon="workflow_activity_split16.gif" />
+		<split actionCommand="workflow_activity_join" text="" tooltip=""
+			icon="workflow_activity_join16.gif" />
+		<split actionCommand="workflow_activity_subflow" text=""
+			tooltip="" icon="workflow_activity_subflow16.gif" />
+		<split actionCommand="workflow_activity_wait" text="" tooltip=""
+			icon="workflow_activity_wait16.gif" enabled="false" />
+	</splits>
+	<group id="draw">
+		<!-- 新建业务项 -->
+		<button actionCommand="add_business_item" text="" tooltip="新增业务项" />
+		<button actionCommand="new_transition" tooltip="绘制迁移" />
+		<button actionCommand="new_note" tooltip="添加备注" icon="note.gif" />
+		<button actionCommand="move_all" />
+
+		<!-- 
+		<button actionCommand="zone" /> -->
+
+		<button actionCommand="regular" selected="true" />
+	</group>
+	<toogle actionCommand="remanent_oper" tooltip="" selected="false" />
+	<separator />
+	<button actionCommand="zoomIn" enabled="false" />
+	<button actionCommand="zoomOut" enabled="false" />
+
+</toolbar>

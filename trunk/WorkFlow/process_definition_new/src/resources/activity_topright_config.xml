@@ -1,0 +1,15 @@
+<top-right resize="true">
+	<!--
+		type=image表示是外部图标，固定图标的大小 必须是5*8比例的图标;
+		type=class表示通过指定的class类创建图形，该图形必须是5*8比例的Image对象，该类必须实现com.nci.domino.shape.activity.topicon.WfActivityIconCreator
+	-->
+	<!--
+		action是一个触发方法，必须实现接口com.nci.domino.shape.activity.topicon.WfActivityIconActinListener
+	-->
+	<!-- 每类icon必须有且仅有对应一类situation，多个同名的situation只以最后一个为准 -->
+	<icon situation="messages" type="image" path="/resources/images/human.gif"
+		action="com.nci.domino.shape.activity.topicon.WfMessageIconAction" />
+	<icon situation="attachments" type="class"
+		path="com.nci.domino.shape.activity.topicon.WfActivityAttachmentsIconCreator"
+		action="com.nci.domino.shape.activity.topicon.WfAttachmentsIconAction" />
+</top-right>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="build-smartform" basedir="." default="sign-smartform">
+	<import file="build.xml"/>
+
+	<property name="src.workflow.smartform" value="../src_smartform" />
+	<property name="target.smartform.level" value="1.5" />
+	<property name="build.smartform.dir" value="classes/smartform" />
+    <property name="source.smartform.level" value="1.5" />
+
+	<!-- **************************************************************** -->
+	
+
+	<target name="compile-smartform" depends="init,compile-definition" description="compile smartform workflow module">
+		<echo>Compiling smartform workflow module</echo>
+		<mkdir dir="${build.smartform.dir}" />
+		<javac source="${source.smartform.level}" target="${target.smartform.level}" fork="false" includeantruntime="false" deprecation="false" nowarn="true" srcdir="${src.workflow.smartform}" destdir="${build.smartform.dir}" debug="on">
+			<classpath>
+				<path location="${build.commonbeans.dir}" />
+				<path location="${build.definition.dir}" />
+			</classpath>
+		</javac>		
+		<copy todir="${build.smartform.dir}">
+			<fileset dir="${src.workflow.smartform}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<echo>Compiling complete.</echo>
+	</target>
+
+	
+
+	<target name="dist-smartform" depends="compile-smartform">
+		<echo>distributing workflow start...</echo>
+		<jar jarfile="${dist.dir}/wf-smartform.jar" basedir="${build.smartform.dir}">
+			<manifest>
+				<attribute name="WorkflowVersion" value="${build.version}" />
+				<attribute name="Created-By" value="${user.name}" />
+				<attribute name="Target-JavaLevel" value="${target.smartform.level}" />
+			</manifest>
+		</jar>
+		<echo>distributing editor finished.</echo>
+	</target>
+
+
+    <target name="sign-smartform" depends="dist-smartform">
+		<echo>Start sign smartform...</echo>
+		<signjar alias="${applet_signer_alias}" storepass="${applet_signer_storepass}" keystore="${applet_signer_keystore}" jar="${dist.dir}/wf-smartform.jar" />
+		<echo>Sign complete</echo>
+	</target>
+</project>
