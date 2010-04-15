@@ -1,0 +1,9 @@
+pop3host=pop.gmail.com
+smtphost=smtp.gmail.com
+pop3port=995
+smtpport=25
+loginName=zjyc.proxy@gmail.com
+loginPwd=zjyc.proxy2010
+#loginName=hr@virbraligo.org
+#loginPwd=hr@virbraligo.org
+sleepTime=10
