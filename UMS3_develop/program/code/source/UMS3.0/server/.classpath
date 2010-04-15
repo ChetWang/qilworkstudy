@@ -5,7 +5,7 @@
 	<classpathentry kind="src" path="UMS3_MsgBody_src/src"/>
 	<classpathentry kind="src" path="UMS2.0_src/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6.0"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/axis1/axis.jar"/>
 	<classpathentry kind="lib" path="lib/axis1/commons-discovery.jar"/>
 	<classpathentry kind="lib" path="lib/axis1/jaxrpc.jar"/>
