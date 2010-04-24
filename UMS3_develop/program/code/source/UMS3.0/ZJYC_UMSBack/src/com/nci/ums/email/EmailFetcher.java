@@ -60,20 +60,6 @@ public class EmailFetcher extends Thread {
 	}
 
 	private void init() {
-		if (store != null) {
-			try {
-				store.close();
-			} catch (MessagingException e) {
-				e.printStackTrace();
-			}
-		}
-		if (folder != null) {
-			try {
-				folder.close(true);
-			} catch (MessagingException e) {
-				e.printStackTrace();
-			}
-		}
 		this.sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		Properties mailprop = new Properties();
 		try {
@@ -195,13 +181,15 @@ public class EmailFetcher extends Thread {
 	}
 
 	public void run() {
-		init();
 		while (true) {
 			try {
-				if (store.isConnected() == false) {
-					init();
+				try {
+					EmailFetcher fetcher = new EmailFetcher();
+					fetcher.init();
+					fetcher.fetch();
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-				fetch();
 			} finally {
 				Connection conn = null;
 				try {
@@ -228,9 +216,6 @@ public class EmailFetcher extends Thread {
 
 	public void fetch() {
 		try {
-			if (!this.store.isConnected()) {
-				init();
-			}
 			this.folder = this.store.getDefaultFolder();
 			this.folder = this.folder.getFolder("INBOX");
 			this.folder.open(2);
@@ -291,9 +276,11 @@ public class EmailFetcher extends Thread {
 												+ "..."
 												: painTextContent;
 									}
-									String xml = sendMessage(contact
-											.getProperty(s[0].trim()), "你的"
-											+ s[0] + "收到一封邮件！\n标题：\n"
+									String receivers = contact.getProperty(s[0]
+											.trim());
+									String xml = sendMessage(receivers
+											.split(","), "你的" + s[0]
+											+ "收到一封邮件！\n标题：\n"
 											+ emailMsgs[i].getSubject()
 											+ "；\n来自：" + from[0].getAddress()
 											+ "；\n内容：\n" + sendText);
