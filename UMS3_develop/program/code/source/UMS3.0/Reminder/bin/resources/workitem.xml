@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <smtpserver ip="218.108.110.67" port="25" />
+    <sender name="ums" psw="ums" alias="xuzhy@nci.com.cn"/>
+	<receivers>
+		<receiver mail="zhangzy@nci.com.cn" mobile="13575471065"/>
+		<receiver mail="zhangsf@nci.com.cn" mobile="15858177585"/>       
+		<receiver mail="gongjj@nci.com.cn" mobile="13857142701"/>
+		<receiver mail="yux@nci.com.cn" mobile="13958011367"/>
+		<receiver mail="zhouhm@nci.com.cn" mobile="15906622497"/>
+		<receiver mail="zhangrx@nci.com.cn" mobile="13588878224"/>
+		<receiver mail="tanh@nci.com.cn" mobile="13588056440"/>		
+		<receiver mail="lic@nci.com.cn" mobile="15925693648"/>
+		<receiver mail="yangsg@nci.com.cn" mobile="13989818043"/>
+		<receiver mail="yuanj@nci.com.cn" mobile=""/>
+		<receiver mail="dingwl@nci.com.cn" mobile=""/>
+		<receiver mail="zhoul@nci.com.cn" mobile="15867122718"/>
+		<receiver mail="shenyg@nci.com.cn" mobile=""/>
+		<receiver mail="wangpf@nci.com.cn" mobile=""/>
+		<receiver mail="maizb@nci.com.cn" mobile="13588701336"/>
+		<receiver mail="dongxf@nci.com.cn" mobile="13606632749"/>
+    </receivers>
+    <workitem  subject="圣旨到～～工时" content="填工时啦！忘填罚款！ http://192.168.0.108:7001/pms/jfw/component/uum/login.jsp
+ 今天是周一，不要填错周次！    DO-NOT-REPLY"/>
+</root>
