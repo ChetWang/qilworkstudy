@@ -19,7 +19,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 public class WorkItemInputReminder {
-	public void send(String xmlName) throws Exception {
+	public void send(String xmlName, boolean ssl) throws Exception {
 		Document doc = DocumentBuilderFactory.newInstance()
 				.newDocumentBuilder().parse(
 						super.getClass().getResourceAsStream(
@@ -44,6 +44,13 @@ public class WorkItemInputReminder {
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.transport.protocol", "smtp");
 
+		props.put("mail.smtp.auth", "true");
+		props.setProperty("mail.smtp.socketFactory.port", smtpport);
+		if (ssl) {
+			props.setProperty("mail.smtp.socketFactory.class",
+					"javax.net.ssl.SSLSocketFactory");
+			props.setProperty("mail.smtp.socketFactory.fallback", "false");
+		}
 		Session session = Session.getInstance(props, auth);
 		session.setDebug(false);
 
@@ -79,8 +86,9 @@ public class WorkItemInputReminder {
 
 	public static void main(String[] args) throws Exception {
 		if ((args == null) || (args.length == 0)) {
-			args = new String[] { "workitem.xml" };
+			args = new String[] { "card.xml", "ssl=true" };
 		}
-		new WorkItemInputReminder().send(args[0]);
+		boolean ssl = args[1].split("=")[1].equals("true");
+		new WorkItemInputReminder().send(args[0], ssl);
 	}
 }
