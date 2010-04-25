@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <smtpserver ip="218.108.110.67" port="25" />
-    <sender name="ums" psw="ums" alias="xuzhy@nci.com.cn"/>
+    <smtpserver ip="smtp.gmail.com" port="465" />
+    <sender name="cardinfo2010@gmail.com" psw="cardinfo2010nci" alias="cardinfo@gmail.com"/>
 	<receivers>
 		<receiver mail="qil.wong@gmail.com" mobile="13819155409"/>
     </receivers>
