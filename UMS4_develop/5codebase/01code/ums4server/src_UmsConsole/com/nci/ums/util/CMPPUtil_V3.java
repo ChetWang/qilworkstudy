@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.commerceware.cmpp.CMPP;
 import com.commerceware.cmpp.DeliverFailException;
@@ -13,8 +14,6 @@ import com.commerceware.cmpp.cmppe_result;
 import com.commerceware.cmpp.conn_desc;
 import com.nci.ums.channel.CMPPBean;
 import com.nci.ums.channel.channelinfo.MediaInfo;
-
-import edu.emory.mathcs.backport.java.util.concurrent.ConcurrentHashMap;
 
 public class CMPPUtil_V3 {
 

@@ -18,6 +18,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
@@ -29,8 +30,6 @@ import com.nci.ums.util.DialectUtil;
 import com.nci.ums.util.DynamicUMSStreamReader;
 import com.nci.ums.util.Res;
 import com.nci.ums.util.uid.UMSUID;
-
-import edu.emory.mathcs.backport.java.util.Collections;
 
 /**
  * 数据库优化器，进行分表，整理历史等工作

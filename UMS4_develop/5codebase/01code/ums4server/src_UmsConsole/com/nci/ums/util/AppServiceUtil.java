@@ -8,10 +8,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.nci.ums.v3.service.ServiceInfo;
-
-import edu.emory.mathcs.backport.java.util.concurrent.ConcurrentHashMap;
 
 /**
  * UMS服务器中关于服务的实用类，包含活动的服务和转发服务定义信息等。

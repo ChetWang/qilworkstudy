@@ -20,6 +20,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.nci.ums.channel.ChannelIfc;
 import com.nci.ums.channel.DefaultChannelIfcImpl;
@@ -27,8 +28,6 @@ import com.nci.ums.channel.channelinfo.MediaInfo;
 import com.nci.ums.channel.outchannel.NCIOutChannel_V3;
 import com.nci.ums.util.Res;
 import com.nci.ums.util.Util;
-
-import edu.emory.mathcs.backport.java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 2007.10.20：UMS3.0，新增outMediaInfoHash和inMediaInfoHash的getter、setter方法

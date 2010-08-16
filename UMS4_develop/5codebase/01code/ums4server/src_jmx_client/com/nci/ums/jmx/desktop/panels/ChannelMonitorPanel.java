@@ -9,13 +9,11 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.Vector;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JMenuItem;
@@ -35,12 +33,8 @@ import com.jidesoft.swing.JideSplitButton;
 import com.nci.ums.jmx.ConsoleUtil;
 import com.nci.ums.jmx.desktop.DesktopConsole;
 import com.nci.ums.jmx.desktop.HotKey;
-import com.nci.ums.jmx.desktop.JMXLogger;
 import com.nci.ums.jmx.desktop.bean.SwingWorker;
 import com.nci.ums.media.MediaBean;
-//import com.nci.ums.util.Res;
-
-import edu.emory.mathcs.backport.java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 

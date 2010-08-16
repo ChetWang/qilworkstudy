@@ -10,6 +10,10 @@ import java.text.SimpleDateFormat;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import com.nci.ums.transmit.common.TransmitData;
 import com.nci.ums.transmit.common.UMSTransmitException;
@@ -18,11 +22,6 @@ import com.nci.ums.transmit.common.message.CommonMessage;
 import com.nci.ums.transmit.common.message.ControlCode;
 import com.nci.ums.transmit.common.message.GlobalConstant;
 import com.nci.ums.transmit.common.message.UnPackageMessage;
-
-import edu.emory.mathcs.backport.java.util.concurrent.BlockingQueue;
-import edu.emory.mathcs.backport.java.util.concurrent.ConcurrentHashMap;
-import edu.emory.mathcs.backport.java.util.concurrent.CopyOnWriteArrayList;
-import edu.emory.mathcs.backport.java.util.concurrent.LinkedBlockingQueue;
 
 public class TransmitClient {
 
