@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Vector;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.swing.Timer;
 
@@ -42,8 +43,6 @@ import com.nci.ums.v3.service.ServiceInfo;
 import com.nci.ums.v3.service.common.UMSClientWS;
 import com.nci.ums.v3.service.impl.UMSReceiveService;
 import com.thoughtworks.xstream.XStream;
-
-import edu.emory.mathcs.backport.java.util.concurrent.ConcurrentHashMap;
 
 public class ReceiveCenter implements UMSModule, Runnable {
 

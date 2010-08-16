@@ -4,14 +4,10 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-import com.nci.ums.periphery.application.AppInfo;
-import com.nci.ums.transmit.common.TransmitData;
 import com.nci.ums.transmit.common.message.ControlCode;
 import com.nci.ums.util.Res;
-import com.nci.ums.util.UMSExecutorPool;
-
-import edu.emory.mathcs.backport.java.util.concurrent.ConcurrentHashMap;
 
 public class SubTransmitServer extends Thread {
 

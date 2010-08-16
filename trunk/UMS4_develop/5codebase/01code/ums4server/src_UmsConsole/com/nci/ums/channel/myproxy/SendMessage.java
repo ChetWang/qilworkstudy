@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.huawei.insa2.comm.PException;
 import com.huawei.insa2.comm.cmpp.message.CMPPDeliverMessage;
@@ -32,8 +33,6 @@ import com.nci.ums.util.Util;
 import com.nci.ums.v3.fee.FeeBean;
 import com.nci.ums.v3.message.UMSMsg;
 import com.nci.ums.v3.message.basic.BasicMsg;
-
-import edu.emory.mathcs.backport.java.util.concurrent.ConcurrentHashMap;
 
 public class SendMessage {
 

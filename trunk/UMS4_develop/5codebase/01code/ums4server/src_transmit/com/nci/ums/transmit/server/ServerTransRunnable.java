@@ -6,6 +6,8 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Map;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import com.nci.ums.transmit.common.SocketCallBackRunnable;
 import com.nci.ums.transmit.common.TransmitData;
@@ -16,9 +18,6 @@ import com.nci.ums.transmit.common.message.GlobalConstant;
 import com.nci.ums.transmit.common.message.UnPackageMessage;
 import com.nci.ums.util.Res;
 import com.nci.ums.util.Util;
-
-import edu.emory.mathcs.backport.java.util.concurrent.BlockingQueue;
-import edu.emory.mathcs.backport.java.util.concurrent.LinkedBlockingQueue;
 
 public class ServerTransRunnable extends SocketCallBackRunnable {
 

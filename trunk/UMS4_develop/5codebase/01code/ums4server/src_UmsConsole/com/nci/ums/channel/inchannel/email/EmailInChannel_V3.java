@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.mail.BodyPart;
 import javax.mail.Flags;
@@ -33,8 +34,6 @@ import com.nci.ums.v3.message.basic.Participant;
 import com.nci.ums.v3.service.ServiceInfo;
 import com.sun.mail.pop3.POP3Folder;
 import com.thoughtworks.xstream.XStream;
-
-import edu.emory.mathcs.backport.java.util.concurrent.ConcurrentHashMap;
 
 public class EmailInChannel_V3 extends InChannel_V3 {
 
