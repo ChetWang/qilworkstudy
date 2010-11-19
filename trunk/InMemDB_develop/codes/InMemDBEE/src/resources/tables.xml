@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tables xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="tables.xsd">
+	<!-- 注意！！！！！所有表名、列名必须大写！！！！！！ maxRowCount="0"表示不做行数限制 -->
+	<table name="TTTT" maxRowCount="400000">
+		<column name="II" type="int" length="" primarykey="true" index="false" />
+		<column name="AA" type="varchar" length="100" primarykey="true"
+			index="false" />
+		<column name="BB" type="varchar" length="400" primarykey="false"
+			index="false" />
+	</table>
+	<table name="PPPP" maxRowCount="0">
+		<column name="II" type="int" length="" primarykey="true" index="false" />
+		<column name="AA" type="varchar" length="100" primarykey="false"
+			index="false" />
+		<column name="BB" type="varchar" length="400" primarykey="false"
+			index="false" />
+	</table>
+	<table name="AAAA" maxRowCount="4000">
+		<column name="II" type="int" length="" primarykey="true" index="false" />
+		<column name="AA" type="varchar" length="100" primarykey="false"
+			index="false" />
+		<column name="BB" type="varchar" length="400" primarykey="false"
+			index="false" />
+	</table>
+	<table name="FFFF" maxRowCount="20000">
+		<column name="II" type="int" length="" primarykey="true" index="false" />
+		<column name="AA" type="varchar" length="100" primarykey="false"
+			index="false" />
+		<column name="BB" type="varchar" length="400" primarykey="false"
+			index="false" />
+	</table>
+
+</tables>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources>
+	<pool name="inner" default="true" type="jdbc">
+		<!--注意：inner名称不能修改！！！ inner的配置属性见dbserver.properties  -->
+		<param name="initial_size" value="400" />
+		<param name="max_size" value="800" />
+		<param name="min_size" value="400" />
+		<param name="idle_time" value="5000" />
+	</pool>
+
+<!--  
+         持久层的数据源 -->
+	<pool name="persistence" type="jdbc">
+		<param name="url" value="jdbc:oracle:thin:@192.168.6.23:1521:XE" />
+		<param name="driver" value="oracle.jdbc.driver.OracleDriver" />
+		<param name="user" value="qil" />
+		<param name="password" value="password" />
+		<param name="initial_size" value="20" />
+		<param name="max_size" value="150" />
+		<param name="min_size" value="10" />
+		<param name="idle_time" value="1000" />
+	</pool>
+	
+	<!-- 
+	<pool name="persistence" type="jndi" jndiprefix="java:comp/env" jndiname="jdbc/oracle" >
+	    
+	</pool>
+	 -->
+
+<!-- 
+          实时数据的数据源
+	<pool name="realtime" >
+		<param name="url" value="" />
+		<param name="driver" value="" />
+		<param name="user" value="" />
+		<param name="password" value="" />
+		<param name="initial_size" value="" />
+		<param name="max_size" value="" />
+		<param name="min_size" value="" />
+		<param name="idle_time" value="" />
+	</pool>-->
+</datasources>
