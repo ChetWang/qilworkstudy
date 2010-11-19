@@ -1,0 +1,1 @@
+java -Xms256m -Xmx1024m -cp ./build/classes;./WebContent/WEB-INF/lib/* com.creaway.inmemdb.performance.PerformanceTest threadCount 10 rowCountPerThread 10000 maxTimes 5

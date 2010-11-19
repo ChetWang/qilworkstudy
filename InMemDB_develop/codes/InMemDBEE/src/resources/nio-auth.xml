@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- user_auth为true表示外部连接进入需要用户认证，ip_auth为true表示外部连接进入需要ip认证 -->
+<auth user_auth="true" ip_auth="true">
+	<users>
+		<user name="creaway" password="wql" />
+		<user name="test" password="testtest" />
+	</users>
+	
+	<allowed_ip>
+		<ip address="192.168.6.23" />
+		<ip address="192.168.6.29" />
+		<ip address="192.168.6.119" />
+	</allowed_ip>
+</auth>
