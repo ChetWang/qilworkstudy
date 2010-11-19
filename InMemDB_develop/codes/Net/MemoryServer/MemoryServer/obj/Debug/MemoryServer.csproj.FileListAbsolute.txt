@@ -1,0 +1,5 @@
+E:\Project\MemoryTrans\MemoryServer\MemoryServer\obj\Debug\ResolveAssemblyReference.cache
+E:\Project\MemoryTrans\MemoryServer\MemoryServer\bin\Debug\MemoryServer.exe
+E:\Project\MemoryTrans\MemoryServer\MemoryServer\bin\Debug\MemoryServer.pdb
+E:\Project\MemoryTrans\MemoryServer\MemoryServer\obj\Debug\MemoryServer.exe
+E:\Project\MemoryTrans\MemoryServer\MemoryServer\obj\Debug\MemoryServer.pdb
