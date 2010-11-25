@@ -51,16 +51,17 @@ public class TriggerSupport implements DBModule {
 			@Override
 			protected void doOnChange() {
 				TriggerSupport.this.start();
+				reRegisterPushListeners();
 			}
 		};
 		fwd.setName("trigger support watch dog");
-		fwd.setDelay(5000);
+		fwd.setDelay(3000);
 		fwd.start();
 	}
 
 	protected void start() {
 		dropTriggers();
-
+		triggerList.clear();
 		DBLogger.log(DBLogger.INFO, "启动触发器支持模块，开始创建内存数据库触发器...");
 		Document triggeronfig = Functions.getXMLDocument(configFile);
 		NodeList triggers = triggeronfig.getDocumentElement()
@@ -95,8 +96,6 @@ public class TriggerSupport implements DBModule {
 			}
 			st.close();
 			conn.commit();
-
-			reRegisterPushListeners();
 			DBLogger.log(DBLogger.INFO, "内存数据库触发器创建完成");
 		} catch (SQLException e) {
 			DBLogger.log(DBLogger.ERROR, "创建触发器失败！", e);
@@ -116,6 +115,8 @@ public class TriggerSupport implements DBModule {
 				.getInstance().getPushService().getTempRegisteredListeners();
 		PushServiceIfc pushService = InMemDBServer.getInstance()
 				.getPushService();
+		
+		// pushService.removeAllListeners();
 		for (TmpRegisteredListenerObj tmp : tempListeners) {
 			Object o = tmp.lisObj;
 			if (o instanceof PushActionListener) {
@@ -138,6 +139,15 @@ public class TriggerSupport implements DBModule {
 			}
 		}
 		tempListeners.clear();
+	}
+
+	/**
+	 * 重构触发器模块
+	 */
+	public void rebuildTriggers() {
+		DBLogger.log(DBLogger.INFO, "重构触发器");
+		start();
+		reRegisterPushListeners();
 	}
 
 	@Override

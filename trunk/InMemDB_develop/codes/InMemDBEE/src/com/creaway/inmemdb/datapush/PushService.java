@@ -108,6 +108,10 @@ public class PushService implements PushServiceIfc {
 				+ String.valueOf(triggerType));
 	}
 
+	public void removeAllListeners() {
+		pushTriggers.clear();
+	}
+
 	@Override
 	public boolean addRemoteSocketChannelListener(int command, int triggerType,
 			SelectionKey key, RemotePushActionListener l) {
@@ -157,5 +161,32 @@ public class PushService implements PushServiceIfc {
 	public List<TmpRegisteredListenerObj> getTempRegisteredListeners() {
 		return tempRegisteredListeners;
 	}
-	
+
+	private boolean tmpSchedual = false;
+
+	public void schedualTmpRegisteredListeners() {
+		synchronized (this) {
+			if (!tmpSchedual) {
+				tmpSchedual = true;
+				new Thread() {
+					public void run() {
+						try {
+							sleep(3000);
+
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						} finally {
+							if (tempRegisteredListeners.size() > 0) {
+								DBLogger.log(DBLogger.WARN,
+										"注册监听对象缓存有效时间已到，清除TempRegisteredListers");
+								tempRegisteredListeners.clear();
+							}
+							tmpSchedual = false;
+						}
+					}
+				}.start();
+			}
+		}
+	}
+
 }

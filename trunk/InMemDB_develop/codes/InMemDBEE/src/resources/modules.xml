@@ -3,8 +3,8 @@
 	<!-- 初始化的几个核心模块的顺序不能随便更换 -->
 	<module class="com.creaway.inmemdb.table.TableSupport" />
 <!--
-	<module class="com.creaway.inmemdb.cluster.ClusterSupport" />
-	<module class="com.creaway.inmemdb.persistent.PersistentBackupRestore" />-->
+	<module class="com.creaway.inmemdb.cluster.ClusterSupport" />-->
+	<module class="com.creaway.inmemdb.persistent.PersistentBackupRestore" />
 	<module class="com.creaway.inmemdb.trigger.TriggerSupport" />
 	<module class="com.creaway.inmemdb.remote.RemoteTcpServer" />
 </modules>

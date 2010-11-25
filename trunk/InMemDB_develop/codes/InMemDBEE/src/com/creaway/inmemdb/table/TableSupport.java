@@ -22,6 +22,7 @@ import org.w3c.dom.NodeList;
 import com.creaway.inmemdb.core.InMemDBServer;
 import com.creaway.inmemdb.core.InMemDBServerH2;
 import com.creaway.inmemdb.trigger.MaxRowLimitTrigger;
+import com.creaway.inmemdb.trigger.TriggerSupport;
 import com.creaway.inmemdb.util.ConnectionManager;
 import com.creaway.inmemdb.util.DBLogger;
 import com.creaway.inmemdb.util.Functions;
@@ -35,6 +36,7 @@ import com.creaway.inmemdb.util.Functions;
 public class TableSupport implements TableSupportIfc {
 
 	/**
+	 * 
 	 * 表结构的Map对象，主键是表名，值是列的顺序集合
 	 */
 	private Map<String, String[]> tableStructures;
@@ -53,7 +55,11 @@ public class TableSupport implements TableSupportIfc {
 	public void startModule(Map<?, ?> params) {
 		Connection conn = ConnectionManager.getConnection();
 		DBLogger.log(DBLogger.INFO, "启动表支持模块，开始创建内存数据库表...");
-		createTable(conn, true);
+		try {
+			initTable(conn, true, null);
+		} finally {
+			ConnectionManager.releaseConnection(conn);
+		}
 		DBLogger.log(DBLogger.INFO, "内存数据库表创建完成!");
 		try {
 			InMemDBServer.getInstance().registerMBean(
@@ -67,11 +73,18 @@ public class TableSupport implements TableSupportIfc {
 		inMemRowLimiter.start();
 	}
 
-	public void rebuildTable() {
-
-	}
-
-	public void createTable(Connection conn, boolean storeTableStructure) {
+	/**
+	 * 初始化数据库表，根据tables.xml而来
+	 * 
+	 * @param conn
+	 *            指定的链接，可以是内存数据库自身链接，也可以是持久层链接
+	 * @param storeTableStructure
+	 *            是否创建表格式并进行缓存，只需缓存一次即可
+	 * @param tableNeedCreate
+	 *            表名，null表示所有表
+	 */
+	private void initTable(Connection conn, boolean storeTableStructure,
+			String tableNeedCreate) {
 		if (storeTableStructure) {
 			tableStructures = new HashMap<String, String[]>();
 		}
@@ -79,12 +92,20 @@ public class TableSupport implements TableSupportIfc {
 				"/resources/tables.xml"));
 		NodeList tables = tableConfig.getDocumentElement()
 				.getElementsByTagName("table");
+		if (tableNeedCreate != null) {
+			tableNeedCreate = tableNeedCreate.toUpperCase();
+		}
 		try {
 			// ConnectionManager.setSlave(conn, true);
 			Statement st = conn.createStatement();
 			for (int i = 0; i < tables.getLength(); i++) {
 				Element table = (Element) tables.item(i);
 				String tableName = table.getAttribute("name").toUpperCase();
+				if (tableNeedCreate != null
+						&& !tableNeedCreate.trim().equals("")
+						&& !tableName.equals(tableNeedCreate)) {
+					continue;
+				}
 				int maxRowCount = -1;
 				if (!table.getAttribute("maxRowCount").equals("")) {
 					maxRowCount = Integer.parseInt(table
@@ -229,8 +250,20 @@ public class TableSupport implements TableSupportIfc {
 		} catch (SQLException e) {
 			DBLogger.log(DBLogger.ERROR, "创建数据库表失败!", e);
 			ConnectionManager.rollbackConnection(conn);
-		} finally {
-			ConnectionManager.releaseConnection(conn);
+		}
+	}
+
+	public void createTable(Connection conn, boolean storeTableStructure,
+			String tableNeedCreate, boolean innerDBTable) {
+		DBLogger.log(DBLogger.INFO, "创建数据库表：" + tableNeedCreate);
+		initTable(conn, storeTableStructure, tableNeedCreate);
+		// 重构触发器，这在新加入表、修改表时非常有用(内存数据库表，而不是持久层表）
+		if (innerDBTable) {
+			TriggerSupport triggerSupport = (TriggerSupport) InMemDBServer
+					.getInstance().getModule(TriggerSupport.class);
+			if (triggerSupport != null) {
+				triggerSupport.rebuildTriggers();
+			}
 		}
 	}
 
@@ -239,7 +272,7 @@ public class TableSupport implements TableSupportIfc {
 		DBLogger.log(DBLogger.INFO, "关闭数据库表支持模块");
 		inMemRowLimiter.stopLimiter();
 		inMemRowLimiter = null;
-		
+
 		Connection conn = ConnectionManager.getConnection();
 		try {
 			Statement st = conn.createStatement();
@@ -273,9 +306,12 @@ public class TableSupport implements TableSupportIfc {
 			Connection conn = ConnectionManager.getConnection();
 			try {
 				Statement st = conn.createStatement();
-				st.execute("DROP TABLE " + tableName);
+				try {
+					st.execute("DROP TABLE " + tableName);
+				} catch (SQLException ex) {
+				}
 				getTableStructure().remove(tableName);
-				createTable(conn, true);
+				createTable(conn, true, tableName, true);
 				DBLogger.log(DBLogger.INFO, "重建内存数据库表" + tableName + "成功");
 			} catch (SQLException e) {
 				DBLogger.log(DBLogger.ERROR, "重建内存数据库表" + tableName + "失败", e);

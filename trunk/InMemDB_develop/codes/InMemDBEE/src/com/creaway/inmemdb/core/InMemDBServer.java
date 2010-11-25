@@ -98,15 +98,26 @@ public abstract class InMemDBServer implements InMemDBServerMBean {
 	protected InMemDBServer() {
 		System.out.println(getClass().getClassLoader().getClass().getName());
 		db = this;
+		/*
+		 * Log4j实时生效方式
+		 * 每两秒钟检测一次文件是否被更改，如果更改，则自动重新读取配置
+		 * Add by : shuihonghu
+		 * Add Date : 2010-11-16
+		 */
 		PropertyConfigurator.configureAndWatch(
 				getClass().getResource("/log4j.properties").getFile(), 2000);
 		try {
-			mbs = ManagementFactory.getPlatformMBeanServer();
+			mbs = ManagementFactory.getPlatformMBeanServer();//返回平台 MBeanServer Add by : shuihonghu
 			registerMBean(this,
 					new ObjectName(MBEAN_PREFIX + SERVER_MBEAN_NAME));
 		} catch (Exception e) {
 			DBLogger.log(DBLogger.ERROR, "", e);
 		}
+		/*
+		 * getRuntime() : 返回与当前 Java 应用程序相关的运行时对象
+		 * addShutdownHook(Thread hook) : 注册新的虚拟机来关闭钩子
+		 * Add by : shuihonghu
+		 */
 		Runtime.getRuntime().addShutdownHook(
 				new Thread("InMemDB Server Shutdown") {
 					public void run() {

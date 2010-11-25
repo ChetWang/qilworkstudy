@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
@@ -18,9 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import javax.management.ObjectName;
-import javax.sql.RowSet;
 
-import com.creaway.inmemdb.InMemSession;
 import com.creaway.inmemdb.cluster.ClusterIfc;
 import com.creaway.inmemdb.cluster.CommitRollbackNote;
 import com.creaway.inmemdb.cluster.DBOperationNote;
@@ -33,7 +32,6 @@ import com.creaway.inmemdb.table.TableSupportIfc;
 import com.creaway.inmemdb.trigger.MaxRowCheckSignal;
 import com.creaway.inmemdb.util.ConnectionManager;
 import com.creaway.inmemdb.util.DBLogger;
-import com.sun.rowset.CachedRowSetImpl;
 
 /**
  * 持久层实时数据持久化实现类，用于实时数据的持久化，对应内存数据库的所有操作
@@ -149,63 +147,76 @@ public class PersistentBackupRestore implements DBModule,
 	public void createPersistanceStructure() {
 		synchronized (backupRestoreLock) {
 			Connection conn = ConnectionManager.getPersistentConnection();
-			TableSupportIfc tableSupport = (TableSupportIfc) InMemDBServer
-					.getInstance().getModule(TableSupportIfc.class);
-			Set<String> tables = tableSupport.getTableStructure().keySet();
-			for (String demoTable : tables) {
-				boolean structureCreated = true;
-				try {
-					Statement st = conn.createStatement();
-					st.executeQuery("SELECT * FROM " + demoTable); // 这个语句是判断表有没有建立
-					st.close();
-				} catch (SQLException e) {
-					structureCreated = false;
+			try {
+				TableSupportIfc tableSupport = (TableSupportIfc) InMemDBServer
+						.getInstance().getModule(TableSupportIfc.class);
+				Set<String> tables = tableSupport.getTableStructure().keySet();
+				for (String demoTable : tables) {
+					boolean structureCreated = true;
+					try {
+						Statement st = conn.createStatement();
+						st.executeQuery("SELECT * FROM " + demoTable); // 这个语句是判断表有没有建立
+						st.close();
+					} catch (SQLException e) {
+						structureCreated = false;
+					}
+					if (!structureCreated) {
+						DBLogger.log(DBLogger.INFO, "开始创建持久层对应数据库表...");
+						tableSupport.createTable(conn, false, null,false);
+						DBLogger.log(DBLogger.INFO, "持久层对应数据库表创建完成!");
+					}
 				}
-				if (!structureCreated) {
-					DBLogger.log(DBLogger.INFO, "开始创建持久层对应数据库表...");
-					tableSupport.createTable(conn, false);
-					DBLogger.log(DBLogger.INFO, "持久层对应数据库表创建完成!");
-				}
+			} finally {
+				ConnectionManager.releaseConnection(conn);
 			}
 		}
 	}
 
 	/**
 	 * 重新创建持久层结构
+	 * 
+	 * @param rebuildTable
+	 *            ,重建的表名，null或""表示所有表
 	 */
-	public void rebuildPersistenceStructure(String mbeanUser, String password) {
+	public void rebuildPersistenceStructure(String mbeanUser, String password,
+			String rebuildTable) {
 		synchronized (backupRestoreLock) {
 			if (InMemDBServer.getInstance().checkJMXSecurity(mbeanUser,
 					password)) {
-				rebuild();
+				rebuild(rebuildTable);
 			}
 		}
 	}
 
 	/**
 	 * 重新构造表结构
+	 * 
+	 * @param tableName
+	 *            ,重建的表名，null或""表示所有表
 	 */
-	private void rebuild() {
+	private void rebuild(String tableName) {
 		Connection conn = ConnectionManager.getPersistentConnection();
-		TableSupportIfc tableSupport = (TableSupportIfc) InMemDBServer
-				.getInstance().getModule(TableSupportIfc.class);
-		Set<String> tables = tableSupport.getTableStructure().keySet();
-		for (String demoTable : tables) {
-			try {
-				Statement st = conn.createStatement();
-				st.execute("DROP TABLE " + demoTable); // 这个语句是判断表有没有建立
-				st.close();
-			} catch (SQLException e) {
+		try {
+			TableSupportIfc tableSupport = (TableSupportIfc) InMemDBServer
+					.getInstance().getModule(TableSupportIfc.class);
+			Set<String> tables = tableSupport.getTableStructure().keySet();
+			for (String demoTable : tables) {
+				try {
+					Statement st = conn.createStatement();
+					st.execute("DROP TABLE " + demoTable); // 这个语句是判断表有没有建立
+					st.close();
+				} catch (SQLException e) {
+				}
+				tableSupport.createTable(conn, false, tableName,false);
+				DBLogger.log(DBLogger.INFO, "重新创建持久层对应数据库表");
 			}
-			tableSupport.createTable(conn, false);
-			DBLogger.log(DBLogger.INFO, "重新创建持久层对应数据库表");
+		} finally {
+			ConnectionManager.releaseConnection(conn);
 		}
 	}
 
-	/**
-	 * 从持久层恢复
-	 */
-	public void restoreFromPersistence(String mbeanUser, String password) {
+	public void restoreFromPersistence(String mbeanUser, String password,
+			String restoreTable) {
 		synchronized (backupRestoreLock) {
 			if (InMemDBServer.getInstance().checkJMXSecurity(mbeanUser,
 					password)) {
@@ -216,7 +227,7 @@ public class PersistentBackupRestore implements DBModule,
 						.getModule(ClusterIfc.class);
 				if (cluster.getCurrentClusterAddress().equals(
 						cluster.getMasterAddress())) {
-					restore();
+					restore(restoreTable);
 				} else {
 					DBLogger.log(DBLogger.WARN,
 							"只有在集群服务数为1, 并且当前Master是自身的时候才能进行持久层恢复，其他情况，集群机器都能自我恢复");
@@ -228,14 +239,20 @@ public class PersistentBackupRestore implements DBModule,
 	/**
 	 * 从持久层恢复
 	 */
-	private void restore() {
+	private void restore(String restoreTable) {
 		Connection pers_conn = ConnectionManager.getPersistentConnection();
 
 		Connection in_conn = SlaveConnectionFactory.getSlaveConnection();
 		try {
+			Set<String> tables;
 			TableSupportIfc tableSupport = (TableSupportIfc) InMemDBServer
 					.getInstance().getModule(TableSupportIfc.class);
-			Set<String> tables = tableSupport.getTableStructure().keySet();
+			if (restoreTable == null || restoreTable.trim().equals("")) {
+				tables = tableSupport.getTableStructure().keySet();
+			} else {
+				tables = new HashSet<String>();
+				tables.add(restoreTable.toUpperCase());
+			}
 			for (String demoTable : tables) {
 				try {
 					// 清空内存数据库表中的数据

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <triggers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="triggers.xsd">
-
 	<!-- 内存数据库中的触发器，有些是内置的，比如集群触发、持久备份触发等，不在这里定义，由相关的模块自动生成 -->
 
 	<!-- 这里定义的是业务上需要处理的触发器，如行数限制，数据处理监听，数据时效性限制等 -->
@@ -29,6 +28,7 @@
 			command="1001" description="test trigger" />
 	</group> 
 	<group>
+		
 		<trigger table="TTTT" name="PER__INS2" type="INSERT"
 			before="false" eachrow="true" class="com.creaway.inmemdb.trigger.PushTriggerTest"
 			command="7010" description="test trigger" />

@@ -9,7 +9,6 @@ package com.creaway.inmemdb.table;
 import java.sql.Connection;
 import java.util.Map;
 
-
 /**
  * 内存数据库表支持模块，用于创建和维护用户定义的表、索引等数据库表内容
  * 
@@ -32,11 +31,12 @@ public interface TableSupportIfc extends TableSupportMBean {
 	 *            指定的链接，可以是内存数据库自身链接，也可以是持久层链接
 	 * @param storeTableStructure
 	 *            是否创建表格式并进行缓存，只需缓存一次即可
+	 * @param tableName
+	 *            表名，null表示所有表
 	 */
-	public void createTable(Connection conn, boolean storeTableStructure);
+	public void createTable(Connection conn, boolean storeTableStructure,
+			String tableName, boolean innerDBTable);
 
 	public MaxRowLimiter getInMemMaxRowLimiter();
-	
 
-	
 }
