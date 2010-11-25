@@ -8,8 +8,9 @@ package com.creaway.inmemdb.persistent;
 
 /**
  * 持久层支持的JMX MBean对象，提供几个操作模块的方法
+ * 
  * @author Qil.Wong
- *
+ * 
  */
 public interface PersistentBackupRestoreMBean {
 	/**
@@ -19,10 +20,12 @@ public interface PersistentBackupRestoreMBean {
 	 *            mbean的用户
 	 * @param password
 	 *            mbean用户密码
+	 * @param rebuildTable
+	 *            重建的表名，null或""表示所有表
 	 */
-	
-	
-	public void rebuildPersistenceStructure(String mbeanUser, String password);
+
+	public void rebuildPersistenceStructure(String mbeanUser, String password,
+			String rebuildTable);
 
 	/**
 	 * MBean 操作， 数据从持久层恢复
@@ -31,7 +34,10 @@ public interface PersistentBackupRestoreMBean {
 	 *            mbean的用户
 	 * @param password
 	 *            mbean用户密码
+	 * @param restoreTable
+	 *            重建的表名，null或""表示所有表
 	 */
-	public void restoreFromPersistence(String mbeanUser, String password);
+	public void restoreFromPersistence(String mbeanUser, String password,
+			String restoreTable);
 
 }

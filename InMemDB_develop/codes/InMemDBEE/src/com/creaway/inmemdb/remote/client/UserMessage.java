@@ -125,8 +125,9 @@ public class UserMessage {
 	}
 
 	public String toString() {
+		int len = userObject==null?-1:userObject.length;
 		return "Head:" + head + ", command=" + command + ", serial=" + serial
 				+ ", sessionId=" + sessionId + ", userObj len="
-				+ userObject.length;
+				+ len;
 	}
 }

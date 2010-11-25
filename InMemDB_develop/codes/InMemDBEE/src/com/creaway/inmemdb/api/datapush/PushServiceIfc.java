@@ -26,6 +26,8 @@ public interface PushServiceIfc {
 	 */
 	public boolean addPushCommandListener(int command, int triggerType,
 			PushActionListener pal);
+	
+	public void removeAllListeners();
 
 	/**
 	 * 移除本地注册的推送事件监听
@@ -97,5 +99,10 @@ public interface PushServiceIfc {
 	 * @return
 	 */
 	public List<TmpRegisteredListenerObj> getTempRegisteredListeners();
+	
+	/**
+	 * 临时热部署缓存监听时效性校验
+	 */
+	public void schedualTmpRegisteredListeners();
 
 }

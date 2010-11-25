@@ -104,7 +104,7 @@ public abstract class InMemDBCommandPushTrigger extends InMemDBTrigger {
 					firePushAction(result);
 				}
 			}
-		});		
+		});
 	}
 
 	// 内部使用，不建议外部调用
@@ -141,7 +141,7 @@ public abstract class InMemDBCommandPushTrigger extends InMemDBTrigger {
 				.removeCommandTrigger(command, type);
 		final List<TmpRegisteredListenerObj> listeners = InMemDBServer
 				.getInstance().getPushService().getTempRegisteredListeners();
-		listeners.clear();
+
 		for (PushActionListener l : pals) {
 			TmpRegisteredListenerObj o = new TmpRegisteredListenerObj();
 			o.command = command;
@@ -156,7 +156,9 @@ public abstract class InMemDBCommandPushTrigger extends InMemDBTrigger {
 			o.lisObj = remote;
 			listeners.add(o);
 		}
-
+		//开始临时存放的监听器的时效性校验
+		InMemDBServer.getInstance().getPushService()
+				.schedualTmpRegisteredListeners();
 	}
 
 	public void close() throws SQLException {
