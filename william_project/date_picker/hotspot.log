@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hotspot_log version='160 1' process='3192' time_ms='1182400155436'>
+<vm_version>
+<name>
+Java HotSpot(TM) Client VM
+</name>
+<release>
+1.6.0-fastdebug-b105-debug
+</release>
+<info>
+Java HotSpot(TM) Client VM (1.6.0-fastdebug-b105) for windows-x86, built on Nov 29 2006 02:08:54 by &quot;java_re&quot; with unknown MS VC++:1310
+</info>
+</vm_version>
+<vm_arguments>
+<command>
+dyno.swing.beans.demo.DateFrame ${application.args}
+</command>
+<launcher>
+SUN_STANDARD
+</launcher>
+</vm_arguments>
+<tty>
+<writer thread='232'/>
+<missed_by_CHA method='java/lang/Object equals (Ljava/lang/Object;)Z' bytes='11' count='375' iicount='0' klass='java/awt/GraphicsConfiguration'/>
+<writer thread='688'/>
+C1 Runtime statistics:
+ _resolve_invoke_virtual_cnt:     259
+ _resolve_invoke_opt_virtual_cnt: 304
+ _resolve_invoke_static_cnt:      76
+ _handle_wrong_method_cnt:        0
+ _ic_miss_cnt:                    143
+ _generic_arraycopy_cnt:          162
+ _primitive_arraycopy_cnt:        82772
+ _oop_arraycopy_cnt:              0
+ _arraycopy_slowcase_cnt:         0
+ _new_type_array_slowcase_cnt:    31
+ _new_object_array_slowcase_cnt:  0
+ _new_instance_slowcase_cnt:      28
+ _new_multi_array_slowcase_cnt:   0
+ _monitorenter_slowcase_cnt:      20022
+ _monitorexit_slowcase_cnt:       20095
+ _patch_code_slowcase_cnt:        0
+ _throw_range_check_exception_count:            0:
+ _throw_index_exception_count:                  0:
+ _throw_div0_exception_count:                   0:
+ _throw_null_pointer_exception_count:           0:
+ _throw_class_cast_exception_count:             0:
+ _throw_incompatible_class_change_error_count:  0:
+ _throw_array_store_exception_count:            0:
+ _throw_count:                                  0:
+
+<statistics type='nmethod'>
+Statistics for 18 native nmethods:
+ N. total size  = 9824
+ N. relocation  = 380
+ N. main code   = 6224
+Statistics for 444 bytecoded nmethods:
+ total in heap  = 742216
+ relocation     = 36544
+ main code      = 267168
+ exception code = 17037
+ stub code      = 13128
+ constants      = 739
+ scopes data    = 170620
+ scopes pcs     = 115568
+ dependencies   = 2300
+ handler table  = 23448
+ nul chk table  = 11484
+ oops           = 5652
+Debug Data Chunks: 26413, shared 3309+5967, non-SP&apos;s elided 427
+PcDesc Statistics:  1900 queries, 12.52 comparisons per query
+  caches=444 queries=1900/0, hits=0+315, tests=8489+15291, adds=1585
+</statistics>
+<tty_done stamp='88.019'/>
+</tty>
+<hotspot_log_done stamp='88.019'/>
+</hotspot_log>
