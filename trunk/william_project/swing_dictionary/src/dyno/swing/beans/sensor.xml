@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : sensor.xml
+    Created on : 2007年7月22日, 下午3:58
+    Author     : William Chen
+    Description:
+        Purpose of the document follows.
+-->
+
+<sensors>
+    <sensor component="javax.swing.JList">
+        <listener source="model" class="javax.swing.event.ListDataListener">
+            <event name="intervalAdded"/>
+            <event name="intervalRemoved"/>
+            <event name="contentsChanged"/>
+        </listener>
+    </sensor>
+    <sensor component="javax.swing.JTable">
+        <listener source="model" class="javax.swing.event.TableModelListener">
+            <event name="tableChanged"/>
+        </listener>
+    </sensor>
+    <sensor component="javax.swing.JTree">
+        <listener source="this" class="javax.swing.event.TreeExpansionListener">
+            <event name="treeCollapsed"/>
+            <event name="treeExpanded"/>
+        </listener>
+        <listener constraints="model" class="java.beans.PropertyChangeListener">
+            <event name="propertyChange"/>
+        </listener>
+    </sensor>
+    <sensor component="javax.swing.text.JTextComponent">
+        <listener source="document" class="javax.swing.event.DocumentListener">
+            <event name="insertUpdate"/>
+            <event name="removeUpdate"/>
+            <event name="changedUpdate"/>
+        </listener>
+        <listener source="document" class="javax.swing.event.UndoableEditListener">
+            <event name="undoableEditHappened"/>
+        </listener>
+        <listener constraints="document" class="java.beans.PropertyChangeListener">
+            <event name="propertyChange"/>
+        </listener>
+    </sensor>
+    <sensor component="javax.swing.AbstractButton">
+        <listener constraints="text" class="java.beans.PropertyChangeListener">
+            <event name="propertyChange"/>
+        </listener>
+    </sensor>
+    <sensor component="javax.swing.JLabel">
+        <listener constraints="text" class="java.beans.PropertyChangeListener">
+            <event name="propertyChange"/>
+        </listener>
+    </sensor>
+</sensors>
