@@ -1,0 +1,8 @@
+httpprj.csdn.netprojdetail.aspxpointid=28987
+
+1. 实现ISCSI的客户端的两个功能, 
+(1) 给定地址和端口，发现targets,即sendtargets功能 
+(2) 给定target的名字，发现LUN (虚拟硬盘驱动器)
+2. 支持 CHAP登录 
+3. 实现以Java格式，两天到三天 
+有个好点的界面来显示这些，有Jscsi开源代码可以用应该
