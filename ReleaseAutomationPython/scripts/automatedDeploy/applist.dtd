@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT Baseline (ComponentName,ComponentEmail,Description,EnterpriseApps) >
+<!ELEMENT ComponentName (#PCDATA)>
+<!ELEMENT ComponentEmail (#PCDATA)>
+<!ELEMENT Description (#PCDATA)>
+
+<!ELEMENT EnterpriseApps (EnterpriseApp*)>
+<!ELEMENT EnterpriseApp (earfiles,clusters?,nodes?,urls,responses)>
+<!ATTLIST EnterpriseApp name CDATA #REQUIRED>
+
+<!ELEMENT earfiles (#PCDATA)>
+
+<!ELEMENT clusters (cluster*)>
+<!ELEMENT cluster (#PCDATA)>
+<!ATTLIST cluster name CDATA #REQUIRED>
+
+<!ELEMENT nodes (node*)>
+<!ELEMENT node (servers)>
+<!ATTLIST node name CDATA #REQUIRED>
+
+<!ELEMENT servers (server*)>
+<!ELEMENT server (#PCDATA)>
+<!ATTLIST server name CDATA #REQUIRED>
+
+
+<!ELEMENT urls (url*)>
+<!ELEMENT url (#PCDATA)>
+
+<!ELEMENT responses (response*)>
+<!ELEMENT response (#PCDATA)>

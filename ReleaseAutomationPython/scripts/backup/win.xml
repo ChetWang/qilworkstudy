@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Baseline SYSTEM "applist.dtd">
+<Baseline>
+    <ComponentName>eSpear TA</ComponentName>
+    <ComponentEmail>frank.zhu@sssltd.cn</ComponentEmail>
+    <Description>ta</Description>
+    <EnterpriseApps>
+        <EnterpriseApp name="RA">
+            <earfiles>C:/IBM/WebSphere/scripts/eardist/ReleaseAutomation.ear</earfiles>
+            <nodes>
+                <node name="EUSNode">
+					<servers>
+                        <server name="Testserver"/>
+                    </servers>
+                </node>
+            </nodes>
+            <urls>
+                <url>http://cy5468lap/ReleaseAutomationWeb/index.html</url>
+            </urls>
+            <!--<responses>
+                <response>ReleaseAutomation Test Page</response>
+            </responses>
+        --></EnterpriseApp>
+    </EnterpriseApps>
+</Baseline>
