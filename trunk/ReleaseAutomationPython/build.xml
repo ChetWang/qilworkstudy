@@ -1,0 +1,45 @@
+<project name="ReleaseAutomation" default="publish" basedir=".">
+
+	<target name="init">
+		<tstamp/>
+		
+		<property name="tar.dir" value="c:/" />
+		<property name="publish.dir" value="c:/IBM/WebSphere" />
+		
+		<property name="bak.dir" value="c:/dev/bak" />
+		<property name="basedir" value="." />
+		<property name="tar.file" value="${tar.dir}/${ant.project.name}.tar" />
+	</target>
+	
+	
+	<target name="backup" depends="init">
+		<tar basedir="${basedir}" 
+			destfile="${bak.dir}/${ant.project.name}_${DSTAMP}_${TSTAMP}.tar" 
+			excludes="**/*.class" />
+	</target>
+	
+	
+	<target name="clean-all" depends="backup">
+	  	<delete file="${tar.file}" />
+	</target>
+	
+	
+	<target name="tar-file" depends="clean-all">
+		<tar destfile="${tar.file}" 
+			basedir="${basedir}" 
+			includes="**/scripts/**"/>
+	</target>
+	
+	<target name="tar-file2" depends="clean-all">
+		<tar destfile="${tar.file}" 
+			basedir="${basedir}" 
+			includes="**/scripts/**,**/AppServer/**"/>
+	</target>
+	
+	<target name="publish" depends="tar-file">
+		<untar src="${tar.file}" dest="${publish.dir}"/>
+
+	</target>
+	
+	
+</project>

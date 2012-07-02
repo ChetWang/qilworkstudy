@@ -1,0 +1,19 @@
+1. build.xml
+
+2. un-tar at /apps/WebSphere6
+
+3. dos2unix
+   chmod 755 *.sh
+
+4. setup security:
+   
+vi /apps/WebSphere6/AppServer/profiles/OBIT_Dmgr/properties/soap.client.props
+
+com.ibm.SOAP.securityEnabled=true
+com.ibm.SOAP.loginUserid=wasadmin
+com.ibm.SOAP.loginPassword={xor}EzAxOzAxb2g\=
+      
+5. test:
+
+cd /apps/WebSphere6/scripts/backup
+/apps/WebSphere6/scripts/automatedDeploy/deploy.sh ReleaseAutomation.xml

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Baseline SYSTEM "applist.dtd">
+<Baseline>
+    <ComponentName>TA</ComponentName>
+    <ComponentEmail>espear.ta@db.com</ComponentEmail>
+    <Description>Release Automation Test Application</Description>
+    <EnterpriseApps>
+        <EnterpriseApp name="ReleaseAutomationTestApp">
+            <earfiles>ReleaseAutomation.ear</earfiles>
+            <nodes>
+                <node name="eSpearNode">
+                    <servers>
+                        <server name="EMMS"/>
+                    </servers>
+                </node>
+            </nodes>
+            <urls>
+                <url>http://localhost/ReleaseAutomationWeb/index.html</url>
+            </urls>
+            <responses>
+                <response>ReleaseAutomation Test Page</response>
+            </responses>
+        </EnterpriseApp>
+    </EnterpriseApps>
+</Baseline>
