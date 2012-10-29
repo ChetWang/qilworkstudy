@@ -1,0 +1,140 @@
+
+<!-- Begin #colRight -->
+		<div id="colRight">
+		<form id="searchform" action="http://www.google.com/search" target="_blank" method="get">
+			<div class="rightBox">
+				<div class="rightBoxTop"></div>
+				<div class="rightBoxMidSearch">
+					<input type="text" id="as_q" name="as_q" value="type your search here" onfocus="this.value=''" />
+                    <input name="as_sitesearch" value="{{ blog.baseurl}}" type="hidden" />
+					<input type="submit" value="" class="submit" id="searchsubmit"/>
+				</div>	
+				<div class="rightBoxBottom"></div>
+			</div>
+		</form>
+		<!-- Begin Ads -->
+		<div class="rightBox">
+				<div class="rightBoxTop"></div>
+				<div class="rightBoxMidAds">
+					 <!-- begin ads -->
+						<div id="gglink">
+							 <table align="center" border="0" cellspacing="5"> 
+<tr>
+<td><a href='#' target='_blank' title="Your Ads Here"><img src="/themes/{{ blog.theme_name }}/images/site5_125x125.jpg" border="0"></a></td>
+<td><a href='#' target='_blank' title="Your Ads Here"><img src="/themes/{{ blog.theme_name }}/images/site5_125x125.jpg" border="0"></a></td>
+</tr>
+<tr>
+<td><a href='#' target='_blank' title="Your Ads Here"><img src="/themes/{{ blog.theme_name }}/images/youradhere.jpg" border="0"></a></td>
+<td><a href='#' target='_blank' title="Your Ads Here"><img src="/themes/{{ blog.theme_name }}/images/youradhere.jpg" border="0"></a></td>
+</tr>
+</table>
+						</div>
+						<!-- end ads -->
+				<a href="/" class="ggtext">&raquo; GGtext with us!</a>
+				</div>	
+				<div class="rightBoxBottom"></div>
+			</div>
+		<!-- End Ads -->
+		
+		<!-- Begin #twitter -->
+				<div class="twitter">					
+						<div class="twitter_update_list">
+                        <iframe width="256" height="360" class="share_self"  frameborder="0" scrolling="no" src="http://service.t.sina.com.cn/widget/WeiboShow.php?width=256&height=360&fansRow=2&ptype=1&speed=0&skin=-1&isTitle=0&noborder=0&isWeibo=1&isFans=0&uid=1841721645&verifier=35a4ef55&colors=d6f3f7,ffffff,555555,1fa2e1"></iframe>
+						</div>
+					<div class="bottom"><a href="/">我的新浪微博！</a></div>
+				</div>
+		<!-- End #twitter -->
+        
+				<div class="rightBox">
+				<div class="rightBoxTop"></div>                
+				<div class="rightBoxMid">
+				<h2>热门文章</h2> 
+          {% if blog.hotposts %}
+			<ul>
+				{% for entry in blog.hotposts %}
+				<li><a href="/{{entry.link|escape}}" title="{{entry.title|escape}}">{{entry.title|escape}}</a>({{entry.readtimes}})</li>
+				{%endfor%}
+			</ul>
+			{% endif %}
+            </div>
+            <div class="rightBoxBottom"></div>
+            </div>
+            
+				<div class="rightBox">
+				<div class="rightBoxTop"></div>                
+				<div class="rightBoxMid">
+				<h2>最新评论</h2>
+                
+			{% if recent_comments %}
+			<ul class="new-comments">
+				{% for comment in recent_comments %}
+				<li><a href="/{{comment.entry.link}}#comment-{{comment.key.id}}" title="评论于：{{comment.entry.title|escape}}"><img alt='' src='{{comment.gravatar_url}}' />{{comment.author}}</a><span> 说：{{comment.shortcontent}}</span>
+				</li>
+				{%endfor%}
+			</ul>
+			{% endif %}
+            </div>
+            <div class="rightBoxBottom"></div>
+            </div>
+            
+				<div class="rightBox">
+				<div class="rightBoxTop"></div>                
+				<div class="rightBoxMid">
+				<h2>文章分类</h2>               
+			{% if categories %}
+			<ul>
+				{%for cate in categories%}
+				<li><a href="/category/{{cate.slug}}">{{cate.name}}</a>({{cate.count}})</li>
+				{%endfor%}
+			</ul>
+			{% endif %}
+            </div>
+            <div class="rightBoxBottom"></div>
+            </div>
+            
+				<div class="rightBox">
+				<div class="rightBoxTop"></div>                
+				<div class="rightBoxMid">
+				<h2>标签云</h2>               
+			{% if alltags %}
+			<ul>
+			{% for t in alltags %}
+			<a title="{{ t.tagcount }} pages" href="/tag/{{t.tag|urlencode}}"><span style='font-size:{{ t.tagcount|add:9 }}px;'>{{t.tag}}</span></a>
+			{%endfor%}
+			</ul>
+			{% endif %}
+            </div>
+            <div class="rightBoxBottom"></div>
+            </div>		
+            
+				<div class="rightBox">
+				<div class="rightBoxTop"></div>                
+				<div class="rightBoxMid">
+				<h2>文章归档</h2>               
+			{% if archives %}
+			<ul>
+				{%for archive in archives%}
+				<li><a href="/{{archive.year}}/{{archive.month}}">{{archive.year}}年{{archive.month}}月</a>({{archive.entrycount}})</li>
+				{%endfor%}
+			</ul>
+			{% endif %}
+            </div>
+            <div class="rightBoxBottom"></div>
+            </div>		
+            
+				<div class="rightBox">
+				<div class="rightBoxTop"></div>                
+				<div class="rightBoxMid">
+				<h2>友情链接</h2> 
+			{% if blogroll %}
+			<ul>
+				{%for link in blogroll%}
+				<li><a href="{{link.href}}" target="_blank">{{link.linktext}}</a></li>
+				{%endfor%}
+			</ul>
+			{% endif %}
+            </div>
+            <div class="rightBoxBottom"></div>
+            </div>		
+		</div>
+		<!-- End #colRight -->
