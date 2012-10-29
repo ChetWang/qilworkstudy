@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %} {{entry.title|escape}} - {{blog.title|escape}} {% endblock %}
+
+{% block head_block %}
+
+{% if entry %}
+{%if entry.strtags%}<meta name="Keywords" content="{{entry.strtags|escape}}" />{%endif%}
+{%if entry.excerpt%} <meta name="Description" content="{{entry.excerpt|escape}}" />{%endif%}
+{% endif %}
+
+<script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/static/js/jquery.form.utf8.js"></script>
+<script type="text/javascript" src="/static/js/jquery.easing.1.3.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+
+<div id ="section">
+<div id="content">
+	 	{% if entry %}
+	<div class="postlist">
+
+	<div id="postlist">
+
+	<div id = "article" >
+		<div id="post-{{entry.key}}">
+				<br />
+
+			<div class="title">
+				<h3>{{entry.date|datetz:"Y/m/d H:i"}}</h3>
+				<h2>{{ entry.title|escape }}</h2>
+				<small>{{entry.readtimes}} 次阅读, {%for cate in entry.categories%} <a href="/category/{{cate.slug}}">{{cate.name}}</a> {%endfor%}, by {{entry.author_name}} .				<span class="togglebar"><a id = "toggle-sidebar" href="javascript:void(0);"><strong>宽屏阅读</strong></a></span>
+				{%if self.is_admin%}<a href="{{entry.edit_url}}">编辑</a> | {%endif%} </small>
+			</div>		<!--section  -->
+			<div class="entry">	<!-- section -->
+			{{ entry.content }}
+			<div class="clear"></div><!-- 2 section --> 
+			</div> <!-- section -->
+			<p align="right"><a href="#top" class="gotop" title="Back Top">Back Top</a></p>
+			{% if entry.tags%}
+			<p class="postmeta">标签：{%for tag in entry.tags%}
+			<a href="/tag/{{tag|urlencode}}">{{tag}}</a>&nbsp;{%endfor%}{%endif%}</p>
+			<div id ="nav">
+			<div class="post-nav"> <!-- nav -->
+			{%for prev in entry.prev%}
+			<span class="previous"><a href="/{{prev.link}}">{{prev.title}}</a></span>
+				{%endfor%}
+				{%for next in entry.next%}
+			<span class="next"><a href="/{{next.link}}">{{next.title}}</a></span>
+				{%endfor%}
+			<div class="clear"></div>
+		</div>
+		</div>
+
+	</div>
+	</div>
+
+		{% include "comments.html" %}
+		
+		{% else %}
+  <div id = "article">
+  	<p>很抱歉，你查看的内容不在这儿，请尝试使用侧栏的搜索工具。</p>
+  </div>
+		{% endif %}
+
+</div><!--section  -->
+		{% include "sidebar.html" %}
+<div class="clear"></div><!-- 2 section -->  
+</div>
+
+</div><!-- section -->
+
+{% endblock %}

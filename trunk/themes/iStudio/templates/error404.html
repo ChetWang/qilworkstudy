@@ -1,0 +1,19 @@
+﻿<title>Error - 404 Not Found - {{ blog.title|escape}}</title>
+{% block content %}
+<link rel="stylesheet" href="/themes/{{ blog.theme_name }}/style.css" type="text/css" />
+<body class="error">
+	<div id = "RandomShowError">
+	<script language="JavaScript" type="text/javascript">
+tips = new Array(3);
+tips[0] = '<img alt="" width="640" height="360" src="/themes/{{ blog.theme_name }}/images/error4041.jpg" border="0" />';
+tips[1] = '<img alt="" width="640" height="360" src="/themes/{{ blog.theme_name }}/images/error4042.jpg" border="0" />';
+tips[2] = '<img alt="" width="640" height="360" src="/themes/{{ blog.theme_name }}/images/error4043.jpg" border="0" />';
+
+index = Math.floor(Math.random() * tips.length);
+document.write(tips[index]);
+</script>
+	</div>
+<p class="button"><a class="backhome" href="/"type="hidden">back to home<br/></a></p>
+<p>&copy;2006-2010 <a href="/">{{ blog.title|escape}}</a></p>
+</div>
+{% endblock %}
