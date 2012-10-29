@@ -1,3 +1,0 @@
-这个主题是移植的iStudio，大家在使用这个主题之前，请将这个主题的根目录下的“scripts”文件夹内的5个js文件移动到micolog的根目录“static/js”文件夹内；
-将micolog的 blog.py中查找到：“'pageindex':page,”替换成：“'pageindex':page,'pagecount':max_page,”
-注意，修改模板的时候，保存一定要选择utf-8格式，否则会出现中文字符乱码的情况；默认兼容多种浏览器，如果有问题反馈请访问我的blog：http://www.q86.net
