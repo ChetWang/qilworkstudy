@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources>
+	<pool name="persistence" default="true" type="jdbc">
+		<param name="url" value="jdbc:jtds:sqlserver://127.0.0.1:1433/LoveLife_db" />
+		<param name="driver" value="net.sourceforge.jtds.jdbc.Driver" />
+		<param name="user" value="sa" />
+		<param name="password" value="qq123456!@#" />
+		<param name="initial_size" value="1" />
+		<param name="max_size" value="10" />
+		<param name="min_size" value="1" />
+		<param name="idle_time" value="1800" />
+	</pool>
+</datasources>
