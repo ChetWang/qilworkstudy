@@ -1,4 +1,4 @@
-package org.vlg.linghu.mms;
+package org.vlg.linghu.vac;
 
 import java.lang.reflect.Method;
 import java.sql.Connection;

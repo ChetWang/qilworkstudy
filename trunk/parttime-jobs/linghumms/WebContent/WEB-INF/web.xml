@@ -15,7 +15,7 @@
 	
 	<servlet>
 		<servlet-name>InitServlet</servlet-name>
-		<servlet-class>org.vlg.linghu.mms.InitServlet</servlet-class>
+		<servlet-class>org.vlg.linghu.InitServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>

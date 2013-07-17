@@ -8,7 +8,7 @@
 package com.unicom.vac.bossagent.soap;
 
 import org.slf4j.Logger;
-import org.vlg.linghu.mms.VACNotifyHandler;
+import org.vlg.linghu.vac.VACNotifyHandler;
 
 public class SyncNotifySPSoapBindingImpl implements
 		com.unicom.vac.bossagent.soap.SyncNotifySPService {
