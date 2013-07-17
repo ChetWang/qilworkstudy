@@ -16,11 +16,12 @@
 	<servlet>
 		<servlet-name>InitServlet</servlet-name>
 		<servlet-class>org.vlg.linghu.mms.InitServlet</servlet-class>
-		<load-on-startup>0</load-on-startup>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
 		<servlet-name>AxisServlet</servlet-name>
 		<servlet-class>org.apache.axis.transport.http.AxisServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AxisServlet</servlet-name>
