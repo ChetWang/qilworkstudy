@@ -31,6 +31,7 @@ public class InitServlet extends HttpServlet {
 //			ac.process(new String[] {
 //					"-lhttp://localhost:18888/axis2/services/AdminService",
 //					WEB_INF + "deploy.wsdd" });
+			System.out.println(WEB_INF);
 			logger.info("loading datasource!");
 			Connection conn = ConnectionManager.getConnection();
 			logger.info("loading datasource successfully, url is "
