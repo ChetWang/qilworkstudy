@@ -1,4 +1,4 @@
-package org.vlg.linghu.mms;
+package org.vlg.linghu;
 
 import java.io.File;
 import java.sql.Connection;
@@ -23,21 +23,16 @@ public class InitServlet extends HttpServlet {
 			try {
 				ConnectionManager.load();
 			} catch (Exception e) {
-				logger.error(e.getMessage());
+				logger.error("This error could be ignored!");
 			}
 			WEB_INF = getServletContext().getRealPath("/WEB-INF/")
 					+ File.separator;
-//			AdminClient ac = new AdminClient();
-//			ac.process(new String[] {
-//					"-lhttp://localhost:18888/axis2/services/AdminService",
-//					WEB_INF + "deploy.wsdd" });
 			System.out.println(WEB_INF);
 			logger.info("loading datasource!");
 			Connection conn = ConnectionManager.getConnection();
 			logger.info("loading datasource successfully, url is "
 					+ conn.getMetaData().getURL());
-			conn.close();
-			
+			conn.close();			
 		} catch (Exception e) {
 			logger.error("", e);
 		}
@@ -45,6 +40,9 @@ public class InitServlet extends HttpServlet {
 
 	public void destroy() {
 		// ConnectionM
+		super.destroy();
+		ConnectionManager.destroy();
+		System.out.println("destroy");
 	}
 
 }
