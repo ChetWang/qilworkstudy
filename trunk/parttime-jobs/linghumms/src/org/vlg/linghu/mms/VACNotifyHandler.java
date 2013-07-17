@@ -1,6 +1,5 @@
 package org.vlg.linghu.mms;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -138,6 +137,10 @@ public class VACNotifyHandler {
 			ConnectionManager.releaseConnection(conn);
 		}
 		return count > 0;
+	}
+	
+	public static void main(String[] xx){
+		logger.info("xxxx");
 	}
 
 }
