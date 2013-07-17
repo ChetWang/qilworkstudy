@@ -7,28 +7,24 @@
 
 package com.unicom.vac.bossagent.soap;
 
-import java.lang.reflect.Method;
+import org.slf4j.Logger;
+import org.vlg.linghu.mms.VACNotifyHandler;
 
-public class SyncNotifySPSoapBindingImpl implements com.unicom.vac.bossagent.soap.SyncNotifySPService{
-    public com.unicom.vac.bossagent.soap.sync.rsp.OrderRelationUpdateNotifyResponse orderRelationUpdateNotify(com.unicom.vac.bossagent.soap.sync.req.OrderRelationUpdateNotifyRequest orderRelationUpdateNotifyRequest) throws java.rmi.RemoteException {
-    	Method[] methods = orderRelationUpdateNotifyRequest.getClass()
-				.getMethods();
-		for (Method m : methods) {
-			if (m.getName().startsWith("get")) {
-				try {
-					Object value = m.invoke(orderRelationUpdateNotifyRequest,
-							new Object[] {});
-					System.out.println(m.getName() + " -->    " + value);
-				} catch (Exception e) {
-					System.err.println(m.getName() + "-----" + e.getMessage());
-				}
-			}
-		}
+public class SyncNotifySPSoapBindingImpl implements
+		com.unicom.vac.bossagent.soap.SyncNotifySPService {
+	private static final Logger logger = org.slf4j.LoggerFactory.getLogger(SyncNotifySPSoapBindingImpl.class);
+	public com.unicom.vac.bossagent.soap.sync.rsp.OrderRelationUpdateNotifyResponse orderRelationUpdateNotify(
+			com.unicom.vac.bossagent.soap.sync.req.OrderRelationUpdateNotifyRequest orderRelationUpdateNotifyRequest)
+			throws java.rmi.RemoteException {
+		logger.info("got notification request from VAC center");
+		new VACNotifyHandler().handle(orderRelationUpdateNotifyRequest);
+
 		com.unicom.vac.bossagent.soap.sync.rsp.OrderRelationUpdateNotifyResponse resp = new com.unicom.vac.bossagent.soap.sync.rsp.OrderRelationUpdateNotifyResponse();
 		resp.setRecordSequenceId(orderRelationUpdateNotifyRequest
 				.getRecordSequenceId());
 		resp.setResultCode(0);
+		logger.info("sent response to VAC center");
 		return resp;
-    }
+	}
 
 }
