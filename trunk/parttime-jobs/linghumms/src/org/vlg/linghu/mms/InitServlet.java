@@ -6,7 +6,6 @@ import java.sql.Connection;
 import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServlet;
 
-import org.apache.axis.client.AdminClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.virbraligo.db.ConnectionManager;
@@ -26,17 +25,18 @@ public class InitServlet extends HttpServlet {
 			} catch (Exception e) {
 				logger.error(e.getMessage());
 			}
+			WEB_INF = getServletContext().getRealPath("/WEB-INF/")
+					+ File.separator;
+//			AdminClient ac = new AdminClient();
+//			ac.process(new String[] {
+//					"-lhttp://localhost:18888/axis2/services/AdminService",
+//					WEB_INF + "deploy.wsdd" });
 			logger.info("loading datasource!");
 			Connection conn = ConnectionManager.getConnection();
 			logger.info("loading datasource successfully, url is "
 					+ conn.getMetaData().getURL());
 			conn.close();
-			WEB_INF = getServletContext().getRealPath("/WEB-INF/")
-					+ File.separator;
-			AdminClient ac = new AdminClient();
-			ac.process(new String[] {
-					"-lhttp://localhost:18888/axis2/services/AdminService",
-					WEB_INF + "deploy.wsdd" });
+			
 		} catch (Exception e) {
 			logger.error("", e);
 		}

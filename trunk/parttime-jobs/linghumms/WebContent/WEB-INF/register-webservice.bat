@@ -1,0 +1,1 @@
+java -cp  lib\* org.apache.axis.client.AdminClient -lhttp://localhost:18888/axis2/services/AdminService deploy.wsdd
