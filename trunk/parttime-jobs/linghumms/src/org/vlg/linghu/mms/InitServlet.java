@@ -24,9 +24,14 @@ public class InitServlet extends HttpServlet {
 			Connection conn = ConnectionManager.getConnection();
 			logger.info("loading datasource successfully, url is "
 					+ conn.getMetaData().getURL());
+			conn.close();
 		} catch (Exception e) {
 			logger.error("", e);
 		}
+	}
+	
+	public void destroy(){
+//		ConnectionM
 	}
 
 }
