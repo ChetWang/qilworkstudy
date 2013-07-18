@@ -79,11 +79,6 @@ public class VACNotifyHandler {
 		default:
 			break;
 		}
-		if (isUserTypeExist(req)) {
-			updateUser(req);
-		} else {
-
-		}
 	}
 
 	private String getNotifyInfo(OrderRelationUpdateNotifyRequest req) {

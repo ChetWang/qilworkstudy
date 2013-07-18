@@ -21,8 +21,8 @@ public class test {
 			SGIPClientInitInfo info = new SGIPClientInitInfo();
 			info.IP = "211.90.223.213";
 			info.port = 8801;
-			info.userName = "wzh001c";
-			info.passWord = "wzh001c";
+			info.userName = "xiangyu";
+			info.passWord = "xy28187688";
 			info.maxLink = 1;
 
 			// info.IP = "10.130.83.207";
@@ -56,11 +56,13 @@ public class test {
 
 			// submit.getBody().se
 			// 企业号（CorpId）与接入号（SpNumber）的关系?一个SP具有唯一一个企业号，特殊情况下一个SP允许向联通申请多个接入号，即企业号与接入号可为一对多的关系。
-			submit.getBody().setSPNumber("90360670");
-			submit.getBody().setChargeNumber("15558050237");
+			submit.getBody().setCorpId("62440");
+			submit.getBody().setSPNumber("106558738");
+			submit.getBody().setServiceType("90360670");
+			submit.getBody().setChargeNumber("106558738");
 			submit.getBody().setUserCount(1);
 			submit.getBody().setUserNumber("15558050237");
-			submit.getBody().setCorpId("62440");
+			
 			submit.getBody().setFeeType(1);
 			submit.getBody().setFeeValue("4");
 //			submit.getBody().setGivenValue("987");
@@ -75,9 +77,9 @@ public class test {
 			submit.getBody().setTP_udhi(1);
 			submit.getBody().setMessageCoding(15);
 			submit.getBody().setMessageType(0);
-			submit.getBody().setMessageContent("zhjt2222est".getBytes());
+			submit.getBody().setMessageContent("xiangyu sms test".getBytes());
 
-			submit.getBody().setReserve("dd");
+//			submit.getBody().setReserve("dd");//reserve(Linkid) 保留，扩张用
 
 			SGIPRsp rsphandler6 = null;
 			Date date1 = new Date();
