@@ -24,7 +24,7 @@ public class test {
 			info.userName = "xiangyu";
 			info.passWord = "xy28187688";
 			info.maxLink = 1;
-
+//			info.
 			// info.IP = "10.130.83.207";
 			// info.port = 5577;
 			// info.userName = "zhjec";
@@ -61,7 +61,7 @@ public class test {
 			submit.getBody().setServiceType("90360670");
 			submit.getBody().setChargeNumber("106558738");
 			submit.getBody().setUserCount(1);
-			submit.getBody().setUserNumber("15558050237");
+			submit.getBody().setUserNumber("8615558050237");
 			
 			submit.getBody().setFeeType(1);
 			submit.getBody().setFeeValue("4");
@@ -72,7 +72,7 @@ public class test {
 			submit.getBody().setPriority(0);
 //			submit.getBody().setExpireTime("090621010101");
 //			submit.getBody().setScheduleTime("090621010101");
-			submit.getBody().setReportFlag(0);
+			submit.getBody().setReportFlag(1);
 			submit.getBody().setTP_pid(1);
 			submit.getBody().setTP_udhi(1);
 			submit.getBody().setMessageCoding(15);
@@ -88,10 +88,12 @@ public class test {
 				submit.getHead().setSequenceNo(new SGIPSequenceNo());
 				client.sendSubmit(submit, rsphandler6);
 				SGIPSubmitResp rsp6 = rsphandler6.waitForSGIPSubmitResp();
-				log.info("" + String.valueOf(i));
+//				rsp6.getBody().getResult();
+				log.info("result" + String.valueOf(i+" "+rsp6.getBody().getResult()));
 			}
 			log.info("start time =" + date1.toString());
 			log.info("end time=" + (new Date()).toString());
+			System.exit(0);
 		} catch (Exception e) {
 			e.printStackTrace();
 
