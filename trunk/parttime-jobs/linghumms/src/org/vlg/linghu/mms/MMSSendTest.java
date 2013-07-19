@@ -21,12 +21,13 @@ public class MMSSendTest {
 
 	public static MM7SubmitReq createRequest() {
 		MM7SubmitReq req = new MM7SubmitReq();
-		req.setVASPID("106558738"); // VASPID
+		req.setVASPID("62440"); // VASPID
 		req.setVASID("106558738"); // VASID
-		req.setSenderAddress("106558738" + "31360129"); // 消息发送方（VASID +
+		req.setSenderAddress("106558738"+"90360670" ); // 消息发送方（VASID +
 														// ServiceCode）
+//		req.setChargedPartyID("106558738");
 		req.addTo("8615558050237"); // 消息接收方，对于多个接收方可多次调用addTo()，addCc()，addBcc()
-		req.setServiceCode("31360129"); // 业务代码
+		req.setServiceCode("90360670"); // 业务代码
 		req.setLinkedID("0"); // LinkID
 		req.setSubject("这是一个测试"); // 设置消息的标题
 		req.setDeliveryReport(false); // 设置是否需要递送报告
@@ -41,7 +42,7 @@ public class MMSSendTest {
 		MMContent main = new MMContent();
 		main.setContentType(MMConstants.ContentType.MULTIPART_MIXED);
 		MMContent mmc = MMContent.createFromBytes(new String("欢迎使用彩信")
-				.getBytes("GBK"));
+				.getBytes("UTF-8"));
 
 		// mmc.setContent(content, 0, content.length ); //添加内容体
 		mmc.setContentType(MMConstants.ContentType.TEXT); // 设置内容体格式。填写的格式一定要和内容的实际格式相同。

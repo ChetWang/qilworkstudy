@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
 <vasp:MM7Config xmlns:vasp="http://mms.chinaunicom.com/mm7ConfigSchema">
-	<AuthenticationMode>1</AuthenticationMode>
-	<UserName>xiangyu</UserName>
-	<Password>xy28187688</Password>
+	<AuthenticationMode>0</AuthenticationMode>
+	<UserName></UserName>
+	<Password></Password>
 	<MaxMessageSize>100000</MaxMessageSize>
 	<LogPath>D:\logs</LogPath>
 	<logLevel>6</logLevel>
-	<Charset>GBK</Charset>
+	<Charset>UTF-8</Charset>
 	<!-- mmscURL also may be /mm7 or /vas -->
 	<mmscURL></mmscURL>
 	<mmscIP>124.160.192.130:8080</mmscIP>
 	<MmscID>657101</MmscID>
 	<UseSSL>true</UseSSL>
 	<ListenIP>123.159.200.55</ListenIP>
-	<ListenPort>80</ListenPort>
+	<ListenPort>6888</ListenPort>
 	<BackLog>50</BackLog>
 	<TimeOut>90000</TimeOut>
 	<ReSendCount>2</ReSendCount>
 	<LogNum>100</LogNum>
 	<LogInterval>120</LogInterval>
 	<LogSize>5000</LogSize>
-	
-
 </vasp:MM7Config>
+
+

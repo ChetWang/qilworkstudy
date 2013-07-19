@@ -16,9 +16,9 @@ public class SMSReceiver {
 		OutputStream output = null;
 		InputStream input = null;
 		SGIP_Command command = null;
-
+		int nodeid=362440;
 		try {
-			serversocket = new ServerSocket(8809);
+			serversocket = new ServerSocket(6888);
 			so = serversocket.accept();
 			input = so.getInputStream();
 			output = so.getOutputStream();
@@ -55,7 +55,7 @@ public class SMSReceiver {
 					System.out.println(active.GetLoginName());
 					System.out.println(active.GetLoginPassword());
 
-					resp = new BindResp(399000,// node id 3£«CP_id
+					resp = new BindResp(nodeid,// node id 3£«CP_id
 							0);// result
 					resp.SetResult(1);
 					resp.write(output);
@@ -71,7 +71,7 @@ public class SMSReceiver {
 					System.out.println(tmpCMD.getSeqno_2());
 					System.out.println(tmpCMD.getSeqno_3());
 					System.out.println(term.GetFlag());
-					Unresp = new UnbindResp(399000);// node id 3£«CP_id
+					Unresp = new UnbindResp();// node id 3£«CP_id
 					Unresp.write(output);
 					loop = false;
 					break;
@@ -91,7 +91,7 @@ public class SMSReceiver {
 					System.out.println(deliver.getMessageCoding());
 					System.out.println(deliver.getMessageLength());
 					System.out.println(deliver.getMessageContent());
-					deliverresp = new DeliverResp(399000, // node id 3£«CP_id
+					deliverresp = new DeliverResp(nodeid, // node id 3£«CP_id
 							0);// result
 					deliverresp.SetResult(0);
 					deliverresp.write(output);
