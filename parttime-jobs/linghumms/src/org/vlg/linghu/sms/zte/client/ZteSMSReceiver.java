@@ -1,7 +1,7 @@
 package org.vlg.linghu.sms.zte.client;
 
-import java.io.IOException;
-import java.net.UnknownHostException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.zte.smgw.api.sgip.message.SGIPDeliver;
 import com.zte.smgw.api.sgip.message.SGIPReport;
@@ -10,6 +10,8 @@ import com.zte.smgw.api.sgip.server.SGIPServer;
 import com.zte.smgw.api.sgip.server.SGIPServerInitInfo;
 
 public class ZteSMSReceiver {
+	
+	private static final Logger logger =LoggerFactory.getLogger(ZteSMSReceiver.class);
 
 	public void start() {
 		SGIPServerInitInfo info = new SGIPServerInitInfo();
@@ -21,16 +23,9 @@ public class ZteSMSReceiver {
 		server.init(info);
 		try {
 			server.start();
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (Exception e) {
+			logger.error("",e);
+		} 
 		while (true) {
 			// 判断是否有消息
 			if (server.MessageLength() > 0) {
@@ -41,13 +36,11 @@ public class ZteSMSReceiver {
 				if (msg.messageType == 1) {
 					// deliver
 					SGIPDeliver deliver = (SGIPDeliver) msg.obj;
-					System.out.println("deliver: "
-							+ deliver);
+					logger.info("deliver message: {}",deliver.toString());
 				} else if (msg.messageType == 2) {
 					// report
 					SGIPReport report = (SGIPReport) msg.obj;
-					System.out.println("report: "
-							+ report);
+					logger.info("report message: {}",report.toString());
 				}
 			}
 		}
