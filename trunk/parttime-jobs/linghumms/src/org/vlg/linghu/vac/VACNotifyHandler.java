@@ -52,9 +52,10 @@ public class VACNotifyHandler {
 	private static final String selectsql = "select count(*) from e_vac_receive where userid=? and ";
 
 	public void handle(OrderRelationUpdateNotifyRequest req) {
-		logger.info(getNotifyInfo(req));
+		
 		String userId = req.getUserId();
 		int updateType = req.getUpdateType();
+		String content = req.getContent();
 		// 更新操作的类型包括：
 		// 1：订购
 		// 2：取消订购退定
@@ -63,22 +64,29 @@ public class VACNotifyHandler {
 		// 5：改号
 		switch (updateType) {
 		case 1:
+			logger.info("用户订购：{}",userId+"  "+content);
 			addUser(req);
 			break;
 		case 2:
-			updateUser(req);
+			logger.info("用户退订：{}",userId+"  "+content);
+//			updateUser(req);
+			deleteUser(req);
 			break;
 		case 3:
+			logger.info("用户点播：{}",userId+"  "+content);
 			addUser(req);
 			break;
 		case 4:
 			logger.info("update type 4, reserved. ");
 			break;
 		case 5:
+			logger.info("用户改号：{}",userId+"  "+content);
+			transferUser(req);
 			break;
 		default:
 			break;
 		}
+		logger.info(getNotifyInfo(req));
 	}
 
 	private String getNotifyInfo(OrderRelationUpdateNotifyRequest req) {
@@ -104,14 +112,18 @@ public class VACNotifyHandler {
 	}
 
 	private void addUser(OrderRelationUpdateNotifyRequest req) {
-
+		
 	}
 
 	private void updateUser(OrderRelationUpdateNotifyRequest req) {
 
 	}
+	
+	private void deleteUser(OrderRelationUpdateNotifyRequest req) {
 
-	public boolean isUserTypeExist(OrderRelationUpdateNotifyRequest req) {
+	}
+
+	private boolean isUserTypeExist(OrderRelationUpdateNotifyRequest req) {
 		// ProductId, spid, userid为唯一业锟今订癸拷锟斤拷锟斤拷
 		String userId = req.getUserId();
 		Connection conn = ConnectionManager.getConnection();
