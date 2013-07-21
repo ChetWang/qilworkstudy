@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.vlg.linghu.mybatis.mapper.VacReceiveMessageMapper" >
+  <resultMap id="BaseResultMap" type="org.vlg.linghu.mybatis.bean.VacReceiveMessage" >
+    <id column="vac_id" property="vacId" jdbcType="INTEGER" />
+    <result column="vac_addtime" property="vacAddtime" jdbcType="TIMESTAMP" />
+    <result column="RecordSequenceID" property="recordsequenceid" jdbcType="VARCHAR" />
+    <result column="UserIdType" property="useridtype" jdbcType="INTEGER" />
+    <result column="UserId" property="userid" jdbcType="VARCHAR" />
+    <result column="ServiceType" property="servicetype" jdbcType="VARCHAR" />
+    <result column="SpId" property="spid" jdbcType="VARCHAR" />
+    <result column="ProductId" property="productid" jdbcType="VARCHAR" />
+    <result column="UpdateType" property="updatetype" jdbcType="INTEGER" />
+    <result column="UpdateTime" property="updatetime" jdbcType="VARCHAR" />
+    <result column="UpdateDesc" property="updatedesc" jdbcType="VARCHAR" />
+    <result column="LinkID" property="linkid" jdbcType="VARCHAR" />
+    <result column="Content" property="content" jdbcType="VARCHAR" />
+    <result column="EffectiveDate" property="effectivedate" jdbcType="VARCHAR" />
+    <result column="ExpireDate" property="expiredate" jdbcType="VARCHAR" />
+    <result column="ResultCode" property="resultcode" jdbcType="INTEGER" />
+    <result column="Time_Stamp" property="timeStamp" jdbcType="VARCHAR" />
+    <result column="EncodeStr" property="encodestr" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="isPutWelcomeSMS" property="isputwelcomesms" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    vac_id, vac_addtime, RecordSequenceID, UserIdType, UserId, ServiceType, SpId, ProductId, 
+    UpdateType, UpdateTime, UpdateDesc, LinkID, Content, EffectiveDate, ExpireDate, ResultCode, 
+    Time_Stamp, EncodeStr, user_id, user_name, isPutWelcomeSMS
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.vlg.linghu.mybatis.bean.VacReceiveMessageExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from e_vac_receive
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="org.vlg.linghu.mybatis.bean.VacReceiveMessageExample" >
+    delete from e_vac_receive
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insertSelective" parameterType="org.vlg.linghu.mybatis.bean.VacReceiveMessage" >
+    insert into e_vac_receive
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="vacId != null" >
+        vac_id,
+      </if>
+      <if test="vacAddtime != null" >
+        vac_addtime,
+      </if>
+      <if test="recordsequenceid != null" >
+        RecordSequenceID,
+      </if>
+      <if test="useridtype != null" >
+        UserIdType,
+      </if>
+      <if test="userid != null" >
+        UserId,
+      </if>
+      <if test="servicetype != null" >
+        ServiceType,
+      </if>
+      <if test="spid != null" >
+        SpId,
+      </if>
+      <if test="productid != null" >
+        ProductId,
+      </if>
+      <if test="updatetype != null" >
+        UpdateType,
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime,
+      </if>
+      <if test="updatedesc != null" >
+        UpdateDesc,
+      </if>
+      <if test="linkid != null" >
+        LinkID,
+      </if>
+      <if test="content != null" >
+        Content,
+      </if>
+      <if test="effectivedate != null" >
+        EffectiveDate,
+      </if>
+      <if test="expiredate != null" >
+        ExpireDate,
+      </if>
+      <if test="resultcode != null" >
+        ResultCode,
+      </if>
+      <if test="timeStamp != null" >
+        Time_Stamp,
+      </if>
+      <if test="encodestr != null" >
+        EncodeStr,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="isputwelcomesms != null" >
+        isPutWelcomeSMS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="vacId != null" >
+        #{vacId,jdbcType=INTEGER},
+      </if>
+      <if test="vacAddtime != null" >
+        #{vacAddtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recordsequenceid != null" >
+        #{recordsequenceid,jdbcType=VARCHAR},
+      </if>
+      <if test="useridtype != null" >
+        #{useridtype,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="servicetype != null" >
+        #{servicetype,jdbcType=VARCHAR},
+      </if>
+      <if test="spid != null" >
+        #{spid,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetype != null" >
+        #{updatetype,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedesc != null" >
+        #{updatedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="linkid != null" >
+        #{linkid,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="effectivedate != null" >
+        #{effectivedate,jdbcType=VARCHAR},
+      </if>
+      <if test="expiredate != null" >
+        #{expiredate,jdbcType=VARCHAR},
+      </if>
+      <if test="resultcode != null" >
+        #{resultcode,jdbcType=INTEGER},
+      </if>
+      <if test="timeStamp != null" >
+        #{timeStamp,jdbcType=VARCHAR},
+      </if>
+      <if test="encodestr != null" >
+        #{encodestr,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="isputwelcomesms != null" >
+        #{isputwelcomesms,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.vlg.linghu.mybatis.bean.VacReceiveMessageExample" resultType="java.lang.Integer" >
+    select count(*) from e_vac_receive
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update e_vac_receive
+    <set >
+      <if test="record.vacId != null" >
+        vac_id = #{record.vacId,jdbcType=INTEGER},
+      </if>
+      <if test="record.vacAddtime != null" >
+        vac_addtime = #{record.vacAddtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.recordsequenceid != null" >
+        RecordSequenceID = #{record.recordsequenceid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useridtype != null" >
+        UserIdType = #{record.useridtype,jdbcType=INTEGER},
+      </if>
+      <if test="record.userid != null" >
+        UserId = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.servicetype != null" >
+        ServiceType = #{record.servicetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spid != null" >
+        SpId = #{record.spid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productid != null" >
+        ProductId = #{record.productid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatetype != null" >
+        UpdateType = #{record.updatetype,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatetime != null" >
+        UpdateTime = #{record.updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatedesc != null" >
+        UpdateDesc = #{record.updatedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkid != null" >
+        LinkID = #{record.linkid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        Content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.effectivedate != null" >
+        EffectiveDate = #{record.effectivedate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.expiredate != null" >
+        ExpireDate = #{record.expiredate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resultcode != null" >
+        ResultCode = #{record.resultcode,jdbcType=INTEGER},
+      </if>
+      <if test="record.timeStamp != null" >
+        Time_Stamp = #{record.timeStamp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.encodestr != null" >
+        EncodeStr = #{record.encodestr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userName != null" >
+        user_name = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isputwelcomesms != null" >
+        isPutWelcomeSMS = #{record.isputwelcomesms,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update e_vac_receive
+    set vac_id = #{record.vacId,jdbcType=INTEGER},
+      vac_addtime = #{record.vacAddtime,jdbcType=TIMESTAMP},
+      RecordSequenceID = #{record.recordsequenceid,jdbcType=VARCHAR},
+      UserIdType = #{record.useridtype,jdbcType=INTEGER},
+      UserId = #{record.userid,jdbcType=VARCHAR},
+      ServiceType = #{record.servicetype,jdbcType=VARCHAR},
+      SpId = #{record.spid,jdbcType=VARCHAR},
+      ProductId = #{record.productid,jdbcType=VARCHAR},
+      UpdateType = #{record.updatetype,jdbcType=INTEGER},
+      UpdateTime = #{record.updatetime,jdbcType=VARCHAR},
+      UpdateDesc = #{record.updatedesc,jdbcType=VARCHAR},
+      LinkID = #{record.linkid,jdbcType=VARCHAR},
+      Content = #{record.content,jdbcType=VARCHAR},
+      EffectiveDate = #{record.effectivedate,jdbcType=VARCHAR},
+      ExpireDate = #{record.expiredate,jdbcType=VARCHAR},
+      ResultCode = #{record.resultcode,jdbcType=INTEGER},
+      Time_Stamp = #{record.timeStamp,jdbcType=VARCHAR},
+      EncodeStr = #{record.encodestr,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      user_name = #{record.userName,jdbcType=VARCHAR},
+      isPutWelcomeSMS = #{record.isputwelcomesms,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.vlg.linghu.mybatis.bean.VacReceiveMessage" >
+    update e_vac_receive
+    <set >
+      <if test="vacAddtime != null" >
+        vac_addtime = #{vacAddtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recordsequenceid != null" >
+        RecordSequenceID = #{recordsequenceid,jdbcType=VARCHAR},
+      </if>
+      <if test="useridtype != null" >
+        UserIdType = #{useridtype,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        UserId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="servicetype != null" >
+        ServiceType = #{servicetype,jdbcType=VARCHAR},
+      </if>
+      <if test="spid != null" >
+        SpId = #{spid,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        ProductId = #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetype != null" >
+        UpdateType = #{updatetype,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime = #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedesc != null" >
+        UpdateDesc = #{updatedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="linkid != null" >
+        LinkID = #{linkid,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        Content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="effectivedate != null" >
+        EffectiveDate = #{effectivedate,jdbcType=VARCHAR},
+      </if>
+      <if test="expiredate != null" >
+        ExpireDate = #{expiredate,jdbcType=VARCHAR},
+      </if>
+      <if test="resultcode != null" >
+        ResultCode = #{resultcode,jdbcType=INTEGER},
+      </if>
+      <if test="timeStamp != null" >
+        Time_Stamp = #{timeStamp,jdbcType=VARCHAR},
+      </if>
+      <if test="encodestr != null" >
+        EncodeStr = #{encodestr,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="isputwelcomesms != null" >
+        isPutWelcomeSMS = #{isputwelcomesms,jdbcType=BIT},
+      </if>
+    </set>
+    where vac_id = #{vacId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="selectPageResult" extends="BaseResultMap" type="org.vlg.linghu.mybatis.bean.VacReceiveMessage" >
+    <!--
+<association property="" column="" javaType="">
+   <id column="" property="" jdbcType="" />
+   <result column="" property="" jdbcType="" />
+ </association>
+-->
+  </resultMap>
+  <sql id="select_by_page_outter_where_sql" >
+      <if test="oredCriteria.size>0">     <if test="_parameter != null" > <include refid="Example_Where_Clause"/> </if>    and   </if>  <if test="oredCriteria.size==0">     where   </if> 
+  </sql>
+  <sql id="select_by_page_inner_where_and_orderby_sql" >
+      <if test="oredCriteria.size>0">     <if test="_parameter != null" > <include refid="Example_Where_Clause"/> </if>  </if>   <if test="orderByClause != null">    order by ${orderByClause}   </if> 
+  </sql>
+  <sql id="select_by_page_outter_orderby_sql" >
+       <if test="orderByClause != null">    order by ${orderByClause}   </if> 
+  </sql>
+  <select id="selectPage" resultMap="selectPageResult" parameterType="org.vlg.linghu.mybatis.bean.VacReceiveMessageExample" >
+    select a.* from e_vac_receive a where a.vac_id in 
+ (select top ${pageSize} vac_id from e_vac_receive 
+<include refid="select_by_page_outter_where_sql"/> 
+vac_id not in (select top ${skipRecordCount} vac_id from e_vac_receive  
+<include refid="select_by_page_inner_where_and_orderby_sql"/> 
+ ) 
+<include refid="select_by_page_outter_orderby_sql"/> 
+ )
+  </select>
+</mapper>

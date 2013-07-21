@@ -5,9 +5,13 @@ import java.sql.Connection;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServlet;
+import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.virbraligo.db.ConnectionManager;
 
 public class InitServlet extends HttpServlet {
@@ -16,23 +20,26 @@ public class InitServlet extends HttpServlet {
 			.getLogger(InitServlet.class);
 
 	public static String WEB_INF;
+	
+	@Autowired
+	DataSource dataSource;
 
 	public void init(ServletConfig config) {
 		try {
 			super.init(config);
-			try {
-				ConnectionManager.load();
-			} catch (Exception e) {
-				logger.error("This error could be ignored!");
-			}
+			WebApplicationContextUtils
+					.getRequiredWebApplicationContext(getServletContext())
+					.getAutowireCapableBeanFactory().autowireBean(this);
+			SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(
+					this, getServletContext());
 			WEB_INF = getServletContext().getRealPath("/WEB-INF/")
 					+ File.separator;
 			System.out.println(WEB_INF);
-			logger.info("loading datasource!");
-			Connection conn = ConnectionManager.getConnection();
-			logger.info("loading datasource successfully, url is "
+			logger.info("Test loading datasource!");
+			Connection conn = dataSource.getConnection();
+			logger.info("Test loading datasource successfully, url is "
 					+ conn.getMetaData().getURL());
-			conn.close();			
+			conn.close();
 		} catch (Exception e) {
 			logger.error("", e);
 		}
