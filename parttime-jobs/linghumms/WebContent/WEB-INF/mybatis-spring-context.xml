@@ -60,6 +60,10 @@ classpath:/org/springframework/transaction/config/spring-tx-3.2.xsd">
 		<property name="basePackage" value="org.vlg.linghu.mybatis.mapper" />
 	</bean>
 
+    <bean id="smsReceiver" class="org.vlg.linghu.sms.zte.client.ZteSMSReceiver"/>
+    
+    <bean id="vacNotifyHandler" class="org.vlg.linghu.vac.VACNotifyHandler"/>
+
 
 	<!-- listener should be added into web.xml -->
 	<!-- <context-param> <param-name>contextConfigLocation</param-name> <param-value>/WEB-iNF/daoContext.xml,/WEB-INF/applicationContext.xml 

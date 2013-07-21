@@ -8,16 +8,23 @@
 package com.unicom.vac.bossagent.soap;
 
 import org.slf4j.Logger;
+import org.vlg.linghu.SpringUtils;
 import org.vlg.linghu.vac.VACNotifyHandler;
 
 public class SyncNotifySPSoapBindingImpl implements
 		com.unicom.vac.bossagent.soap.SyncNotifySPService {
+	
+	public SyncNotifySPSoapBindingImpl(){
+		
+	}
+	
 	private static final Logger logger = org.slf4j.LoggerFactory.getLogger(SyncNotifySPSoapBindingImpl.class);
 	public com.unicom.vac.bossagent.soap.sync.rsp.OrderRelationUpdateNotifyResponse orderRelationUpdateNotify(
 			com.unicom.vac.bossagent.soap.sync.req.OrderRelationUpdateNotifyRequest orderRelationUpdateNotifyRequest)
 			throws java.rmi.RemoteException {
 		logger.info("got notification request from VAC center");
-		new VACNotifyHandler().handle(orderRelationUpdateNotifyRequest);
+		VACNotifyHandler notify = (VACNotifyHandler)SpringUtils.getBean("vacNotifyHandler");
+		notify.handle(orderRelationUpdateNotifyRequest);
 
 		com.unicom.vac.bossagent.soap.sync.rsp.OrderRelationUpdateNotifyResponse resp = new com.unicom.vac.bossagent.soap.sync.rsp.OrderRelationUpdateNotifyResponse();
 		resp.setRecordSequenceId(orderRelationUpdateNotifyRequest
