@@ -6,8 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.virbraligo.db.ConnectionManager;
 
 import com.unicom.vac.bossagent.soap.sync.req.OrderRelationUpdateNotifyRequest;
@@ -18,6 +21,9 @@ public class VACNotifyHandler {
 			.getLogger(VACNotifyHandler.class);
 
 	private static final String insertsql = "insert into e_vac_receive (vac_addtime,) values ()";
+	
+	@Autowired
+	DataSource dataSource;
 
 	// /****** Script for SelectTopNRows command from SSMS ******/
 	// SELECT TOP 1000 [vac_id]
@@ -55,6 +61,7 @@ public class VACNotifyHandler {
 		
 		String userId = req.getUserId();
 		int updateType = req.getUpdateType();
+		
 		String content = req.getContent();
 		// 更新操作的类型包括：
 		// 1：订购

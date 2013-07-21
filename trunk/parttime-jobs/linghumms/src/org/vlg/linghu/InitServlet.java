@@ -10,9 +10,11 @@ import javax.sql.DataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.virbraligo.db.ConnectionManager;
+import org.vlg.linghu.sms.zte.client.ZteSMSReceiver;
 
 public class InitServlet extends HttpServlet {
 
@@ -23,13 +25,18 @@ public class InitServlet extends HttpServlet {
 	
 	@Autowired
 	DataSource dataSource;
+	
+	@Autowired
+	ZteSMSReceiver smsReceiver;
+	
+	public static WebApplicationContext sprintContext;
 
 	public void init(ServletConfig config) {
 		try {
 			super.init(config);
-			WebApplicationContextUtils
-					.getRequiredWebApplicationContext(getServletContext())
-					.getAutowireCapableBeanFactory().autowireBean(this);
+			sprintContext = WebApplicationContextUtils
+					.getRequiredWebApplicationContext(getServletContext());
+			sprintContext.getAutowireCapableBeanFactory().autowireBean(this);
 			SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(
 					this, getServletContext());
 			WEB_INF = getServletContext().getRealPath("/WEB-INF/")
@@ -40,6 +47,12 @@ public class InitServlet extends HttpServlet {
 			logger.info("Test loading datasource successfully, url is "
 					+ conn.getMetaData().getURL());
 			conn.close();
+//			smsReceiver.start();
+			new Thread("SMS Receiver"){
+				public void run(){
+					smsReceiver.start();
+				}
+			}.start();
 		} catch (Exception e) {
 			logger.error("", e);
 		}
