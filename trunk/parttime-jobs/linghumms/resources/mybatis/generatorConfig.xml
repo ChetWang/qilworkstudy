@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration >
-  <properties url="file:////D:/documents/workspace-4.2/ama-3.0/resources/mybatis/generator.properties" />
+  <properties url="file:////D:/documents/workspace-4.2/axis2/resources/mybatis/generator.properties" />
   <context id="psg-service-ingegration" targetRuntime="MyBatis3">
   	<plugin type="org.mybatis.generator.plugins.MapperConfigPlugin">
   	    <property name="targetPackage" value="mybatis"/>
@@ -14,7 +14,7 @@
   	</plugin>
   	
 
-  	<plugin type="org.virbraligo.db.mybatis.OraclePagingPlugin"></plugin>
+  	<plugin type="org.vlg.linghu.SQLServerPagingPlugin"></plugin>
   
     <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
     <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
@@ -31,10 +31,11 @@
     	password="${db_password}">
     </jdbcConnection>
     
+    <!-- 
     <javaTypeResolver type="mybatis.AMAJavaTypeResolver" >
       <property name="forceBigDecimals" value="false" />
     </javaTypeResolver>
-
+    -->
     <javaModelGenerator targetPackage="${modelPackage}" targetProject="${targetProject}">
       <property name="enableSubPackages" value="false" />
       <property name="trimStrings" value="true" />
@@ -49,7 +50,7 @@
     </javaClientGenerator>
 
   <!-- 增加或修改在下面加上 /先看 README -->   
-  <table  schema="${schema}" tableName="AMA2_MANUAL_WORKAROUND" domainObjectName="ManualWorkaroundBean" />
+  <table  schema="${schema}" tableName="E_VAC_RECEIVE" domainObjectName="VacReceive" />
   <!-- 
    <table  schema="${schema}" tableName="AMA2_USER" domainObjectName="User" /> 
    
