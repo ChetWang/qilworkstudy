@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import org.springframework.web.context.support.WebApplicationContextUtils;
-import org.virbraligo.db.ConnectionManager;
 import org.vlg.linghu.sms.zte.client.ZteSMSReceiver;
 
 public class InitServlet extends HttpServlet {
@@ -47,7 +46,6 @@ public class InitServlet extends HttpServlet {
 			logger.info("Test loading datasource successfully, url is "
 					+ conn.getMetaData().getURL());
 			conn.close();
-//			smsReceiver.start();
 			new Thread("SMS Receiver"){
 				public void run(){
 					smsReceiver.start();
@@ -58,11 +56,11 @@ public class InitServlet extends HttpServlet {
 		}
 	}
 
-	public void destroy() {
-		// ConnectionM
-		super.destroy();
-		ConnectionManager.destroy();
-		System.out.println("destroy");
-	}
+//	public void destroy() {
+//		// ConnectionM
+//		super.destroy();
+//		ConnectionManager.destroy();
+//		System.out.println("destroy");
+//	}
 
 }
