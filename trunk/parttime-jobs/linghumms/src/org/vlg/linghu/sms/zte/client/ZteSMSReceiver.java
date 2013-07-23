@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.zte.smgw.api.sgip.message.SGIPDeliver;
+import com.zte.smgw.api.sgip.message.SGIPDeliverResp;
 import com.zte.smgw.api.sgip.message.SGIPReport;
+import com.zte.smgw.api.sgip.message.body.SGIPCommonRespBody;
 import com.zte.smgw.api.sgip.server.SGIPRecieveMsg;
 import com.zte.smgw.api.sgip.server.SGIPServer;
 import com.zte.smgw.api.sgip.server.SGIPServerInitInfo;
@@ -36,11 +38,11 @@ public class ZteSMSReceiver {
 				if (msg.messageType == 1) {
 					// deliver
 					SGIPDeliver deliver = (SGIPDeliver) msg.obj;
-					logger.info("deliver message: {}",deliver.toString());
+					logger.info("收到用户上行消息deliver message: {}",deliver.toString());
 				} else if (msg.messageType == 2) {
 					// report
 					SGIPReport report = (SGIPReport) msg.obj;
-					logger.info("report message: {}",report.toString());
+					logger.info("收到网关状态报告消息report message: {}",report.toString());
 				}
 			}
 		}

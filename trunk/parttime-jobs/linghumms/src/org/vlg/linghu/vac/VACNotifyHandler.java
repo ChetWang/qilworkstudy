@@ -1,67 +1,37 @@
 package org.vlg.linghu.vac;
 
 import java.lang.reflect.Method;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.Date;
+import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.virbraligo.db.ConnectionManager;
+import org.vlg.linghu.mybatis.bean.VacReceiveMessage;
+import org.vlg.linghu.mybatis.bean.VacReceiveMessageExample;
+import org.vlg.linghu.mybatis.mapper.VacReceiveMessageMapper;
 
 import com.unicom.vac.bossagent.soap.sync.req.OrderRelationUpdateNotifyRequest;
+
 
 public class VACNotifyHandler {
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(VACNotifyHandler.class);
 
-	private static final String insertsql = "insert into e_vac_receive (vac_addtime,) values ()";
-	
 	@Autowired
 	DataSource dataSource;
 
-	// /****** Script for SelectTopNRows command from SSMS ******/
-	// SELECT TOP 1000 [vac_id]
-	// ,[vac_addtime]
-	// ,[RecordSequenceID]
-	// ,[UserIdType]
-	// ,[UserId]
-	// ,[ServiceType]
-	// ,[SpId]
-	// ,[ProductId]
-	// ,[UpdateType]
-	// ,[UpdateTime]
-	// ,[UpdateDesc]
-	// ,[LinkID]
-	// ,[Content]
-	// ,[EffectiveDate]
-	// ,[ExpireDate]
-	// ,[ResultCode]
-	// ,[Time_Stamp]
-	// ,[EncodeStr]
-	// ,[user_id]
-	// ,[user_name]
-	// FROM [LoveLife_DB].[dbo].[e_vac_receive]
+	@Autowired
+	VacReceiveMessageMapper vacReceiveMessageMapper;
 
-	private static final String updatesql = "update e_vac_receive set vac_addtime=?, "
-			+ "RecordSequenceID=?, UserIdType=?, ServiceType=?, UpdateType=?,"
-			+ " UpdateTime=?, UpdateDesc=?, LinkID=?,Content=?,EffectiveDate=?,ExpireDate=?, "
-			+ "ResultCode=?,Time_Stamp=?,EncodeStr=?,user_id=?,user_name=? where userid=? and SpId=? and ProductId=?";
-
-	private static final String transfersql = "update e_vac_receive set userid=? where userid=? and SpId=? and ProductId=?";
-
-	private static final String selectsql = "select count(*) from e_vac_receive where userid=? and ";
-
-	public void handle(OrderRelationUpdateNotifyRequest req) {
-		
+	public synchronized void handle(OrderRelationUpdateNotifyRequest req) {
+		VacReceiveMessage vacReceive = getVacReceiveMessage(req);
 		String userId = req.getUserId();
 		int updateType = req.getUpdateType();
-		
+
 		String content = req.getContent();
 		// 更新操作的类型包括：
 		// 1：订购
@@ -71,38 +41,38 @@ public class VACNotifyHandler {
 		// 5：改号
 		switch (updateType) {
 		case 1:
-			logger.info("用户订购：{}",userId+"  "+content);
-			addUser(req);
+			logger.info("用户订购：{}", userId + "  " + content);
+			addUser(vacReceive);
 			break;
 		case 2:
-			logger.info("用户退订：{}",userId+"  "+content);
-//			updateUser(req);
-			deleteUser(req);
+			logger.info("用户退订：{}", userId + "  " + content);
+			// updateUser(req);
+			deleteUser(vacReceive);
 			break;
 		case 3:
-			logger.info("用户点播：{}",userId+"  "+content);
-			addUser(req);
+			logger.info("用户点播：{}", userId + "  " + content);
+			addUser(vacReceive);
 			break;
 		case 4:
 			logger.info("update type 4, reserved. ");
 			break;
 		case 5:
-			logger.info("用户改号：{}",userId+"  "+content);
-			transferUser(req);
+			logger.info("用户改号：{}", userId + "  " + content);
+			transferUser(vacReceive);
 			break;
 		default:
 			break;
 		}
-		logger.info(getNotifyInfo(req));
+		logger.info(getBeanInfo(req));
 	}
 
-	private String getNotifyInfo(OrderRelationUpdateNotifyRequest req) {
+	private String getBeanInfo(Object o) {
 		StringBuilder sb = new StringBuilder();
-		Method[] methods = req.getClass().getMethods();
+		Method[] methods = o.getClass().getMethods();
 		for (Method m : methods) {
 			if (m.getName().startsWith("get")) {
 				try {
-					Object value = m.invoke(req, new Object[] {});
+					Object value = m.invoke(o, new Object[] {});
 					sb.append(m.getName() + " --> " + value);
 					sb.append(" | ");
 				} catch (Exception e) {
@@ -112,48 +82,92 @@ public class VACNotifyHandler {
 		return sb.toString();
 	}
 
-	private void transferUser(OrderRelationUpdateNotifyRequest req) {
-		String newMobile = req.getContent();
-		String userId = req.getUserId();
+	private VacReceiveMessage getVacReceiveMessage(
+			OrderRelationUpdateNotifyRequest req) {
+		VacReceiveMessage m = new VacReceiveMessage();
+		m.setContent(req.getContent());
+		m.setEffectivedate(req.getEffectiveDate());
+		m.setEncodestr(req.getEncodeStr());
+		m.setExpiredate(req.getExpireDate());
+		// m.setIsputwelcomesms(req.geti)
+		m.setLinkid(req.getLinkId());
+		m.setProductid(req.getProductId());
+		m.setRecordsequenceid(req.getRecordSequenceId());
+		m.setResultcode(0);
+		m.setServicetype(req.getServiceType());
+		m.setSpid(req.getSpId());
+		m.setTimeStamp(req.getTime_stamp());
+		m.setUpdatedesc(req.getUpdateDesc());
+		m.setUpdatetime(req.getUpdateTime());
+		m.setUpdatetype(req.getUpdateType());
+
+		m.setUserid(req.getUserId());
+		m.setUseridtype(req.getUserIdType());
+		// m.setUserName(req.getuser)
+		// m.setUserId(Integer.parseInt(req.getUserId()));
+		m.setVacAddtime(new Date());
+		return m;
+	}
+
+	private void transferUser(VacReceiveMessage vacReceive) {
 
 	}
 
-	private void addUser(OrderRelationUpdateNotifyRequest req) {
-		
-	}
-
-	private void updateUser(OrderRelationUpdateNotifyRequest req) {
-
-	}
-	
-	private void deleteUser(OrderRelationUpdateNotifyRequest req) {
-
-	}
-
-	private boolean isUserTypeExist(OrderRelationUpdateNotifyRequest req) {
-		// ProductId, spid, userid为唯一业锟今订癸拷锟斤拷锟斤拷
-		String userId = req.getUserId();
-		Connection conn = ConnectionManager.getConnection();
-		int count = 0;
+	private void addUser(VacReceiveMessage vacReceive) {
 		try {
-			PreparedStatement ps = conn.prepareStatement(selectsql);
-			ps.setString(1, userId);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				count = rs.getInt(1);
-			}
-			rs.close();
-			ps.close();
-		} catch (SQLException e) {
+			vacReceiveMessageMapper.insertSelective(vacReceive);
+		} catch (Exception e) {
 			logger.error("", e);
-			return true;
-		} finally {
-			ConnectionManager.releaseConnection(conn);
 		}
-		return count > 0;
 	}
-	
-	public static void main(String[] xx){
+
+	private void updateUser(VacReceiveMessage vacReceive) {
+		try {
+			hanleExistingUsers(vacReceive);
+			vacReceiveMessageMapper.updateByExampleSelective(vacReceive,
+					createCriteriaExample(vacReceive));
+		} catch (Exception e) {
+			logger.error("", e);
+		}
+	}
+
+	private void deleteUser(VacReceiveMessage vacReceive) {
+		try {
+			hanleExistingUsers(vacReceive);
+			vacReceiveMessageMapper
+					.deleteByExample(createCriteriaExample(vacReceive));
+		} catch (Exception e) {
+			logger.error("", e);
+		}
+	}
+
+	private void hanleExistingUsers(VacReceiveMessage vacReceive) {
+		logger.info("Handle existing users");
+		try {
+			VacReceiveMessageExample ex = createCriteriaExample(vacReceive);
+			List<VacReceiveMessage> existingUsers = vacReceiveMessageMapper
+					.selectByExample(ex);
+
+			for (VacReceiveMessage m : existingUsers) {
+				String s = getBeanInfo(m);
+				logger.info("备份先前用户信息: {}",s);
+			}
+		} catch (Exception e) {
+			logger.error("", e);
+		}
+		logger.info("Handle existing users complete");
+	}
+
+	private VacReceiveMessageExample createCriteriaExample(
+			VacReceiveMessage vacReceive) {
+		VacReceiveMessageExample ex = new VacReceiveMessageExample();
+		ex.createCriteria().andProductidEqualTo(vacReceive.getProductid())
+				.andSpidEqualTo(vacReceive.getSpid())
+				.andUseridEqualTo(vacReceive.getUserid());
+		return ex;
+	}
+
+	public static void main(String[] xx) {
 		logger.info("xxxx");
 	}
 

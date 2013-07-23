@@ -64,7 +64,7 @@ public class test {
 			submit.getBody().setUserNumber("8615558050237");
 			
 			submit.getBody().setFeeType(1);
-			submit.getBody().setFeeValue("4");
+			submit.getBody().setFeeValue("0");
 //			submit.getBody().setGivenValue("987");
 			submit.getBody().setGivenValue("0");
 			submit.getBody().setAgentFlag(0);
@@ -73,8 +73,8 @@ public class test {
 //			submit.getBody().setExpireTime("090621010101");
 //			submit.getBody().setScheduleTime("090621010101");
 			submit.getBody().setReportFlag(1);
-			submit.getBody().setTP_pid(1);
-			submit.getBody().setTP_udhi(1);
+			submit.getBody().setTP_pid(0);
+			submit.getBody().setTP_udhi(0);
 			submit.getBody().setMessageCoding(15);
 			submit.getBody().setMessageType(0);
 			submit.getBody().setMessageContent("xiangyu sms test".getBytes());
