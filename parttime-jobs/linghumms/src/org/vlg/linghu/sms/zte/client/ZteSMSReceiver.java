@@ -4,9 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.zte.smgw.api.sgip.message.SGIPDeliver;
-import com.zte.smgw.api.sgip.message.SGIPDeliverResp;
 import com.zte.smgw.api.sgip.message.SGIPReport;
-import com.zte.smgw.api.sgip.message.body.SGIPCommonRespBody;
 import com.zte.smgw.api.sgip.server.SGIPRecieveMsg;
 import com.zte.smgw.api.sgip.server.SGIPServer;
 import com.zte.smgw.api.sgip.server.SGIPServerInitInfo;
@@ -46,7 +44,6 @@ public class ZteSMSReceiver {
 				}
 			}
 		}
-
 	}
 
 	/**
