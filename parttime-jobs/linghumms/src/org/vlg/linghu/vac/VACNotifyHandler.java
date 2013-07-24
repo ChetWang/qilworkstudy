@@ -66,11 +66,11 @@ public class VACNotifyHandler {
 		logger.info(getBeanInfo(req));
 	}
 
-	private String getBeanInfo(Object o) {
+	public static String getBeanInfo(Object o) {
 		StringBuilder sb = new StringBuilder();
 		Method[] methods = o.getClass().getMethods();
 		for (Method m : methods) {
-			if (m.getName().startsWith("get")) {
+			if (m.getName().startsWith("get")&&!m.getName().equals("getClass")) {
 				try {
 					Object value = m.invoke(o, new Object[] {});
 					sb.append(m.getName() + " --> " + value);
