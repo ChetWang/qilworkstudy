@@ -22,15 +22,17 @@ public class MMSSendTest {
 	public static MM7SubmitReq createRequest() {
 		MM7SubmitReq req = new MM7SubmitReq();
 		req.setVASPID("62440"); // VASPID
-		req.setVASID("106558738"); // VASID
-		req.setSenderAddress("106558738"+"90360670" ); // 消息发送方（VASID +
+		req.setVASID("10655"); // VASID
+		req.setSenderAddress("106558738"+"9036067001" ); // 消息发送方（VASID +
 														// ServiceCode）
 //		req.setChargedPartyID("106558738");
-		req.addTo("8615558050237"); // 消息接收方，对于多个接收方可多次调用addTo()，addCc()，addBcc()
-		req.setServiceCode("90360670"); // 业务代码
-		req.setLinkedID("0"); // LinkID
-		req.setSubject("这是一个测试"); // 设置消息的标题
-		req.setDeliveryReport(false); // 设置是否需要递送报告
+		req.setChargedParty(MMConstants.ChargedParty.SENDER);
+//		req.addTo("8615558050237"); // 消息接收方，对于多个接收方可多次调用addTo()，addCc()，addBcc()
+		req.addTo("8618657158100");
+		req.setServiceCode("9036067001"); // 业务代码
+//		req.setLinkedID(""); // LinkID
+		req.setSubject("This is a test"); // 设置消息的标题
+		req.setDeliveryReport(true); // 设置是否需要递送报告
 		req.setReadReply(false); // 设置是否需要阅读报告
 		req.setMessageClass(MMConstants.MessageClass.PERSONAL); // 设置消息类型
 		req.setPriority(MMConstants.Priority.LOW); // 设置消息的优先级
