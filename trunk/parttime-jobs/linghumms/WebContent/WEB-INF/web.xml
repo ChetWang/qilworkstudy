@@ -18,14 +18,14 @@
 		<servlet-class>org.vlg.linghu.InitServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	
-	
+
+
 	<servlet>
 		<servlet-name>AxisServlet</servlet-name>
 		<servlet-class>org.apache.axis.transport.http.AxisServlet</servlet-class>
 		<load-on-startup>0</load-on-startup>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>AxisServlet</servlet-name>
 		<url-pattern>/servlet/AxisServlet</url-pattern>
@@ -39,6 +39,29 @@
 		<url-pattern>/services/*</url-pattern>
 	</servlet-mapping>
 
+
+	<servlet>
+		<servlet-name>MMSReceiverServlet</servlet-name>
+		<servlet-class>org.vlg.linghu.mms.MMSReceiverServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MMSReceiverServlet</servlet-name>
+		<url-pattern>/mmsreceiver</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>test</servlet-name>
+		<servlet-class>org.vlg.linghu.mms.TestServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>test</servlet-name>
+		<url-pattern>/test</url-pattern>
+	</servlet-mapping>
+	
+	
 	<mime-mapping>
 		<extension>wsdl</extension>
 		<mime-type>text/xml</mime-type>
