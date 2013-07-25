@@ -36,11 +36,11 @@ public class ZteSMSReceiver {
 				if (msg.messageType == 1) {
 					// deliver
 					SGIPDeliver deliver = (SGIPDeliver) msg.obj;
-					logger.info("收到用户上行消息deliver message: {}",deliver.toString());
+					logger.info("收到用户上行短信deliver message: {}",deliver.toString());
 				} else if (msg.messageType == 2) {
 					// report
 					SGIPReport report = (SGIPReport) msg.obj;
-					logger.info("收到网关状态报告消息report message: {}",report.toString());
+					logger.info("收到短信网关状态报告消息report message: {}",report.toString());
 				}
 			}
 		}
