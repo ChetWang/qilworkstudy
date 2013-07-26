@@ -20,6 +20,12 @@
 	<LogNum>100</LogNum>
 	<LogInterval>120</LogInterval>
 	<LogSize>5000</LogSize>
+	
+    <!-- SP相关配置，非原mm7Config.xml中必须内容 -->
+    <VASPID>62440</VASPID>
+    <VASID>10655</VASID>
+    <SPNUMBER>106558738</SPNUMBER>
+    <AttachmentDir>D:/Web/mms_attachments/</AttachmentDir>
 </vasp:MM7Config>
 
 
