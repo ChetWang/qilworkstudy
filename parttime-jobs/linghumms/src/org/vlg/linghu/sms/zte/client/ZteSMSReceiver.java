@@ -2,6 +2,7 @@ package org.vlg.linghu.sms.zte.client;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.vlg.linghu.SPConfig;
 
 import com.zte.smgw.api.sgip.message.SGIPDeliver;
 import com.zte.smgw.api.sgip.message.SGIPReport;
@@ -14,10 +15,11 @@ public class ZteSMSReceiver {
 	private static final Logger logger =LoggerFactory.getLogger(ZteSMSReceiver.class);
 
 	public void start() {
+		
 		SGIPServerInitInfo info = new SGIPServerInitInfo();
 		info.IP = "123.159.200.55";
 		info.port = 6888;
-		info.userName = "xiangyu";
+		info.userName = SPConfig.getUserName();
 		info.passWord = "xy28187688";
 		SGIPServer server = SGIPServer.getInstance();
 		server.init(info);
