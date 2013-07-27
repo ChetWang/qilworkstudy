@@ -26,6 +26,8 @@
     <VASID>10655</VASID>
     <SPNUMBER>106558738</SPNUMBER>
     <AttachmentDir>D:/Web/mms_attachments/</AttachmentDir>
+    <MsgSendDuration>400</MsgSendDuration> <!-- 毫秒 -->
+    <MsgDetectDuration>60000</MsgDetectDuration>
 </vasp:MM7Config>
 
 
