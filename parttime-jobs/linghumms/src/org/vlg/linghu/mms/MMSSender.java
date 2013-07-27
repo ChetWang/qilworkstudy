@@ -37,11 +37,11 @@ public class MMSSender extends Thread {
 
 	@Autowired
 	MmsSendMessageMapper mmsSendMessageMapper;
-	
+
 	@Autowired
 	VacReceiveMessageMapper vacReceiveMessageMapper;
-	
-	public MMSSender(){
+
+	public MMSSender() {
 		setDaemon(true);
 		setName("MMS-Sender");
 	}
@@ -50,37 +50,46 @@ public class MMSSender extends Thread {
 		logger.info("MMS Sender sarted");
 		MmsSendMessageExample ex = new MmsSendMessageExample();
 		ex.createCriteria().andSendStatusEqualTo(SEND_READY);
+		MM7Sender sender = null;
+		try {
+			sender = createMM7Sender();
+		} catch (Exception e1) {
+			logger.error("failed to create mm7 sender", e1);
+			return;
+		}
 		while (true) {
 			try {
 				List<MmsSendMessageWithBLOBs> messages = mmsSendMessageMapper
 						.selectByExampleWithBLOBs(ex);
 				if (messages.size() > 0) {
-					MM7Sender sender = createMM7Sender();
+
 					for (MmsSendMessageWithBLOBs msg : messages) {
 						logger.debug("sending to {}", msg.getSendMobile());
 						MM7SubmitReq req = createRequest(msg);
-						if(req!=null){
-						msg.setSendStatus(SEND_SENDING);
-						createContent(msg, req);
-						mmsSendMessageMapper.updateByPrimaryKey(msg);
-						MM7RSRes resp = sender.send(req);
-						if(resp instanceof MM7SubmitRes){
-							MM7SubmitRes submitResp = (MM7SubmitRes)resp;
-							msg.setMsgid(submitResp.getMessageID());
-						}
-						msg.setSendStatus(resp.getStatusCode());
-						mmsSendMessageMapper.updateByPrimaryKey(msg);
-						logger.debug("sent to " + msg.getSendMobile()
-								+ " complete, status code:"
-								+ resp.getStatusCode() + ", status detail: "
-								+ resp.getStatusDetail() + ", status text:"
-								+ resp.getStatusText() + ", transaction id: "
-								+ resp.getTransactionID() + ", mm7 version:"
-								+ resp.getMM7Version());
-						sleep(SPConfig.getMsgSendDuration());
+						if (req != null) {
+							msg.setSendStatus(SEND_SENDING);
+							createContent(msg, req);
+							mmsSendMessageMapper.updateByPrimaryKey(msg);
+							MM7RSRes resp = sender.send(req);
+							if (resp instanceof MM7SubmitRes) {
+								MM7SubmitRes submitResp = (MM7SubmitRes) resp;
+								msg.setMsgid(submitResp.getMessageID());
+							}
+							msg.setSendStatus(resp.getStatusCode());
+							mmsSendMessageMapper.updateByPrimaryKey(msg);
+							logger.debug("sent to " + msg.getSendMobile()
+									+ " complete, status code:"
+									+ resp.getStatusCode()
+									+ ", status detail: "
+									+ resp.getStatusDetail() + ", status text:"
+									+ resp.getStatusText()
+									+ ", transaction id: "
+									+ resp.getTransactionID()
+									+ ", mm7 version:" + resp.getMM7Version());
+							sleep(SPConfig.getMsgSendDuration());
 						}
 					}
-				}else{
+				} else {
 					sleep(SPConfig.getMsgDetectDuration());
 				}
 			} catch (Exception e) {
@@ -116,18 +125,19 @@ public class MMSSender extends Thread {
 			if (!"".equals(att)) {
 				MMContent mmc = MMContent.createFromFile(attLocation + att);
 				if (att.endsWith(".txt")) {
-//					mmc = MMContent
-//							.createFromString(getTextFromFile(attLocation + att));
+					// mmc = MMContent
+					// .createFromString(getTextFromFile(attLocation + att));
 					mmc.setContentType(MMConstants.ContentType.TEXT);
 					mmc.setCharset(CHARSET);
 				} else if (att.endsWith(".jpg") || att.endsWith(".jpeg")) {
 					mmc.setContentType(MMConstants.ContentType.JPEG);
-				} else if(att.endsWith(".gif")){
+				} else if (att.endsWith(".gif")) {
 					mmc.setContentType(MMConstants.ContentType.GIF);
-				} else if(att.endsWith(".png")){
+				} else if (att.endsWith(".png")) {
 					mmc.setContentType(MMConstants.ContentType.PNG);
-				}else {
-					logger.error("Cannot recogonize file type '"+attLocation+att+"', send to user "+msg.getSendMobile());
+				} else {
+					logger.error("Cannot recogonize file type '" + attLocation
+							+ att + "', send to user " + msg.getSendMobile());
 				}
 				mmc.setContentID(att);
 				main.addSubContent(mmc);
@@ -153,7 +163,7 @@ public class MMSSender extends Thread {
 		req.setChargedParty(MMConstants.ChargedParty.SENDER);
 		req.addTo(msg.getSendMobile());
 		String serviceId = getServiceId(msg);
-		if(serviceId==null){
+		if (serviceId == null) {
 			return null;
 		}
 		req.setServiceCode(serviceId); // ÒµÎñ´úÂë
@@ -166,15 +176,16 @@ public class MMSSender extends Thread {
 		// req.set
 		return req;
 	}
-	
-	public String getServiceId(MmsSendMessage ms){
+
+	public String getServiceId(MmsSendMessage ms) {
 		VacReceiveMessageExample ex = new VacReceiveMessageExample();
 		ex.createCriteria().andUseridEqualTo(ms.getSendMobile());
-		List<VacReceiveMessage> vacs = vacReceiveMessageMapper.selectByExample(ex);
-		if(vacs.size()>0){
+		List<VacReceiveMessage> vacs = vacReceiveMessageMapper
+				.selectByExample(ex);
+		if (vacs.size() > 0) {
 			return vacs.get(0).getProductid();
 		}
-		logger.warn("Cannot find serviceId for user "+ms.getSendMobile());
+		logger.warn("Cannot find serviceId for user " + ms.getSendMobile());
 		return null;
 	}
 
