@@ -1,5 +1,6 @@
 package org.vlg.linghu.sms.zte.client;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.log4j.Logger;
@@ -37,7 +38,7 @@ public class test {
 //			submit.getBody().setChargeNumber("106558738");
 			submit.getBody().setUserCount(1);
 			
-			submit.getBody().setUserNumber("8615558050237");
+			submit.getBody().setUserNumber("8615558050236");
 //			submit.getBody().setUserNumber("8618657158100");
 			submit.getBody().setFeeType(1);
 			submit.getBody().setFeeValue("0");
@@ -62,9 +63,12 @@ public class test {
 			Date date1 = new Date();
 			for (int i = 0; i < 1; i++) {
 				rsphandler6 = new SGIPRsp();
-				submit.getHead().setSequenceNo(new SGIPSequenceNo());
+				SGIPSequenceNo seq = new SGIPSequenceNo();
+				System.err.println(seq.getNode()+","+seq.getTime()+","+seq.getNumber());
+				submit.getHead().setSequenceNo(seq);
 				client.sendSubmit(submit, rsphandler6);
 				SGIPSubmitResp rsp6 = rsphandler6.waitForSGIPSubmitResp();
+//				rsp6.getBody().
 //				rsp6.getBody().getResult();
 				log.info("result" + String.valueOf(i+" "+rsp6.getBody().getResult()));
 			}
