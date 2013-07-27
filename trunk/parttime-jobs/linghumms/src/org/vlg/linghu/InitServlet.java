@@ -2,6 +2,8 @@ package org.vlg.linghu;
 
 import java.io.File;
 import java.sql.Connection;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.vlg.linghu.mms.MMSSender;
+import org.vlg.linghu.sms.SMSSender;
 import org.vlg.linghu.sms.zte.client.ZteSMSReceiver;
 
 public class InitServlet extends HttpServlet {
@@ -28,7 +32,16 @@ public class InitServlet extends HttpServlet {
 	@Autowired
 	ZteSMSReceiver smsReceiver;
 	
+	@Autowired
+	SMSSender smsSender;
+	
+	@Autowired
+	MMSSender mmsSender;
+	
 	public static WebApplicationContext sprintContext;
+	
+	//FIXME, 老附件清理，30天
+	private Timer timer = new Timer();
 
 	public void init(ServletConfig config) {
 		try {
@@ -51,16 +64,24 @@ public class InitServlet extends HttpServlet {
 					smsReceiver.start();
 				}
 			}.start();
+			smsSender.start();
+			mmsSender.start();
+			timer.scheduleAtFixedRate(new TimerTask(){
+
+				@Override
+				public void run() {
+					checkArchivedAttachments();
+				}
+				
+			}, 1000, 1000*60*60*24);
 		} catch (Exception e) {
 			logger.error("", e);
 		}
 	}
 
-//	public void destroy() {
-//		// ConnectionM
-//		super.destroy();
-//		ConnectionManager.destroy();
-//		System.out.println("destroy");
-//	}
+	protected void checkArchivedAttachments() {
+		//FIXME
+		
+	}
 
 }

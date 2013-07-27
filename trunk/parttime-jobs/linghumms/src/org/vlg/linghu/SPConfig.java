@@ -11,6 +11,8 @@ public class SPConfig {
 	private static String vasId;
 	private static String spNumber;
 	private static String attachmentDir;
+	private static int msgSendDuration;
+	private static int msgDetectDuration;
 
 	static {
 		Document doc = VLGFunction.getXMLDocument(SPConfig.class
@@ -29,6 +31,12 @@ public class SPConfig {
 
 		Node attDirNode = doc.getElementsByTagName("AttachmentDir").item(0);
 		attachmentDir = attDirNode.getFirstChild().getNodeValue();
+		
+		Node msgSendDurationNode = doc.getElementsByTagName("MsgSendDuration").item(0);
+		msgSendDuration = Integer.parseInt(msgSendDurationNode.getFirstChild().getNodeValue());
+		
+		Node msgDetectDurationNode = doc.getElementsByTagName("MsgDetectDuration").item(0);
+		msgDetectDuration = Integer.parseInt(msgDetectDurationNode.getFirstChild().getNodeValue());
 	}
 
 	public static String getAttachmentDir() {
@@ -53,6 +61,14 @@ public class SPConfig {
 
 	public static String getSpNumber() {
 		return spNumber;
+	}
+
+	public static int getMsgSendDuration() {
+		return msgSendDuration;
+	}
+
+	public static int getMsgDetectDuration() {
+		return msgDetectDuration;
 	}
 
 }
