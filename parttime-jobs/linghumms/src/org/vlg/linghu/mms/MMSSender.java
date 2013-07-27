@@ -12,7 +12,10 @@ import org.vlg.linghu.SPConfig;
 import org.vlg.linghu.mybatis.bean.MmsSendMessage;
 import org.vlg.linghu.mybatis.bean.MmsSendMessageExample;
 import org.vlg.linghu.mybatis.bean.MmsSendMessageWithBLOBs;
+import org.vlg.linghu.mybatis.bean.VacReceiveMessage;
+import org.vlg.linghu.mybatis.bean.VacReceiveMessageExample;
 import org.vlg.linghu.mybatis.mapper.MmsSendMessageMapper;
+import org.vlg.linghu.mybatis.mapper.VacReceiveMessageMapper;
 
 import com.cmcc.mm7.vasp.common.MMConstants;
 import com.cmcc.mm7.vasp.common.MMContent;
@@ -34,8 +37,17 @@ public class MMSSender extends Thread {
 
 	@Autowired
 	MmsSendMessageMapper mmsSendMessageMapper;
+	
+	@Autowired
+	VacReceiveMessageMapper vacReceiveMessageMapper;
+	
+	public MMSSender(){
+		setDaemon(true);
+		setName("MMS-Sender");
+	}
 
 	public void run() {
+		logger.info("MMS Sender sarted");
 		MmsSendMessageExample ex = new MmsSendMessageExample();
 		ex.createCriteria().andSendStatusEqualTo(SEND_READY);
 		while (true) {
@@ -47,6 +59,7 @@ public class MMSSender extends Thread {
 					for (MmsSendMessageWithBLOBs msg : messages) {
 						logger.debug("sending to {}", msg.getSendMobile());
 						MM7SubmitReq req = createRequest(msg);
+						if(req!=null){
 						msg.setSendStatus(SEND_SENDING);
 						createContent(msg, req);
 						mmsSendMessageMapper.updateByPrimaryKey(msg);
@@ -64,8 +77,11 @@ public class MMSSender extends Thread {
 								+ resp.getStatusText() + ", transaction id: "
 								+ resp.getTransactionID() + ", mm7 version:"
 								+ resp.getMM7Version());
-						sleep(400);
+						sleep(SPConfig.getMsgSendDuration());
+						}
 					}
+				}else{
+					sleep(SPConfig.getMsgDetectDuration());
 				}
 			} catch (Exception e) {
 				logger.error("", e);
@@ -111,7 +127,7 @@ public class MMSSender extends Thread {
 				} else if(att.endsWith(".png")){
 					mmc.setContentType(MMConstants.ContentType.PNG);
 				}else {
-					logger.error("Cannot recogonize file "+attLocation+att);
+					logger.error("Cannot recogonize file type '"+attLocation+att+"', send to user "+msg.getSendMobile());
 				}
 				mmc.setContentID(att);
 				main.addSubContent(mmc);
@@ -136,7 +152,11 @@ public class MMSSender extends Thread {
 		req.setSenderAddress(SPConfig.getSpNumber() + msg.getServiceid());
 		req.setChargedParty(MMConstants.ChargedParty.SENDER);
 		req.addTo(msg.getSendMobile());
-		req.setServiceCode(msg.getServiceid()); // 业务代码
+		String serviceId = getServiceId(msg);
+		if(serviceId==null){
+			return null;
+		}
+		req.setServiceCode(serviceId); // 业务代码
 		// req.setLinkedID(""); // LinkID
 		req.setSubject(msg.getSendTitle()); // 设置消息的标题
 		req.setDeliveryReport(true); // 设置是否需要递送报告
@@ -145,6 +165,17 @@ public class MMSSender extends Thread {
 		req.setPriority(MMConstants.Priority.LOW); // 设置消息的优先级
 		// req.set
 		return req;
+	}
+	
+	public String getServiceId(MmsSendMessage ms){
+		VacReceiveMessageExample ex = new VacReceiveMessageExample();
+		ex.createCriteria().andUseridEqualTo(ms.getSendMobile());
+		List<VacReceiveMessage> vacs = vacReceiveMessageMapper.selectByExample(ex);
+		if(vacs.size()>0){
+			return vacs.get(0).getProductid();
+		}
+		logger.warn("Cannot find serviceId for user "+ms.getSendMobile());
+		return null;
 	}
 
 }
