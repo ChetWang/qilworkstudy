@@ -1,8 +1,17 @@
 package org.vlg.linghu.mms;
 
+import info.monitorenter.cpdetector.io.ASCIIDetector;
+import info.monitorenter.cpdetector.io.ByteOrderMarkDetector;
+import info.monitorenter.cpdetector.io.CodepageDetectorProxy;
+import info.monitorenter.cpdetector.io.JChardetFacade;
+import info.monitorenter.cpdetector.io.ParsingDetector;
+
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -33,7 +42,7 @@ public class MMSSender extends Thread {
 	public static final int SEND_READY = 0;
 	public static final int SEND_SENDING = 19999;
 
-	private static final String CHARSET = "UTF-8";
+	// private static final String CHARSET = "UTF-8";
 
 	@Autowired
 	MmsSendMessageMapper mmsSendMessageMapper;
@@ -41,9 +50,21 @@ public class MMSSender extends Thread {
 	@Autowired
 	VacReceiveMessageMapper vacReceiveMessageMapper;
 
+	CodepageDetectorProxy detector;
+
 	public MMSSender() {
 		setDaemon(true);
 		setName("MMS-Sender");
+		detector = CodepageDetectorProxy.getInstance();
+		detector.add(new ByteOrderMarkDetector());
+		// The first instance delegated to tries to detect the meta charset
+		// attribut in html pages.
+		detector.add(new ParsingDetector(true)); // be verbose about parsing.
+		// This one does the tricks of exclusion and frequency detection, if
+		// first implementation is
+		// unsuccessful:
+		detector.add(JChardetFacade.getInstance()); // Another singleton.
+		detector.add(ASCIIDetector.getInstance()); // Fallback, see javadoc.
 	}
 
 	public void run() {
@@ -62,21 +83,22 @@ public class MMSSender extends Thread {
 				List<MmsSendMessageWithBLOBs> messages = mmsSendMessageMapper
 						.selectByExampleWithBLOBs(ex);
 				if (messages.size() > 0) {
-
+					logger.info("获取到{}条待发彩信",messages.size());
 					for (MmsSendMessageWithBLOBs msg : messages) {
-						logger.debug("sending to {}", msg.getSendMobile());
+						logger.info("发送彩信 至{}", msg.getSendMobile());
 						MM7SubmitReq req = createRequest(msg);
 						if (req != null) {
 							msg.setSendStatus(SEND_SENDING);
 							createContent(msg, req);
 							mmsSendMessageMapper.updateByPrimaryKey(msg);
-							
+
 							MM7RSRes resp = sender.send(req);
 							if (resp instanceof MM7SubmitRes) {
 								MM7SubmitRes submitResp = (MM7SubmitRes) resp;
 								msg.setMsgid(submitResp.getMessageID());
 							}
 							msg.setSendStatus(resp.getStatusCode());
+							msg.setSendDowntime(new Date());
 							mmsSendMessageMapper.updateByPrimaryKey(msg);
 							logger.debug("sent to " + msg.getSendMobile()
 									+ " complete, status code:"
@@ -115,6 +137,8 @@ public class MMSSender extends Thread {
 		return sb.toString();
 	}
 
+	// private
+
 	private void createContent(MmsSendMessageWithBLOBs msg, MM7SubmitReq req) {
 		MMContent main = new MMContent();
 		main.setContentType(MMConstants.ContentType.MULTIPART_MIXED);
@@ -129,7 +153,19 @@ public class MMSSender extends Thread {
 					// mmc = MMContent
 					// .createFromString(getTextFromFile(attLocation + att));
 					mmc.setContentType(MMConstants.ContentType.TEXT);
-					mmc.setCharset(CHARSET);
+					java.nio.charset.Charset charset = null;
+				    try {
+						charset = detector.detectCodepage(new File(attLocation+att).toURI().toURL());
+					} catch (Exception e) {
+						logger.error("",e);
+					}
+				    String charsetStr=null;
+				    if(charset==null){
+				    	charsetStr="utf-8";
+				    }else{
+				    	charsetStr=charset.displayName();
+				    }
+					mmc.setCharset(charsetStr);
 				} else if (att.endsWith(".jpg") || att.endsWith(".jpeg")) {
 					mmc.setContentType(MMConstants.ContentType.JPEG);
 				} else if (att.endsWith(".gif")) {
@@ -145,14 +181,14 @@ public class MMSSender extends Thread {
 			}
 		}
 		req.setContent(main);
-		req.setTransactionID(System.nanoTime()+"");
+		req.setTransactionID(System.nanoTime() + "");
 	}
 
 	private MM7Sender createMM7Sender() throws Exception {
 		MM7Config mm7Config = new MM7Config(getClass().getResource(
 				"/mm7Config.xml").getFile());
-		mm7Config.setConnConfigName(getClass().getResource(
-				"/mm7ConnConfig.xml").getFile());
+		mm7Config.setConnConfigName(getClass()
+				.getResource("/mm7ConnConfig.xml").getFile());
 		MM7Sender sender = new MM7Sender(mm7Config);
 		return sender;
 	}
@@ -161,10 +197,12 @@ public class MMSSender extends Thread {
 		MM7SubmitReq req = new MM7SubmitReq();
 		req.setVASPID(SPConfig.getVaspId()); // VASPID
 		req.setVASID(SPConfig.getVasId()); // VASID
+		String serviceId = getServiceId(msg);
+		msg.setServiceid(serviceId);
 		req.setSenderAddress(SPConfig.getSpNumber() + msg.getServiceid());
 		req.setChargedParty(MMConstants.ChargedParty.SENDER);
 		req.addTo(msg.getSendMobile());
-		String serviceId = getServiceId(msg);
+
 		if (serviceId == null) {
 			return null;
 		}
