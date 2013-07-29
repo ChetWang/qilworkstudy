@@ -34,12 +34,12 @@ public class test {
 			// 企业号（CorpId）与接入号（SpNumber）的关系?一个SP具有唯一一个企业号，特殊情况下一个SP允许向联通申请多个接入号，即企业号与接入号可为一对多的关系。
 			submit.getBody().setCorpId("62440");
 			submit.getBody().setSPNumber("106558738");
-			submit.getBody().setServiceType("9036067000");
+			submit.getBody().setServiceType("9036067002");
 //			submit.getBody().setChargeNumber("106558738");
 			submit.getBody().setUserCount(1);
 			
-			submit.getBody().setUserNumber("8615558050236");
-//			submit.getBody().setUserNumber("8618657158100");
+//			submit.getBody().setUserNumber("8618606529811");
+			submit.getBody().setUserNumber("8618626867777");
 			submit.getBody().setFeeType(1);
 			submit.getBody().setFeeValue("0");
 //			submit.getBody().setGivenValue("987");

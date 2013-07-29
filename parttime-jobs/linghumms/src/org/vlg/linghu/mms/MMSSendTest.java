@@ -29,14 +29,14 @@ public class MMSSendTest {
 		MM7SubmitReq req = new MM7SubmitReq();
 		req.setVASPID("62440"); // VASPID
 		req.setVASID("10655"); // VASID
-		req.setSenderAddress("106558738" + "9036067000"); // 消息发送方（VASID +
+		req.setSenderAddress("106558738"); // 消息发送方（VASID +
 															// ServiceCode）
 															// req.setChargedPartyID("106558738");
 		req.setChargedParty(MMConstants.ChargedParty.SENDER);
 //		 req.addTo("8618606529811"); //8615558050237
 		// 消息接收方，对于多个接收方可多次调用addTo()，addCc()，addBcc()
-		req.addTo("8618657158100");
-		req.setServiceCode("9036067000"); // 业务代码
+		req.addTo("8618626867777");
+		req.setServiceCode("9036067002"); // 业务代码
 		// req.setLinkedID(""); // LinkID
 		req.setSubject("This is a test"); // 设置消息的标题
 		req.setDeliveryReport(true); // 设置是否需要递送报告

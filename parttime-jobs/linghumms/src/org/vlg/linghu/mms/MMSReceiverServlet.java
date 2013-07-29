@@ -34,7 +34,7 @@ public class MMSReceiverServlet extends MM7ReceiveServlet {
 
 
 	public MM7VASPRes doDeliver(MM7DeliverReq request) {
-		logger.debug("收到手机" + request.getSender() + "提交的彩信，标题为："
+		logger.info("收到手机" + request.getSender() + "提交的彩信，标题为："
 				+ request.getSubject());
 		MM7DeliverRes res = new MM7DeliverRes();
 //		res.setServiceCode("服务代码"); // 设置ServiceCode，可选
@@ -46,7 +46,7 @@ public class MMSReceiverServlet extends MM7ReceiveServlet {
 	}
 
 	public MM7VASPRes doDeliveryReport(MM7DeliveryReportReq request) {
-		logger.debug("收到彩信状态报告: "+VACNotifyHandler.getBeanInfo(request));
+		logger.info("收到彩信状态报告: "+VACNotifyHandler.getBeanInfo(request));
 		MM7DeliveryReportRes res = new MM7DeliveryReportRes();
 		res.setStatusCode(MMConstants.RequestStatus.SUCCESS);
 		res.setTransactionID(request.getTransactionID());
@@ -54,7 +54,7 @@ public class MMSReceiverServlet extends MM7ReceiveServlet {
 	}
 
 	public MM7VASPRes doReadReply(MM7ReadReplyReq mm7ReadReplyReq) {
-		logger.debug("收到彩信阅读报告: "+VACNotifyHandler.getBeanInfo(mm7ReadReplyReq));
+		logger.info("收到彩信阅读报告: "+VACNotifyHandler.getBeanInfo(mm7ReadReplyReq));
 		MM7ReadReplyRes res = new MM7ReadReplyRes();
 		res.setStatusCode(MMConstants.RequestStatus.SUCCESS);
 		res.setTransactionID(mm7ReadReplyReq.getTransactionID());
