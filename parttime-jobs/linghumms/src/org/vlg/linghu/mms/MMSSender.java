@@ -33,7 +33,7 @@ public class MMSSender extends Thread {
 	public static final int SEND_READY = 0;
 	public static final int SEND_SENDING = 19999;
 
-	private static final String CHARSET = "GBK";
+	private static final String CHARSET = "UTF-8";
 
 	@Autowired
 	MmsSendMessageMapper mmsSendMessageMapper;
@@ -70,6 +70,7 @@ public class MMSSender extends Thread {
 							msg.setSendStatus(SEND_SENDING);
 							createContent(msg, req);
 							mmsSendMessageMapper.updateByPrimaryKey(msg);
+							
 							MM7RSRes resp = sender.send(req);
 							if (resp instanceof MM7SubmitRes) {
 								MM7SubmitRes submitResp = (MM7SubmitRes) resp;
@@ -143,13 +144,14 @@ public class MMSSender extends Thread {
 				main.addSubContent(mmc);
 			}
 		}
-
+		req.setContent(main);
+		req.setTransactionID(System.nanoTime()+"");
 	}
 
 	private MM7Sender createMM7Sender() throws Exception {
-		MM7Config mm7Config = new MM7Config(MMSSendTest.class.getResource(
+		MM7Config mm7Config = new MM7Config(getClass().getResource(
 				"/mm7Config.xml").getFile());
-		mm7Config.setConnConfigName(MMSSendTest.class.getResource(
+		mm7Config.setConnConfigName(getClass().getResource(
 				"/mm7ConnConfig.xml").getFile());
 		MM7Sender sender = new MM7Sender(mm7Config);
 		return sender;
