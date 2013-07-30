@@ -13,6 +13,11 @@ public class SPConfig {
 	private static String attachmentDir;
 	private static int msgSendDuration;
 	private static int msgDetectDuration;
+	private static String smsGateway;
+	private static int smsGatewayPort;
+	private static String smsReceiveIp;
+	private static int smsReceivePort;
+	
 
 	static {
 		Document doc = VLGFunction.getXMLDocument(SPConfig.class
@@ -37,6 +42,23 @@ public class SPConfig {
 		
 		Node msgDetectDurationNode = doc.getElementsByTagName("MsgDetectDuration").item(0);
 		msgDetectDuration = Integer.parseInt(msgDetectDurationNode.getFirstChild().getNodeValue());
+		
+		Node smsGatewayNode = doc.getElementsByTagName("SMS_Gateway").item(0);
+		smsGateway = smsGatewayNode.getFirstChild().getNodeValue();
+
+		Node smsGatewayPortNode = doc.getElementsByTagName("SMS_Gateway_port").item(0);
+		smsGatewayPort = Integer.parseInt(smsGatewayPortNode.getFirstChild().getNodeValue());
+		
+		Node smsReceiveIPNode = doc.getElementsByTagName("SMS_Receive_IP").item(0);
+		smsReceiveIp = smsReceiveIPNode.getFirstChild().getNodeValue();
+		
+		Node smsReceivePOrtNode = doc.getElementsByTagName("SMS_Receive_port").item(0);
+		smsReceivePort = Integer.parseInt(smsReceivePOrtNode.getFirstChild().getNodeValue());
+		
+//		<SMS_Gateway>211.90.223.213</SMS_Gateway>
+//	    <c>8801</SMS_Gateway_port>
+//	    <SMS_Receive_IP>0.0.0.0</SMS_Receive_IP>
+//	    <SMS_Receive_port>6888</SMS_Receive_port>
 	}
 
 	public static String getAttachmentDir() {
@@ -69,6 +91,22 @@ public class SPConfig {
 
 	public static int getMsgDetectDuration() {
 		return msgDetectDuration;
+	}
+
+	public static String getSmsGateway() {
+		return smsGateway;
+	}
+
+	public static int getSmsGatewayPort() {
+		return smsGatewayPort;
+	}
+
+	public static String getSmsReceiveIp() {
+		return smsReceiveIp;
+	}
+
+	public static int getSmsReceivePort() {
+		return smsReceivePort;
 	}
 
 }
