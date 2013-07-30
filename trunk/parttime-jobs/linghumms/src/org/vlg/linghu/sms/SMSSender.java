@@ -60,13 +60,13 @@ public class SMSSender extends Thread {
 					client.init(info);
 
 					for (final SmsSendMessage msg : msgs) {
+						msg.setSendStatus(SEND_SENDING);
+						logger.info("发送短信给{}" , msg.getUserId());
+						smsSendMessageMapper
+								.updateByPrimaryKeySelective(msg);
 						Runnable run = new Runnable() {
 							public void run() {
 								try {
-									msg.setSendStatus(SEND_SENDING);
-									logger.info("发送短信给{}" + msg.getUserId());
-									smsSendMessageMapper
-											.updateByPrimaryKeySelective(msg);
 									SGIPSubmit submit = new SGIPSubmit();
 									SGIPSubmitBody body = submit.getBody();
 									setInitailBody(body, msg);
@@ -94,6 +94,7 @@ public class SMSSender extends Thread {
 							}
 						};
 						SingleThreadPool.execute(run);
+						sleep(SPConfig.getMsgSendDuration());
 					}
 				} else {
 					sleep(SPConfig.getMsgDetectDuration());
