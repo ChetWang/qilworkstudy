@@ -81,18 +81,17 @@ public class MMSSender extends Thread {
 							.selectByExampleWithBLOBs(ex);
 					if (messages.size() > 0) {
 						logger.info("获取到{}条待发彩信", messages.size());
-						for (final MmsSendMessageWithBLOBs msg : messages) {
 
+						for (final MmsSendMessageWithBLOBs msg : messages) {
+							msg.setSendStatus(SEND_SENDING);
+							mmsSendMessageMapper
+									.updateByPrimaryKeySelective(msg);
 							Runnable run = new Runnable() {
 								public void run() {
 									logger.info("发送彩信 至{}", msg.getSendMobile());
 									MM7SubmitReq req = createRequest(msg);
 									if (req != null) {
-										msg.setSendStatus(SEND_SENDING);
 										createContent(msg, req);
-										mmsSendMessageMapper
-												.updateByPrimaryKeySelective(msg);
-
 										MM7RSRes resp = sender.send(req);
 										if (resp instanceof MM7SubmitRes) {
 											MM7SubmitRes submitResp = (MM7SubmitRes) resp;
