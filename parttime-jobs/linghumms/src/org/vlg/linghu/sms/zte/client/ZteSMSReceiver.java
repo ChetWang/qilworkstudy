@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.vlg.linghu.SPConfig;
+import org.vlg.linghu.SingleThreadPool;
 import org.vlg.linghu.mybatis.bean.SmsReceiveMessage;
 import org.vlg.linghu.mybatis.bean.SmsSendMessage;
 import org.vlg.linghu.mybatis.bean.SmsSendMessageExample;
@@ -29,7 +30,7 @@ public class ZteSMSReceiver {
 
 	@Autowired
 	SmsReceiveMessageMapper smsReceiveMessageMapper;
-	
+
 	@Autowired
 	SmsSendMessageMapper smsSendMessageMapper;
 
@@ -72,23 +73,34 @@ public class ZteSMSReceiver {
 						srm.setServiceid(spnumber);
 						srm.setUserId(user);
 						smsReceiveMessageMapper.insertSelective(srm);
-						logger.info("收到用户上行短信deliver message: {}",
-								deliver.toString()+VACNotifyHandler.getBeanInfo(body));
+						logger.info(
+								"收到用户上行短信deliver message: {}",
+								deliver.toString()
+										+ VACNotifyHandler.getBeanInfo(body));
 					} else if (msg.messageType == 2) {
-						//FIXME 这个处理应该和发送处理放到单线程池下保证顺序，否则这里先执行的话，数据库里查不到正确的msgid
-						SGIPReport report = (SGIPReport) msg.obj;
-						SGIPReportBody body = report.getBody();
-						String user = body.getUserNumber();
-						SGIPSequenceNo seq = body.getSubmitSequenceNumber();
-						String msgId=seq.getNode()+""+seq.getTime()+""+seq.getNumber();
-						SmsSendMessageExample ex = new SmsSendMessageExample();
-						ex.createCriteria().andMsgidEqualTo(msgId).andUserIdEqualTo(user);
-						SmsSendMessage ssm = new SmsSendMessage();
-						ssm.setMsgid(msgId);
-						ssm.setSendStatus(body.getErrorCode());
-						smsSendMessageMapper.updateByExampleSelective(ssm, ex);
-						logger.info("收到短信网关状态报告消息report message: {}",
-								report.toString());
+						// 这个处理应该和发送处理放到单线程池下保证顺序，否则这里先执行的话，数据库里查不到正确的msgid
+						final SGIPReport report = (SGIPReport) msg.obj;
+						Runnable run = new Runnable() {
+							public void run() {
+								SGIPReportBody body = report.getBody();
+								String user = body.getUserNumber();
+								SGIPSequenceNo seq = body
+										.getSubmitSequenceNumber();
+								String msgId = seq.getNode() + ""
+										+ seq.getTime() + "" + seq.getNumber();
+								SmsSendMessageExample ex = new SmsSendMessageExample();
+								ex.createCriteria().andMsgidEqualTo(msgId)
+										.andUserIdEqualTo(user);
+								SmsSendMessage ssm = new SmsSendMessage();
+								ssm.setMsgid(msgId);
+								ssm.setSendStatus(body.getErrorCode());
+								smsSendMessageMapper.updateByExampleSelective(
+										ssm, ex);
+								logger.info("收到短信网关状态报告消息report message: {}",
+										report.toString());
+							}
+						};
+						SingleThreadPool.execute(run);
 					}
 				}
 			} catch (Exception e) {

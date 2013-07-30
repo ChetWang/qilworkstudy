@@ -5,6 +5,14 @@ import javax.servlet.ServletException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.vlg.linghu.SingleThreadPool;
+import org.vlg.linghu.mybatis.bean.MmsSendMessage;
+import org.vlg.linghu.mybatis.bean.MmsSendMessageExample;
+import org.vlg.linghu.mybatis.mapper.MmsSendMessageMapper;
 import org.vlg.linghu.vac.VACNotifyHandler;
 
 import com.cmcc.mm7.vasp.common.MMConstants;
@@ -21,9 +29,17 @@ import com.cmcc.mm7.vasp.service.MM7ReceiveServlet;
 public class MMSReceiverServlet extends MM7ReceiveServlet {
 	
 	private	 static final Logger logger = LoggerFactory.getLogger(MMSReceiverServlet.class);
+	
+	@Autowired
+	MmsSendMessageMapper mmsSendMessageMapper;
 
 	public void init(ServletConfig servletConfig) throws ServletException {
 		super.init(servletConfig);
+		WebApplicationContext sprintContext = WebApplicationContextUtils
+				.getRequiredWebApplicationContext(getServletContext());
+		sprintContext.getAutowireCapableBeanFactory().autowireBean(this);
+		SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(
+				this, getServletContext());
 		MM7Config mm7Config = new MM7Config(MMSSendTest.class.getResource(
 				"/mm7Config.xml").getFile());
 		mm7Config.setConnConfigName(MMSSendTest.class.getResource(
@@ -45,11 +61,26 @@ public class MMSReceiverServlet extends MM7ReceiveServlet {
 		return res;
 	}
 
-	public MM7VASPRes doDeliveryReport(MM7DeliveryReportReq request) {
-		logger.info("收到彩信状态报告: "+VACNotifyHandler.getBeanInfo(request));
+	public MM7VASPRes doDeliveryReport(final MM7DeliveryReportReq request) {
+		Runnable run = new Runnable(){
+			public void run(){
+				logger.info("收到彩信状态报告: "+VACNotifyHandler.getBeanInfo(request));		
+				String messageId = request.getMessageID();
+				int status = request.getMMStatusErrCode();
+				MmsSendMessageExample ex = new MmsSendMessageExample();
+				ex.createCriteria().andMsgidEqualTo(messageId);
+				MmsSendMessage msg = new MmsSendMessage();
+				msg.setMsgid(messageId);
+				msg.setSendStatus(status);
+				mmsSendMessageMapper.updateByExample(msg, ex);
+			}
+		};
+		SingleThreadPool.execute(run);
+		
 		MM7DeliveryReportRes res = new MM7DeliveryReportRes();
 		res.setStatusCode(MMConstants.RequestStatus.SUCCESS);
 		res.setTransactionID(request.getTransactionID());
+		
 		return res;
 	}
 
