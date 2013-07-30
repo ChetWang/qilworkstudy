@@ -71,7 +71,7 @@ public class MMSReceiverServlet extends MM7ReceiveServlet {
 				ex.createCriteria().andMsgidEqualTo(messageId);
 				MmsSendMessageWithBLOBs msg = new MmsSendMessageWithBLOBs();
 				msg.setMsgid(messageId);
-				msg.setSendStatus(status);
+				msg.setSendStatus(status+90000);
 				mmsSendMessageMapper.updateByExampleSelective(msg, ex);
 			}
 		};
