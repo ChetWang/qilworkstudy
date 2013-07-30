@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.vlg.linghu.SPConfig;
+import org.vlg.linghu.SingleThreadPool;
 import org.vlg.linghu.mybatis.bean.MmsSendMessage;
 import org.vlg.linghu.mybatis.bean.MmsSendMessageExample;
 import org.vlg.linghu.mybatis.bean.MmsSendMessageWithBLOBs;
@@ -71,53 +72,66 @@ public class MMSSender extends Thread {
 		logger.info("MMS Sender sarted");
 		MmsSendMessageExample ex = new MmsSendMessageExample();
 		ex.createCriteria().andSendStatusEqualTo(SEND_READY);
-		MM7Sender sender = null;
 		try {
-			sender = createMM7Sender();
+			final MM7Sender sender = createMM7Sender();
+
+			while (true) {
+				try {
+					List<MmsSendMessageWithBLOBs> messages = mmsSendMessageMapper
+							.selectByExampleWithBLOBs(ex);
+					if (messages.size() > 0) {
+						logger.info("获取到{}条待发彩信", messages.size());
+						for (final MmsSendMessageWithBLOBs msg : messages) {
+
+							Runnable run = new Runnable() {
+								public void run() {
+									logger.info("发送彩信 至{}", msg.getSendMobile());
+									MM7SubmitReq req = createRequest(msg);
+									if (req != null) {
+										msg.setSendStatus(SEND_SENDING);
+										createContent(msg, req);
+										mmsSendMessageMapper
+												.updateByPrimaryKey(msg);
+
+										MM7RSRes resp = sender.send(req);
+										if (resp instanceof MM7SubmitRes) {
+											MM7SubmitRes submitResp = (MM7SubmitRes) resp;
+											msg.setMsgid(submitResp
+													.getMessageID());
+										}
+										msg.setSendStatus(resp.getStatusCode());
+										msg.setSendDowntime(new Date());
+										mmsSendMessageMapper
+												.updateByPrimaryKey(msg);
+										logger.info("sent to gateway, "
+												+ msg.getSendMobile()
+												+ " complete, status code:"
+												+ resp.getStatusCode()
+												+ ", status detail: "
+												+ resp.getStatusDetail()
+												+ ", status text:"
+												+ resp.getStatusText()
+												+ ", transaction id: "
+												+ resp.getTransactionID()
+												+ ", mm7 version:"
+												+ resp.getMM7Version());
+
+									}
+								}
+							};
+							SingleThreadPool.execute(run);
+							sleep(SPConfig.getMsgSendDuration());
+						}
+					} else {
+						sleep(SPConfig.getMsgDetectDuration());
+					}
+				} catch (Exception e) {
+					logger.error("", e);
+				}
+			}
 		} catch (Exception e1) {
 			logger.error("failed to create mm7 sender", e1);
 			return;
-		}
-		while (true) {
-			try {
-				List<MmsSendMessageWithBLOBs> messages = mmsSendMessageMapper
-						.selectByExampleWithBLOBs(ex);
-				if (messages.size() > 0) {
-					logger.info("获取到{}条待发彩信",messages.size());
-					for (MmsSendMessageWithBLOBs msg : messages) {
-						logger.info("发送彩信 至{}", msg.getSendMobile());
-						MM7SubmitReq req = createRequest(msg);
-						if (req != null) {
-							msg.setSendStatus(SEND_SENDING);
-							createContent(msg, req);
-							mmsSendMessageMapper.updateByPrimaryKey(msg);
-
-							MM7RSRes resp = sender.send(req);
-							if (resp instanceof MM7SubmitRes) {
-								MM7SubmitRes submitResp = (MM7SubmitRes) resp;
-								msg.setMsgid(submitResp.getMessageID());
-							}
-							msg.setSendStatus(resp.getStatusCode());
-							msg.setSendDowntime(new Date());
-							mmsSendMessageMapper.updateByPrimaryKey(msg);
-							logger.debug("sent to " + msg.getSendMobile()
-									+ " complete, status code:"
-									+ resp.getStatusCode()
-									+ ", status detail: "
-									+ resp.getStatusDetail() + ", status text:"
-									+ resp.getStatusText()
-									+ ", transaction id: "
-									+ resp.getTransactionID()
-									+ ", mm7 version:" + resp.getMM7Version());
-							sleep(SPConfig.getMsgSendDuration());
-						}
-					}
-				} else {
-					sleep(SPConfig.getMsgDetectDuration());
-				}
-			} catch (Exception e) {
-				logger.error("", e);
-			}
 		}
 
 	}
@@ -154,17 +168,18 @@ public class MMSSender extends Thread {
 					// .createFromString(getTextFromFile(attLocation + att));
 					mmc.setContentType(MMConstants.ContentType.TEXT);
 					java.nio.charset.Charset charset = null;
-				    try {
-						charset = detector.detectCodepage(new File(attLocation+att).toURI().toURL());
+					try {
+						charset = detector.detectCodepage(new File(attLocation
+								+ att).toURI().toURL());
 					} catch (Exception e) {
-						logger.error("",e);
+						logger.error("", e);
 					}
-				    String charsetStr=null;
-				    if(charset==null){
-				    	charsetStr="utf-8";
-				    }else{
-				    	charsetStr=charset.displayName();
-				    }
+					String charsetStr = null;
+					if (charset == null) {
+						charsetStr = "utf-8";
+					} else {
+						charsetStr = charset.displayName();
+					}
 					mmc.setCharset(charsetStr);
 				} else if (att.endsWith(".jpg") || att.endsWith(".jpeg")) {
 					mmc.setContentType(MMConstants.ContentType.JPEG);
