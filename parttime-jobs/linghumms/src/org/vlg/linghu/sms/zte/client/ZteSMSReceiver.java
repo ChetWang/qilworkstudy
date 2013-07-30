@@ -37,8 +37,10 @@ public class ZteSMSReceiver {
 	public void start() {
 
 		SGIPServerInitInfo info = new SGIPServerInitInfo();
-		info.IP = "0.0.0.0";
-		info.port = 6888;
+//		info.IP = "0.0.0.0";
+//		info.port = 6888;
+		info.IP=SPConfig.getSmsReceiveIp();
+		info.port = SPConfig.getSmsReceivePort();
 		info.userName = SPConfig.getUserName();
 		info.passWord = SPConfig.getPassword();
 		SGIPServer server = SGIPServer.getInstance();

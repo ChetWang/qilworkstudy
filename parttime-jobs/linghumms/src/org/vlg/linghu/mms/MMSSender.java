@@ -91,7 +91,7 @@ public class MMSSender extends Thread {
 										msg.setSendStatus(SEND_SENDING);
 										createContent(msg, req);
 										mmsSendMessageMapper
-												.updateByPrimaryKey(msg);
+												.updateByPrimaryKeySelective(msg);
 
 										MM7RSRes resp = sender.send(req);
 										if (resp instanceof MM7SubmitRes) {
