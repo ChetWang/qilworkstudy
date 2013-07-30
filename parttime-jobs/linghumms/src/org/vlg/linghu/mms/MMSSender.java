@@ -98,7 +98,7 @@ public class MMSSender extends Thread {
 											msg.setMsgid(submitResp
 													.getMessageID());
 										}
-										msg.setSendStatus(resp.getStatusCode());
+										msg.setSendStatus(resp.getStatusCode()+50000);
 										msg.setSendDowntime(new Date());
 										mmsSendMessageMapper
 												.updateByPrimaryKey(msg);
