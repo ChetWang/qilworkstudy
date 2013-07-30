@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.vlg.linghu.SPConfig;
+import org.vlg.linghu.SingleThreadPool;
 import org.vlg.linghu.mybatis.bean.SmsSendMessage;
 import org.vlg.linghu.mybatis.bean.SmsSendMessageExample;
 import org.vlg.linghu.mybatis.bean.VacReceiveMessage;
@@ -55,30 +56,44 @@ public class SMSSender extends Thread {
 					info.userName = SPConfig.getUserName();
 					info.passWord = SPConfig.getPassword();
 					info.maxLink = 1;
-					SGIPClient client = SGIPClient.getInstance();
+					final SGIPClient client = SGIPClient.getInstance();
 					client.init(info);
 
-					for (SmsSendMessage msg : msgs) {
-						msg.setSendStatus(SEND_SENDING);
-						logger.info("发送短信给{}" + msg.getUserId());
-						smsSendMessageMapper.updateByPrimaryKeySelective(msg);
-						SGIPSubmit submit = new SGIPSubmit();
-						SGIPSubmitBody body = submit.getBody();
-						setInitailBody(body, msg);
-						SGIPRsp rsphandler6 = new SGIPRsp();
-						SGIPSequenceNo seq = new SGIPSequenceNo();
-						String msgId = seq.getNode() + "" + seq.getTime() + ""
-								+ seq.getNumber();
-						submit.getHead().setSequenceNo(seq);
-						client.sendSubmit(submit, rsphandler6);
-						SGIPSubmitResp resp = rsphandler6
-								.waitForSGIPSubmitResp();
-						msg.setMsgid(msgId);
-						msg.setSendStatus(resp.getBody().getResult() + 50000);
-						logger.info("发送短信给" + msg.getUserId()
-								+ ", 已送至网关，msgid=" + msgId + ", result="
-								+ resp.getBody().getResult());
-						smsSendMessageMapper.updateByPrimaryKeySelective(msg);
+					for (final SmsSendMessage msg : msgs) {
+						Runnable run = new Runnable() {
+							public void run() {
+								try {
+									msg.setSendStatus(SEND_SENDING);
+									logger.info("发送短信给{}" + msg.getUserId());
+									smsSendMessageMapper
+											.updateByPrimaryKeySelective(msg);
+									SGIPSubmit submit = new SGIPSubmit();
+									SGIPSubmitBody body = submit.getBody();
+									setInitailBody(body, msg);
+									SGIPRsp rsphandler6 = new SGIPRsp();
+									SGIPSequenceNo seq = new SGIPSequenceNo();
+									String msgId = seq.getNode() + ""
+											+ seq.getTime() + ""
+											+ seq.getNumber();
+									submit.getHead().setSequenceNo(seq);
+									client.sendSubmit(submit, rsphandler6);
+									SGIPSubmitResp resp = rsphandler6
+											.waitForSGIPSubmitResp();
+									msg.setMsgid(msgId);
+									msg.setSendStatus(resp.getBody()
+											.getResult() + 50000);
+									logger.info("发送短信给" + msg.getUserId()
+											+ ", 已送至网关, msgid=" + msgId
+											+ ", result="
+											+ resp.getBody().getResult()+",sendstatus="+msg.getSendStatus());
+									smsSendMessageMapper
+											.updateByPrimaryKeySelective(msg);
+								} catch (Exception e) {
+									logger.error("", e);
+								}
+							}
+						};
+						SingleThreadPool.execute(run);
 					}
 				} else {
 					sleep(SPConfig.getMsgDetectDuration());
