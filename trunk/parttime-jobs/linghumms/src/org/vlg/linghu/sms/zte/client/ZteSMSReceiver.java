@@ -95,7 +95,7 @@ public class ZteSMSReceiver {
 										.andUserIdEqualTo(user);
 								SmsSendMessage ssm = new SmsSendMessage();
 								ssm.setMsgid(msgId);
-								ssm.setSendStatus(body.getErrorCode());
+								ssm.setSendStatus(body.getErrorCode()+90000);
 								smsSendMessageMapper.updateByExampleSelective(
 										ssm, ex);
 								logger.info("收到短信网关状态报告消息report message: {}",
