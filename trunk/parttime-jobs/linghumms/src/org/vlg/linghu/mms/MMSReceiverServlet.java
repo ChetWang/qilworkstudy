@@ -10,8 +10,8 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.vlg.linghu.SingleThreadPool;
-import org.vlg.linghu.mybatis.bean.MmsSendMessage;
 import org.vlg.linghu.mybatis.bean.MmsSendMessageExample;
+import org.vlg.linghu.mybatis.bean.MmsSendMessageWithBLOBs;
 import org.vlg.linghu.mybatis.mapper.MmsSendMessageMapper;
 import org.vlg.linghu.vac.VACNotifyHandler;
 
@@ -69,10 +69,10 @@ public class MMSReceiverServlet extends MM7ReceiveServlet {
 				int status = request.getMMStatusErrCode();
 				MmsSendMessageExample ex = new MmsSendMessageExample();
 				ex.createCriteria().andMsgidEqualTo(messageId);
-				MmsSendMessage msg = new MmsSendMessage();
+				MmsSendMessageWithBLOBs msg = new MmsSendMessageWithBLOBs();
 				msg.setMsgid(messageId);
 				msg.setSendStatus(status);
-				mmsSendMessageMapper.updateByExample(msg, ex);
+				mmsSendMessageMapper.updateByExampleSelective(msg, ex);
 			}
 		};
 		SingleThreadPool.execute(run);

@@ -35,8 +35,8 @@ public class MMSSendTest {
 		req.setChargedParty(MMConstants.ChargedParty.SENDER);
 //		 req.addTo("8618606529811"); //8615558050237
 		// 消息接收方，对于多个接收方可多次调用addTo()，addCc()，addBcc()
-		req.addTo("8618626867777");
-		req.setServiceCode("9036067002"); // 业务代码
+		req.addTo("8615558050237");
+		req.setServiceCode("9036067000"); // 业务代码
 		// req.setLinkedID(""); // LinkID
 		req.setSubject("This is a test"); // 设置消息的标题
 		req.setDeliveryReport(true); // 设置是否需要递送报告
