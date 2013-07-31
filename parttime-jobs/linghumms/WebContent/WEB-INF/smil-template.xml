@@ -1,12 +1,14 @@
 <smil>
 	<head>
 		<layout>
-			<root-layout width="160" background-color="white" />
+			<root-layout width="100%" height="100%" background-color="white" />
 			<!-- 
 			<region id="logo_region" left="5" top="5" right="5" />
 			<region id="text_region" left="5" top="40" right="5" fit="scroll" />
 			<region id="textnews_region" left="5" top="5" right="5" fit="scroll" />
 			 -->
+		    <region id="img" top="0" left="0" height="100%" width="100%" fit="meet"/>
+            <region id="text" top="0" left="0" height="100%" width="100%" fit="scroll"/>
 		</layout>
 	</head>
 	<body>
