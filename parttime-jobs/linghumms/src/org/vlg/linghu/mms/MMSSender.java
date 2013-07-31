@@ -302,6 +302,8 @@ public class MMSSender extends Thread {
 				maincontent.addSubContent(mmc);
 			}
 		}
+		req.setContent(maincontent);
+		req.setTransactionID(System.nanoTime() + "");
 	}
 
 	private Element getHeadLayout(Document templateDoc) {
