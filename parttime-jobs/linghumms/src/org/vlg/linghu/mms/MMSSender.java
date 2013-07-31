@@ -346,12 +346,14 @@ public class MMSSender extends Thread {
 					Element textEle = templateDoc.createElement("text");
 					parEle.appendChild(textEle);
 					textEle.setAttribute("src", att);
+					textEle.setAttribute("region", "text");
 				} else if (att.endsWith(".jpg") || att.endsWith(".jpeg")
 						|| att.endsWith(".gif") || att.endsWith(".png")) {
 					parEle.setAttribute("dur", "3000ms");
 					Element imgEle = templateDoc.createElement("img");
 					parEle.appendChild(imgEle);
 					imgEle.setAttribute("src", att);
+					imgEle.setAttribute("region", "img");
 				} else {
 					logger.error("Cannot recogonize file type '" + attLocation
 							+ att + "', send to user " + msg.getSendMobile());
