@@ -15,7 +15,6 @@ import org.vlg.linghu.mybatis.mapper.VacReceiveMessageMapper;
 
 import com.unicom.vac.bossagent.soap.sync.req.OrderRelationUpdateNotifyRequest;
 
-
 public class VACNotifyHandler {
 
 	private static final Logger logger = LoggerFactory
