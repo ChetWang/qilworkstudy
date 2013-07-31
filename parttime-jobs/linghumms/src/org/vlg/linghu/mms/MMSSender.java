@@ -8,15 +8,18 @@ import info.monitorenter.cpdetector.io.ParsingDetector;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.virbraligo.util.VLGFunction;
+import org.vlg.linghu.InitServlet;
 import org.vlg.linghu.SPConfig;
 import org.vlg.linghu.SingleThreadPool;
 import org.vlg.linghu.mybatis.bean.MmsSendMessage;
@@ -26,6 +29,8 @@ import org.vlg.linghu.mybatis.bean.VacReceiveMessage;
 import org.vlg.linghu.mybatis.bean.VacReceiveMessageExample;
 import org.vlg.linghu.mybatis.mapper.MmsSendMessageMapper;
 import org.vlg.linghu.mybatis.mapper.VacReceiveMessageMapper;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import com.cmcc.mm7.vasp.common.MMConstants;
 import com.cmcc.mm7.vasp.common.MMContent;
@@ -34,6 +39,8 @@ import com.cmcc.mm7.vasp.message.MM7RSRes;
 import com.cmcc.mm7.vasp.message.MM7SubmitReq;
 import com.cmcc.mm7.vasp.message.MM7SubmitRes;
 import com.cmcc.mm7.vasp.service.MM7Sender;
+
+import org.virbraligo.util.XMLPrinter;
 
 public class MMSSender extends Thread {
 
@@ -91,14 +98,15 @@ public class MMSSender extends Thread {
 									logger.info("∑¢ÀÕ≤ –≈ ÷¡{}", msg.getSendMobile());
 									MM7SubmitReq req = createRequest(msg);
 									if (req != null) {
-										createContent(msg, req);
+//										createContent(msg, req);
+										createSmilContent(msg, req);
 										MM7RSRes resp = sender.send(req);
 										if (resp instanceof MM7SubmitRes) {
 											MM7SubmitRes submitResp = (MM7SubmitRes) resp;
 											msg.setMsgid(submitResp
 													.getMessageID());
 										}
-										msg.setSendStatus(resp.getStatusCode()+50000);
+										msg.setSendStatus(resp.getStatusCode() + 50000);
 										msg.setSendDowntime(new Date());
 										mmsSendMessageMapper
 												.updateByPrimaryKey(msg);
@@ -190,6 +198,7 @@ public class MMSSender extends Thread {
 					logger.error("Cannot recogonize file type '" + attLocation
 							+ att + "', send to user " + msg.getSendMobile());
 				}
+				// mmc.setContentLocation(contentLocation)
 				mmc.setContentID(att);
 				main.addSubContent(mmc);
 			}
@@ -241,6 +250,123 @@ public class MMSSender extends Thread {
 		}
 		logger.warn("Cannot find serviceId for user " + ms.getSendMobile());
 		return null;
+	}
+
+	private void createSmilContent(MmsSendMessageWithBLOBs msg, MM7SubmitReq req){
+		String smil = createSmilFile(msg);
+		MMContent presentation = MMContent.createFromFile(smil);
+		presentation.setContentType(MMConstants.ContentType.SMIL);
+		presentation.setContentID("smil");
+		String template = msg.getSendText();
+		String[] atts = template.split(",");
+		MMContent maincontent = new MMContent();
+		maincontent.setContentType(MMConstants.ContentType.MULTIPART_RELATED);
+		
+		maincontent.addSubContent(presentation);
+		
+		String attLocation = SPConfig.getAttachmentDir();
+		for (int i=0;i<atts.length;i++) {
+			String att = atts[i].trim().toLowerCase();
+			if (!"".equals(att)) {
+				MMContent mmc = MMContent.createFromFile(attLocation + att);
+				if (att.endsWith(".txt")) {
+					// mmc = MMContent
+					// .createFromString(getTextFromFile(attLocation + att));
+					mmc.setContentType(MMConstants.ContentType.TEXT);
+					java.nio.charset.Charset charset = null;
+					try {
+						charset = detector.detectCodepage(new File(attLocation
+								+ att).toURI().toURL());
+					} catch (Exception e) {
+						logger.error("", e);
+					}
+					String charsetStr = null;
+					if (charset == null) {
+						charsetStr = "utf-8";
+					} else {
+						charsetStr = charset.displayName();
+					}
+					mmc.setCharset(charsetStr);
+				} else if (att.endsWith(".jpg") || att.endsWith(".jpeg")) {
+					mmc.setContentType(MMConstants.ContentType.JPEG);
+				} else if (att.endsWith(".gif")) {
+					mmc.setContentType(MMConstants.ContentType.GIF);
+				} else if (att.endsWith(".png")) {
+					mmc.setContentType(MMConstants.ContentType.PNG);
+				} else {
+					logger.error("Cannot recogonize file type '" + attLocation
+							+ att + "', send to user " + msg.getSendMobile());
+				}
+				mmc.setContentLocation(att);
+				mmc.setContentID(att);
+				maincontent.addSubContent(mmc);
+			}
+		}
+	}
+
+	private Element getHeadLayout(Document templateDoc) {
+		return VLGFunction.findElement("//smil/head/layout",
+				templateDoc.getDocumentElement());
+	}
+
+	private Element getSmilBody(Document templateDoc) {
+		return VLGFunction.findElement("//smil/body",
+				templateDoc.getDocumentElement());
+	}
+
+	public String createSmilFile(MmsSendMessageWithBLOBs msg) {
+		Document templateDoc = VLGFunction.getXMLDocument(InitServlet.WEB_INF
+				+ "smil-template.xml");
+		Element headLayoutEle = getHeadLayout(templateDoc);
+		Element bodyEle = getSmilBody(templateDoc);
+		String template = msg.getSendText();
+		String[] atts = template.split(",");
+		String attLocation = SPConfig.getAttachmentDir();
+		String name = SPConfig.getAttachmentDir()
+				+ UUID.randomUUID().toString() + ".smil";
+		for (int i = 0; i < atts.length; i++) {
+			String att = atts[i].trim().toLowerCase();
+			if (!"".equals(att)) {
+				Element regionEle = templateDoc.createElement("region");
+				// headLayoutEle.appendChild(regionEle);
+				// regionEle.setAttribute("id", arg1)
+			}
+		}
+		for (int i = 0; i < atts.length; i++) {
+			String att = atts[i].trim().toLowerCase();
+			if (!"".equals(att)) {
+				Element parEle = templateDoc.createElement("par");
+				bodyEle.appendChild(parEle);
+				parEle.setAttribute("id", "par" + i);
+
+				if (att.endsWith(".txt")) {
+					parEle.setAttribute("dur", "10000ms");
+					Element textEle = templateDoc.createElement("text");
+					parEle.appendChild(textEle);
+					textEle.setAttribute("src", att);
+				} else if (att.endsWith(".jpg") || att.endsWith(".jpeg")
+						|| att.endsWith(".gif") || att.endsWith(".png")) {
+					parEle.setAttribute("dur", "3000ms");
+					Element imgEle = templateDoc.createElement("img");
+					parEle.appendChild(imgEle);
+					imgEle.setAttribute("src", att);
+				} else {
+					logger.error("Cannot recogonize file type '" + attLocation
+							+ att + "', send to user " + msg.getSendMobile());
+				}
+			}
+		}
+		try {
+			String xml = XMLPrinter.printNode(templateDoc.getDocumentElement(),
+					true);
+			FileOutputStream fos = new FileOutputStream(name);
+			fos.write(xml.getBytes());
+			fos.flush();
+			fos.close();
+		} catch (IOException e) {
+			logger.error("", e);
+		}
+		return name;
 	}
 
 }
