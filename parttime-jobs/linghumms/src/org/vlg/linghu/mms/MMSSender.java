@@ -329,7 +329,7 @@ public class MMSSender extends Thread {
 		for (int i = 0; i < atts.length; i++) {
 			String att = atts[i].trim().toLowerCase();
 			if (!"".equals(att)) {
-				Element regionEle = templateDoc.createElement("region");
+//				Element regionEle = templateDoc.createElement("region");
 				// headLayoutEle.appendChild(regionEle);
 				// regionEle.setAttribute("id", arg1)
 			}
@@ -360,7 +360,7 @@ public class MMSSender extends Thread {
 		}
 		try {
 			String xml = XMLPrinter.printNode(templateDoc.getDocumentElement(),
-					true);
+					false);
 			FileOutputStream fos = new FileOutputStream(name);
 			fos.write(xml.getBytes());
 			fos.flush();
