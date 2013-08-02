@@ -2,36 +2,11 @@
 	<head>
 		<layout>
 			<root-layout width="100%" height="100%" background-color="white" />
-			<!-- 
-			<region id="logo_region" left="5" top="5" right="5" />
-			<region id="text_region" left="5" top="40" right="5" fit="scroll" />
-			<region id="textnews_region" left="5" top="5" right="5" fit="scroll" />
-			 -->
-		    <region id="img" top="0" left="0" height="100%" width="100%" fit="meet"/>
-            <region id="text" top="0" left="0" height="100%" width="100%" fit="scroll"/>
+		    <region id="img" top="5" left="5"  fit="meet"/>
+            <region id="text" top="5" left="5" />
 		</layout>
 	</head>
 	<body>
-	<!-- 
-		<par dur="6000ms">
-			<img src="img:1" region="logo_region"></img>
-			<text src="text:1" region="text_region" />
-		</par>
-		<par id="news1" dur="6000ms">
-			<text src="text:2" region="textnews_region" />
-		</par>
-		<par id="news2" dur="6000ms">
-			<text src="text:3" region="textnews_region" />
-		</par>
-		<par id="news3" dur="6000ms">
-			<text src="text:4" region="textnews_region" />
-		</par>
-		<par id="news4" dur="6000ms">
-			<text src="text:5" region="textnews_region" />
-		</par>
-		<par id="news5" dur="6000ms">
-			<text src="text:6" region="textnews_region" fill="freeze" />
-		</par>
-	-->
+	
 	</body>
 </smil>

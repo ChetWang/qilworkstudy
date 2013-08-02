@@ -64,6 +64,7 @@ classpath:/org/springframework/transaction/config/spring-tx-3.2.xsd">
     
     <bean id="vacNotifyHandler" class="org.vlg.linghu.vac.VACNotifyHandler"/>
 	<bean id="smsSender" class="org.vlg.linghu.sms.SMSSender"/>
+	<bean id="smsSenderHuawei" class="org.vlg.linghu.sms.SMSSenderHuawei"/>
 	<bean id="mmsSender" class="org.vlg.linghu.mms.MMSSender"/>
 	<!-- listener should be added into web.xml -->
 	<!-- <context-param> <param-name>contextConfigLocation</param-name> <param-value>/WEB-iNF/daoContext.xml,/WEB-INF/applicationContext.xml 
