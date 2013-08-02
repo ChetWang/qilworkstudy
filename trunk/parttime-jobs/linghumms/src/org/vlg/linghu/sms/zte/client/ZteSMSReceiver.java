@@ -72,7 +72,7 @@ public class ZteSMSReceiver {
 						srm.setIsok(true);
 						srm.setReceiveAddtime(new Date());
 						srm.setReceiveText(new String(msgBytes, encoding));
-						srm.setServiceid(spnumber);
+//						srm.setServiceid();
 						srm.setUserId(user);
 						smsReceiveMessageMapper.insertSelective(srm);
 						logger.info(
@@ -104,6 +104,8 @@ public class ZteSMSReceiver {
 						};
 						SingleThreadPool.execute(run);
 					}
+				}else{
+					Thread.sleep(1000);
 				}
 			} catch (Exception e) {
 				logger.error("", e);

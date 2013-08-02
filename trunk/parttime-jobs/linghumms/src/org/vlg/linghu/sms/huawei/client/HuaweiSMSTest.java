@@ -21,7 +21,7 @@ public class HuaweiSMSTest {
 		Cfg config = new Cfg(HuaweiSMSTest.class
 				.getResource("/huawei-sgip.xml").toString());
 		Args a = config.getArgs("SGIPConnect");
-		MySGIPSMProxy smProxy = new MySGIPSMProxy(a);
+		MySGIPSendSMProxy smProxy = new MySGIPSendSMProxy(a);
 		boolean result = smProxy.connect(SPConfig.getUserName(),
 				SPConfig.getPassword());
 		System.out.println("login result: " + result);
