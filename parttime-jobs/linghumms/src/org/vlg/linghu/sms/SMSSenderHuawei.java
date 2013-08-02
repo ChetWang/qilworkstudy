@@ -16,7 +16,7 @@ import org.vlg.linghu.mybatis.bean.VacReceiveMessageExample;
 import org.vlg.linghu.mybatis.mapper.SmsSendMessageMapper;
 import org.vlg.linghu.mybatis.mapper.VacReceiveMessageMapper;
 import org.vlg.linghu.sms.huawei.client.HuaweiSMSTest;
-import org.vlg.linghu.sms.huawei.client.MySGIPSMProxy;
+import org.vlg.linghu.sms.huawei.client.MySGIPSendSMProxy;
 
 import com.huawei.insa2.comm.sgip.message.SGIPSubmitMessage;
 import com.huawei.insa2.comm.sgip.message.SGIPSubmitRepMessage;
@@ -49,18 +49,23 @@ public class SMSSenderHuawei extends Thread {
 			try {
 				final List<SmsSendMessage> msgs = smsSendMessageMapper
 						.selectByExample(ex);
+				for(SmsSendMessage msg:msgs){
+					msg.setSendStatus(SEND_SENDING);
+					smsSendMessageMapper
+							.updateByPrimaryKeySelective(msg);
+				}
 				if (msgs.size() > 0) {
 					logger.info("获取到{}条待发彩信", msgs.size());
 
 					Runnable run = new Runnable() {
 						public void run() {
-							MySGIPSMProxy smProxy = null;
+							MySGIPSendSMProxy smProxy = null;
 							try {
 								Cfg config = new Cfg(HuaweiSMSTest.class
 										.getResource("/huawei-sgip.xml")
 										.toString());
 								Args a = config.getArgs("SGIPConnect");
-								smProxy = new MySGIPSMProxy(a);
+								smProxy = new MySGIPSendSMProxy(a);
 								boolean result = smProxy.connect(
 										SPConfig.getUserName(),
 										SPConfig.getPassword());
@@ -70,39 +75,46 @@ public class SMSSenderHuawei extends Thread {
 							} catch (IOException e) {
 								logger.error("初始化短信网关失败 " + e.getMessage());
 							}
-							for (final SmsSendMessage msg : msgs) {
-								msg.setSendStatus(SEND_SENDING);
-								logger.info("发送短信给{}", msg.getUserId());
-								smsSendMessageMapper
-										.updateByPrimaryKeySelective(msg);
-								if (smProxy != null) {
-									try {
-										// 为防止msgid在没更新时却收到状态报告，这里要在单线程中执行，状态报告也一样要在单线程中更新
-										SGIPSubmitMessage submit = createSubmit(msg);
-										SGIPSubmitRepMessage resp = (SGIPSubmitRepMessage) smProxy
-												.send(submit);
-										msg.setMsgid("" + submit.getSrcNodeId()
-												+ submit.getTimeStamp()
-												+ submit.getSequenceId());
-										msg.setSendStatus(resp.getResult() + 50000);
-										logger.info("发送短信给" + msg.getUserId()
-												+ ", 已送至网关, msgid="
-												+ msg.getMsgid() + ", result="
-												+ resp.getResult()
-												+ ", sendstatus="
-												+ msg.getSendStatus());
-										smsSendMessageMapper
-												.updateByPrimaryKeySelective(msg);
-									} catch (Exception e) {
-										logger.error("", e);
+							try {
+								for (final SmsSendMessage msg : msgs) {									
+									logger.info("发送短信给{}", msg.getUserId());
+									
+									if (smProxy != null) {
+										try {
+											// 为防止msgid在没更新时却收到状态报告，这里要在单线程中执行，状态报告也一样要在单线程中更新
+											SGIPSubmitMessage submit = createSubmit(msg);
+											SGIPSubmitRepMessage resp = (SGIPSubmitRepMessage) smProxy
+													.send(submit);
+											msg.setMsgid(""
+													+ submit.getSrcNodeId()
+													+ submit.getTimeStamp()
+													+ submit.getSequenceId());
+											msg.setSendStatus(resp.getResult() + 50000);
+											logger.info("发送短信给"
+													+ msg.getUserId()
+													+ ", 已送至网关, msgid="
+													+ msg.getMsgid()
+													+ ", result="
+													+ resp.getResult()
+													+ ", sendstatus="
+													+ msg.getSendStatus());
+											smsSendMessageMapper
+													.updateByPrimaryKeySelective(msg);
+											Thread.sleep(SPConfig
+													.getMsgSendDuration());
+										} catch (Exception e) {
+											logger.error("", e);
+										}
 									}
+								}
+							} finally {
+								if (smProxy != null) {
+									smProxy.close();
 								}
 							}
 						}
 					};
 					SingleThreadPool.execute(run);
-					sleep(SPConfig.getMsgSendDuration());
-
 				} else {
 					sleep(SPConfig.getMsgDetectDuration());
 				}

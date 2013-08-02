@@ -5,10 +5,10 @@ import com.huawei.insa2.comm.sgip.message.SGIPMessage;
 import com.huawei.insa2.util.Args;
 import com.huawei.smproxy.SGIPSMProxy;
 
-public class MySGIPSMProxy extends SGIPSMProxy
+public class MySGIPSendSMProxy extends SGIPSMProxy
 {
 
-  public MySGIPSMProxy(Args args) {
+  public MySGIPSendSMProxy(Args args) {
     super(args);
 //    startService("10.70.116.79", 8801);
 //    this.demo = demo;

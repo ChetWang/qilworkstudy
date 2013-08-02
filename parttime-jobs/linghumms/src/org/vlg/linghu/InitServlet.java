@@ -18,6 +18,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.vlg.linghu.mms.MMSSender;
 import org.vlg.linghu.sms.SMSSender;
 import org.vlg.linghu.sms.SMSSenderHuawei;
+import org.vlg.linghu.sms.huawei.client.MySGIPReceiveProxy;
 import org.vlg.linghu.sms.zte.client.ZteSMSReceiver;
 
 public class InitServlet extends HttpServlet {
@@ -42,6 +43,9 @@ public class InitServlet extends HttpServlet {
 	@Autowired
 	SMSSenderHuawei smsSenderHuawei;
 	
+	@Autowired
+	MySGIPReceiveProxy sgipReceiveProxy;
+	
 	public static WebApplicationContext sprintContext;
 	
 	//FIXME, 老附件清理，30天
@@ -63,12 +67,13 @@ public class InitServlet extends HttpServlet {
 			logger.info("Test loading datasource successfully, url is "
 					+ conn.getMetaData().getURL());
 			conn.close();
-			new Thread("SMS Receiver"){
-				public void run(){
-					smsReceiver.start();
-				}
-			}.start();
+//			new Thread("SMS Receiver"){
+//				public void run(){
+//					smsReceiver.start();
+//				}
+//			}.start();
 //			smsSender.start();
+			sgipReceiveProxy.start();
 			smsSenderHuawei.start();
 			mmsSender.start();
 			timer.scheduleAtFixedRate(new TimerTask(){
