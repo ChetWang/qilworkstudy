@@ -1,6 +1,5 @@
 package org.vlg.linghu.sms.zte.client;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.log4j.Logger;
@@ -11,10 +10,9 @@ import com.zte.smgw.api.sgip.client.SGIPRsp;
 import com.zte.smgw.api.sgip.message.SGIPSubmit;
 import com.zte.smgw.api.sgip.message.SGIPSubmitResp;
 import com.zte.smgw.api.sgip.message.body.SGIPSequenceNo;
-import com.zte.smgw.socket.client.ClientSendThread;
 
 public class test {
-	private static Logger log = Logger.getLogger(ClientSendThread.class);
+	private static Logger log = Logger.getLogger(test.class);
 
 	public static void main(String[] args) {
 		try {

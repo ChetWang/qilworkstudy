@@ -17,6 +17,7 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.vlg.linghu.mms.MMSSender;
 import org.vlg.linghu.sms.SMSSender;
+import org.vlg.linghu.sms.SMSSenderHuawei;
 import org.vlg.linghu.sms.zte.client.ZteSMSReceiver;
 
 public class InitServlet extends HttpServlet {
@@ -37,6 +38,9 @@ public class InitServlet extends HttpServlet {
 	
 	@Autowired
 	MMSSender mmsSender;
+	
+	@Autowired
+	SMSSenderHuawei smsSenderHuawei;
 	
 	public static WebApplicationContext sprintContext;
 	
@@ -64,7 +68,8 @@ public class InitServlet extends HttpServlet {
 					smsReceiver.start();
 				}
 			}.start();
-			smsSender.start();
+//			smsSender.start();
+			smsSenderHuawei.start();
 			mmsSender.start();
 			timer.scheduleAtFixedRate(new TimerTask(){
 
