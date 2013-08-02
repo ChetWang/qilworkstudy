@@ -7,7 +7,11 @@ import info.monitorenter.cpdetector.io.JChardetFacade;
 import info.monitorenter.cpdetector.io.ParsingDetector;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -19,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.virbraligo.util.VLGFunction;
+import org.virbraligo.util.XMLPrinter;
 import org.vlg.linghu.InitServlet;
 import org.vlg.linghu.SPConfig;
 import org.vlg.linghu.SingleThreadPool;
@@ -39,8 +44,6 @@ import com.cmcc.mm7.vasp.message.MM7RSRes;
 import com.cmcc.mm7.vasp.message.MM7SubmitReq;
 import com.cmcc.mm7.vasp.message.MM7SubmitRes;
 import com.cmcc.mm7.vasp.service.MM7Sender;
-
-import org.virbraligo.util.XMLPrinter;
 
 public class MMSSender extends Thread {
 
@@ -98,7 +101,7 @@ public class MMSSender extends Thread {
 									logger.info("∑¢ÀÕ≤ –≈ ÷¡{}", msg.getSendMobile());
 									MM7SubmitReq req = createRequest(msg);
 									if (req != null) {
-//										createContent(msg, req);
+										// createContent(msg, req);
 										createSmilContent(msg, req);
 										MM7RSRes resp = sender.send(req);
 										if (resp instanceof MM7SubmitRes) {
@@ -169,7 +172,7 @@ public class MMSSender extends Thread {
 		for (String s : atts) {
 			String att = s.trim().toLowerCase();
 			if (!"".equals(att)) {
-				MMContent mmc = MMContent.createFromFile(attLocation + att);
+				MMContent mmc = createFromFile(attLocation + att);
 				if (att.endsWith(".txt")) {
 					// mmc = MMContent
 					// .createFromString(getTextFromFile(attLocation + att));
@@ -252,50 +255,83 @@ public class MMSSender extends Thread {
 		return null;
 	}
 
-	private void createSmilContent(MmsSendMessageWithBLOBs msg, MM7SubmitReq req){
+	private String getCharset(String file) {
+		java.nio.charset.Charset charset = null;
+		try {
+			charset = detector.detectCodepage(new File(file).toURI().toURL());
+		} catch (Exception e) {
+			logger.error("", e);
+		}
+		String charsetStr = null;
+		if (charset == null) {
+			charsetStr = "utf-8";
+		} else {
+			charsetStr = charset.displayName();
+		}
+		return charsetStr;
+	}
+
+	public static MMContent createFromFile(String filename) {
+		try {
+			FileInputStream fis = new FileInputStream(filename);
+			DataInputStream input = new DataInputStream(fis);
+			ByteArrayOutputStream output = new ByteArrayOutputStream();
+			byte[] data = null;
+			while (input.available() != 0) {
+				output.write(input.readByte());
+			}
+			if (filename.endsWith(".txt")) {
+				output.write("\r\n".getBytes());
+			}
+			data = output.toByteArray();
+			ByteArrayInputStream bin = new ByteArrayInputStream(data);
+			MMContent content = MMContent.createFromStream(bin);
+			bin.close();
+			fis.close();
+			input.close();
+			return content;
+		} catch (IOException ioe) {
+			System.err.println(ioe);
+		}
+		return null;
+	}
+
+	private void createSmilContent(MmsSendMessageWithBLOBs msg, MM7SubmitReq req) {
 		String smil = createSmilFile(msg);
-		MMContent presentation = MMContent.createFromFile(smil);
+		MMContent presentation = createFromFile(smil);
 		presentation.setContentType(MMConstants.ContentType.SMIL);
 		presentation.setContentID("smil");
 		String template = msg.getSendText();
 		String[] atts = template.split(",");
 		MMContent maincontent = new MMContent();
 		maincontent.setContentType(MMConstants.ContentType.MULTIPART_RELATED);
-		
+
 		maincontent.addSubContent(presentation);
-		
+
 		String attLocation = SPConfig.getAttachmentDir();
-		for (int i=0;i<atts.length;i++) {
+		for (int i = 0; i < atts.length; i++) {
 			String att = atts[i].trim().toLowerCase();
 			if (!"".equals(att)) {
-				MMContent mmc = MMContent.createFromFile(attLocation + att);
+				MMContent mmc = createFromFile(attLocation + att);
 				if (att.endsWith(".txt")) {
-					// mmc = MMContent
-					// .createFromString(getTextFromFile(attLocation + att));
+
 					mmc.setContentType(MMConstants.ContentType.TEXT);
-					java.nio.charset.Charset charset = null;
-					try {
-						charset = detector.detectCodepage(new File(attLocation
-								+ att).toURI().toURL());
-					} catch (Exception e) {
-						logger.error("", e);
-					}
-					String charsetStr = null;
-					if (charset == null) {
-						charsetStr = "utf-8";
-					} else {
-						charsetStr = charset.displayName();
-					}
-					mmc.setCharset(charsetStr);
-				} else if (att.endsWith(".jpg") || att.endsWith(".jpeg")) {
-					mmc.setContentType(MMConstants.ContentType.JPEG);
-				} else if (att.endsWith(".gif")) {
-					mmc.setContentType(MMConstants.ContentType.GIF);
-				} else if (att.endsWith(".png")) {
-					mmc.setContentType(MMConstants.ContentType.PNG);
+
+					mmc.setCharset(getCharset(attLocation + att));
+					// mmc.setCharset("GBK");
 				} else {
-					logger.error("Cannot recogonize file type '" + attLocation
-							+ att + "', send to user " + msg.getSendMobile());
+					
+					if (att.endsWith(".jpg") || att.endsWith(".jpeg")) {
+						mmc.setContentType(MMConstants.ContentType.JPEG);
+					} else if (att.endsWith(".gif")) {
+						mmc.setContentType(MMConstants.ContentType.GIF);
+					} else if (att.endsWith(".png")) {
+						mmc.setContentType(MMConstants.ContentType.PNG);
+					} else {
+						logger.error("Cannot recogonize file type '"
+								+ attLocation + att + "', send to user "
+								+ msg.getSendMobile());
+					}
 				}
 				mmc.setContentLocation(att);
 				mmc.setContentID(att);
@@ -329,7 +365,7 @@ public class MMSSender extends Thread {
 		for (int i = 0; i < atts.length; i++) {
 			String att = atts[i].trim().toLowerCase();
 			if (!"".equals(att)) {
-//				Element regionEle = templateDoc.createElement("region");
+				// Element regionEle = templateDoc.createElement("region");
 				// headLayoutEle.appendChild(regionEle);
 				// regionEle.setAttribute("id", arg1)
 			}
@@ -342,14 +378,14 @@ public class MMSSender extends Thread {
 				parEle.setAttribute("id", "par" + i);
 
 				if (att.endsWith(".txt")) {
-					parEle.setAttribute("dur", "10000ms");
+//					parEle.setAttribute("dur", "10000ms");
 					Element textEle = templateDoc.createElement("text");
 					parEle.appendChild(textEle);
 					textEle.setAttribute("src", att);
 					textEle.setAttribute("region", "text");
 				} else if (att.endsWith(".jpg") || att.endsWith(".jpeg")
 						|| att.endsWith(".gif") || att.endsWith(".png")) {
-					parEle.setAttribute("dur", "3000ms");
+//					parEle.setAttribute("dur", "3000ms");
 					Element imgEle = templateDoc.createElement("img");
 					parEle.appendChild(imgEle);
 					imgEle.setAttribute("src", att);
