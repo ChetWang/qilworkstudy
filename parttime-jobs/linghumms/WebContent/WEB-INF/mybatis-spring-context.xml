@@ -61,6 +61,7 @@ classpath:/org/springframework/transaction/config/spring-tx-3.2.xsd">
 	</bean>
 
     <bean id="smsReceiver" class="org.vlg.linghu.sms.zte.client.ZteSMSReceiver"/>
+    <bean id="sgipReceiveProxy" class="org.vlg.linghu.sms.huawei.client.MySGIPReceiveProxy" />
     
     <bean id="vacNotifyHandler" class="org.vlg.linghu.vac.VACNotifyHandler"/>
 	<bean id="smsSender" class="org.vlg.linghu.sms.SMSSender"/>
