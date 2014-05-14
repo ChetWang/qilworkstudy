@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jms url="tcp://localhost:61616" user="user" password="password" />

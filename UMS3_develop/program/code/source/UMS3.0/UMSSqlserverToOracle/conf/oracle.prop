@@ -1,5 +1,0 @@
-drivers=oracle.jdbc.driver.OracleDriver
-oraclepool.url=jdbc:oracle:thin:@10.44.2.45:1521:OA
-oraclepool.user=ums3
-oraclepool.password=ums3
-oraclepool.maxconn=5

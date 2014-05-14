@@ -1,4 +1,0 @@
-<items>
-	<searchItem name="文本" code="com.nci.svg.search.TextSearchItem" />
-	<searchItem name="图元ID" code="com.nci.svg.search.SymbolIDSearchItem" />
-</items>

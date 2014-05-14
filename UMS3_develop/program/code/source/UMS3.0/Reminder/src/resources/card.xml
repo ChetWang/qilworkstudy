@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<root>
-    <smtpserver ip="smtp.gmail.com" port="465" />
-    <sender name="cardinfo2010@gmail.com" psw="cardinfo2010nci" alias="cardinfo@gmail.com"/>
-	<receivers>
-		<receiver mail="qil.wong@gmail.com" mobile="13819155409"/>
-    </receivers>
-    <workitem  subject="还款时间到" content="信用卡还款啦！"/>
-</root>

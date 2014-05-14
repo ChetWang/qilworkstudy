@@ -1,8 +1,0 @@
-<MsgFmt_LCS>
-	<!-- LCS 正文 -->
- 	<parameter name="content"></parameter>
- 	<!-- 超链接指向的路径 -->
- 	<parameter name="url"></parameter>
- 	<!-- 超链接显示的名称 -->
- 	<parameter name="urlcontent"></parameter>
-</MsgFmt_LCS>

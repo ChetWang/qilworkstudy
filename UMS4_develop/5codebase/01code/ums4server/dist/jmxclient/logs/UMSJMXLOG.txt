@@ -1,6 +1,0 @@
-2009-11-17 09:11:11,843:[INFO] --> 正在停止渠道:015...  com.nci.ums.jmx.client.ClientListener.handleLog(ClientListener.java:93)
- 2009-11-17 09:11:11,875:[INFO] --> 停止外发渠道：015  com.nci.ums.jmx.client.ClientListener.handleLog(ClientListener.java:93)
- 2009-11-17 09:11:11,875:[INFO] --> 移动SMSV3外拨外拨渠道线程退出服务！  com.nci.ums.jmx.client.ClientListener.handleLog(ClientListener.java:93)
- 2009-11-17 09:11:11,921:[INFO] --> 015移动SMSV3外拨 终止，线程退出!  com.nci.ums.jmx.client.ClientListener.handleLog(ClientListener.java:93)
- 2009-11-17 09:11:11,921:[INFO] --> 停止渠道:015成功!  com.nci.ums.jmx.client.ClientListener.handleLog(ClientListener.java:93)
- 
