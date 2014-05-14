@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<root>
-    <smtpserver ip="218.108.110.67" port="25" />
-    <sender name="ums" psw="ums" alias="xuzhy@nci.com.cn"/>
-	<receivers>
-		<receiver mail="qil.wong@gmail.com" mobile="13819155409"/>
-    </receivers>
-    <workitem  subject="还款时间到" content="信用卡还款啦！"/>
-</root>

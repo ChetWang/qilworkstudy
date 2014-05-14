@@ -1,8 +1,0 @@
-<!-- 定义器状态下的配置， 从wofobean转换到图形的配置，通用统一静态方法：generateShapeFromWofoBean-->
-<shape-wofobean>
-	<shape id="com.nci.domino.beans.desyer.WofoTransitionBean" generator="com.nci.domino.shape.WfTransitionGenerator" />
-	<shape id="com.nci.domino.beans.desyer.WofoActivityBean" generator="com.nci.domino.shape.WfActivityGenerator" />
-	<shape id="com.nci.domino.beans.plugin.pipe.WofoPipeFunctionBean" generator="com.nci.domino.shape.pipe.WfPipeShapeGenerator" />
-	<shape id="com.nci.domino.beans.plugin.pipe.WofoPipeStageBean" generator="com.nci.domino.shape.pipe.WfPipeShapeGenerator" />
-	<shape id="com.nci.domino.beans.plugin.note.WofoNoteBean" generator="com.nci.domino.shape.note.WfNoteShapeGenerator" />
-</shape-wofobean>

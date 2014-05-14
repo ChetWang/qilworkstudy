@@ -1,4 +1,0 @@
-#endpoint_send=http://10.44.14.208:19829/axis2/services/UMS3_MsgSend?wsdl
-endpoint_send=http://localhost:19829/axis2/services/UMS3_MsgSend?wsdl
-appID=1
-appPsw=monk

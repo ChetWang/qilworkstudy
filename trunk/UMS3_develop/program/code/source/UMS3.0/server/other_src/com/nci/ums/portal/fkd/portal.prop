@@ -1,3 +1,0 @@
-endpoint=http://192.168.129.105:7001/np_application/services/UmsService
-methodname=execute
-namespace=http://ums.nportal.nci.com

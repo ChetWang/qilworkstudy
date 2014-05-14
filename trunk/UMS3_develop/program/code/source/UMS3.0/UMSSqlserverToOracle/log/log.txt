@@ -1,4 +1,0 @@
-[2009-01-06 10:35:49,812: DEBUG xxxxxx] com.nci.util.KnoLogger.log(KnoLogger.java:69)  
-[2009-01-06 10:35:49,828: ERROR yyyyyy] com.nci.util.KnoLogger.log(KnoLogger.java:69)  
-java.lang.Exception: www
-	at com.nci.util.KnoLogger.main(KnoLogger.java:83)

@@ -1,8 +1,0 @@
-drivers=oracle.jdbc.driver.OracleDriver
-url=jdbc:oracle:thin:@192.168.0.56:1521:jfw3
-pool_name=ums
-user=ums3
-password=ums3
-maxActive=5
-maxIdle=3
-maxWait=10000

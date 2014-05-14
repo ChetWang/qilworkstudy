@@ -1,1 +1,0 @@
-ant/bin/ant -f build-smartform.xml sign-wf sign-smartform

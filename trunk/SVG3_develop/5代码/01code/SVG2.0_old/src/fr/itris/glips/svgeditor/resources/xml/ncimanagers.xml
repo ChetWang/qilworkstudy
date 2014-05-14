@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Managers>
-	<GraphUnitManager
-		class="com.nci.svg.graphunit.NCIDBGraphUnitManager" />
-	<MetaDataManager
-		class="com.nci.svg.ui.equip.YXTransferedMetaDataManager" />
-	<!--<MetaDataManager class="com.nci.svg.ui.equip.GISMetaDataManager" />-->
-	<CSSManager class="com.nci.svg.css.DLCSSManager" />
-</Managers>

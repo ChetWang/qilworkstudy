@@ -1,8 +1,0 @@
-<server>
-    <param-local>
-        <CachePath><CachePath>D:\temp\SVG30\jar\</CachePath></CachePath>
-    </param-local>
-	<symbolSets>
-		<holdModelFlag>false</holdModelFlag>
-	</symbolSets>
-</server>

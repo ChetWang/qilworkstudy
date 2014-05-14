@@ -1,1 +1,0 @@
-"d:/java/jdk1.6.0_01/bin/java" -cp bin;lib/mail-1.4.jar mail.WorkItemInputReminder ges.xml
